@@ -1,0 +1,44 @@
+{
+  "name": "fe-boilerplate-poc",
+  "version": "1.0.0",
+  "description": "FE boilerplate test",
+  "main": "index.js",
+  "browserify-shim": {
+    "jquery": "global:$"
+  },
+  "scripts": {
+    "build": "npm run build:js -s; npm run build:css -s; npm run build:img -s; npm run build:handlebars -s; npm run build:svg -s;",
+    "prebuild:js": "jshint assets/js",
+    "build:js": "echo js",
+    "build:css": "lessc --clean-css=\"--s1 -c=ie8\" assets/css/styles.less assets/css/styles.css ",
+    "prebuild:img": "glue assets/images/sprites/src/ --img=assets/images/sprites/ --less=assets/css/sprites/ --project",
+    "build:img": "echo img",
+    "build:handlebars": "echo handlebars ",
+    "build:svg": "echo svg",
+
+    "watch": "parallelshell \"npm run watch:js -s\" \"npm run watch:handlebars -s \" \"npm run watch:css -s \" \"npm run watch:img -s \" \"npm run watch:svg -s \"",
+    "watch:js": "nodemon -s -q -w assets/js/*.js --exec 'npm run build:js'",
+    "watch:handlebars": "nodemon -s -q -w assets/js/templates/*.hbs --exec 'npm run build:handlebars'",
+    "watch:css": "nodemon -s -q -w assets/css/*.less --exec 'npm run build:css'",
+    "watch:img": "nodemon -s -q -w assets/images/*. --exec 'npm run build:img'",
+    "watch:svg": "nodemon -s -q -w assets/svg/src/*.svg --exec 'npm run build:svg'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iainvdw/fe-boilerplate-poc.git"
+  },
+  "author": "Iain van der Wiel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iainvdw/fe-boilerplate-poc/issues"
+  },
+  "homepage": "https://github.com/iainvdw/fe-boilerplate-poc#readme",
+  "devDependencies": {
+    "handlebars": "^4.0.5",
+    "jshint": "^2.9.1",
+    "less": "^2.5.3",
+    "less-plugin-clean-css": "^1.5.1",
+    "nsdeclare": "^0.1.0",
+    "parallelshell": "^2.0.0"
+  }
+}

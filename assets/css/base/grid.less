@@ -1,0 +1,166 @@
+/**
+ * Simple and small generated mobile first responsive fluid grid system with default 12 horizontal cols
+ * Uses borderbox, so it doesn't work on < IE8
+ */
+
+.wrapper {
+	width: 100%;
+}
+
+.wrapper-inner {
+	.clearfix();
+	position: relative;
+	margin: auto;
+	padding-left: @grid-gutter / 2;
+	padding-right: @grid-gutter / 2;
+	max-width: @xl-width;
+}
+
+.row {
+	.clearfix();
+	margin-left: @grid-gutter / -2;
+	margin-right: @grid-gutter / -2;
+	min-height: 1px;
+}
+
+/* Columns */
+.col {
+	.clearfix();
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	display: block;
+	float: left;
+	min-height: 10px;
+	padding-left: @grid-gutter / 2;
+	padding-right: @grid-gutter / 2;
+}
+
+/* Inverse floating order of columns */
+.col-inverse {
+	float: right;
+}
+
+/* Extra small cols please */
+.grid-xs-loop (@cols) when (@cols > 0) {
+	.col-xs-@{cols} {
+		width: 100% / (@grid-columns / @cols);
+	}
+	.col-xs-pull-@{cols} {
+		margin-left: 100% / (@grid-columns / @cols);
+	}
+	.col-xs-push-@{cols} {
+		margin-right: 100% / (@grid-columns / @cols);
+	}
+
+	.grid-xs-loop(@cols - 1);
+}
+.grid-xs-loop(@grid-columns);
+
+/* Small cols please */
+@media (min-width: @sm-width) {
+	.grid-sm-loop (@cols) when (@cols > 0) {
+		.col-sm-@{cols} {
+			width: 100% / (@grid-columns / @cols);
+			
+		}
+		.col-sm-pull-@{cols} {
+			margin-left: 100% / (@grid-columns / @cols);
+		}
+		.col-sm-push-@{cols} {
+			margin-right: 100% / (@grid-columns / @cols);
+		}
+
+		.grid-sm-loop(@cols - 1);
+	}
+	.grid-sm-loop(@grid-columns);
+
+	/* Reset push and pull */
+	.col-sm-pull-0 {
+		margin-left: 0;
+	}
+	.col-sm-push-0 {
+		margin-right: 0;
+	}
+}
+
+/* Medium cols... */
+@media screen and (min-width: @md-width) {
+	.grid-md-loop (@cols) when (@cols > 0) {
+		.col-md-@{cols} {
+			width: 100% / (@grid-columns / @cols);
+		}
+		.col-md-pull-@{cols} {
+			margin-left: 100% / (@grid-columns / @cols);
+		}
+		.col-md-push-@{cols} {
+			margin-right: 100% / (@grid-columns / @cols);
+		}
+
+		.grid-md-loop(@cols - 1);
+	}
+
+	.grid-md-loop(@grid-columns);
+
+	/* Reset push and pull */
+	.col-md-pull-0 {
+		margin-left: 0;
+	}
+	.col-md-push-0 {
+		margin-right: 0;
+	}
+}
+
+/* Large cols... */
+@media screen and (min-width: @lg-width) {
+	.grid-lg-loop (@cols) when (@cols > 0) {
+		.col-lg-@{cols} {
+			width: 100% / (@grid-columns / @cols);
+		}
+		.col-lg-pull-@{cols} {
+			margin-left: 100% / (@grid-columns / @cols);
+		}
+		.col-lg-push-@{cols} {
+			margin-right: 100% / (@grid-columns / @cols);
+		}
+
+		.grid-lg-loop(@cols - 1);
+	}
+
+	.grid-lg-loop(@grid-columns);
+
+	/* Reset push and pull */
+	.col-lg-pull-0 {
+		margin-left: 0;
+	}
+	.col-lg-push-0 {
+		margin-right: 0;
+	}
+}
+
+/* You never guessed... x-large cols */
+@media screen and (min-width: @xl-width) {
+	.grid-xl-loop (@cols) when (@cols > 0) {
+		.col-xl-@{cols} {
+			width: 100% / (@grid-columns / @cols);
+		}
+		.col-xl-pull-@{cols} {
+			margin-left: 100% / (@grid-columns / @cols);
+		}
+		.col-xl-push-@{cols} {
+			margin-right: 100% / (@grid-columns / @cols);
+		}
+
+		.grid-xl-loop(@cols - 1);
+	}
+
+	.grid-xl-loop(@grid-columns);
+
+	/* Reset push and pull */
+	.col-xl-pull-0 {
+		margin-left: 0;
+	}
+	.col-xl-push-0 {
+		margin-right: 0;
+	}
+}

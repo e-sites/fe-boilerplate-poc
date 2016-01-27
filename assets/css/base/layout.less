@@ -1,0 +1,42 @@
+/**
+ * @section	: Layout elements that hold other components together
+ * @project	: PROJECT_NAAM
+ * @author  : Naam Developer <developer@e-sites.nl>
+ */
+
+.hide-mobile,
+.show-tablet,
+.show-desktop {
+	display: none !important;
+}
+.show-mobile,
+.hide-tablet,
+.hide-desktop {
+	display: inline-block !important;
+}
+
+@media screen and (min-width: @md-width) {
+	.show-mobile,
+	.hide-tablet,
+	.show-desktop {
+		display: none !important;
+	}
+	.hide-mobile,
+	.show-tablet,
+	.hide-desktop {
+		display: inline-block !important;
+	}
+}
+
+@media screen and (min-width: @lg-width) {
+	.show-mobile,
+	.show-tablet,
+	.hide-desktop {
+		display: none !important;
+	}
+	.hide-mobile,
+	.hide-tablet,
+	.show-desktop {
+		display: inline-block !important;
+	}
+}

@@ -1,0 +1,330 @@
+/**
+ * @section : Forms CSS (largely based on Bootstrap)
+ * @project : PROJECT_NAAM
+ * @author  : Naam Developer <developer@e-sites.nl>
+ */
+
+fieldset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+
+	// Chrome and Firefox set a `min-width: min-content;` on fieldsets,
+	// so we reset that to ensure it behaves more like a standard block element.
+	// See https://github.com/twbs/bootstrap/issues/12359.
+	min-width: 0;
+}
+
+legend {
+	display: none;
+}
+
+label {
+	display: inline-block;
+	max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+/**
+ * Normalize form controls
+ */
+
+
+// While most of our form styles require extra classes, some basic normalization
+// is required to ensure optimum display with or without those classes to better
+// address browser inconsistencies.
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+	.box-sizing(border-box);
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+	margin: 4px 0 0;
+	margin-top: 1px \9; // IE8-9
+	line-height: normal;
+}
+
+// Set the height of file controls to match text inputs
+input[type="file"] {
+	display: block;
+}
+
+// Make range inputs behave like textual form controls
+input[type="range"] {
+	display: block;
+	width: 100%;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+	height: auto;
+}
+
+// Focus for file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+	.tab-focus();
+}
+
+/**
+ * Common form controls
+ *
+ * Shared size and type resets for form controls. Apply `.form-control` to any
+ * of the following form controls:
+ *
+ * select
+ * textarea
+ * input[type="text"]
+ * input[type="password"]
+ * input[type="datetime"]
+ * input[type="datetime-local"]
+ * input[type="date"]
+ * input[type="month"]
+ * input[type="time"]
+ * input[type="week"]
+ * input[type="number"]
+ * input[type="email"]
+ * input[type="url"]
+ * input[type="search"]
+ * input[type="tel"]
+ * input[type="color"]
+ */
+.form-control {
+	.box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+	.transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+	display: block;
+	width: 100%;
+	height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+	padding: @padding-base-vertical @padding-base-horizontal;
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+	color: @input-color;
+	background-color: @input-bg;
+	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+	border: 1px solid @input-border;
+	border-radius: @input-border-radius;
+
+	// Customize the `:focus` state to imitate native WebKit styles.
+	.form-control-focus();
+
+	// Placeholder
+	.placeholder(#999);
+
+	// Disabled and read-only inputs
+	//
+	// HTML5 says that controls under a fieldset > legend:first-child won't be
+	// disabled if the fieldset is disabled. Due to implementation difficulty, we
+	// don't honor that edge case; we style them as disabled anyway.
+	&[disabled],
+	&[readonly],
+	fieldset[disabled] & {
+		cursor: not-allowed;
+		background-color: @input-bg-disabled;
+		opacity: 1; // iOS fix for unreadable disabled content
+	}
+
+	// Reset height for `textarea`s
+	textarea& {
+		height: auto;
+	}
+
+	&.parsley-error {
+		.form-control-focus(@error-red);
+	}
+}
+
+/**
+ * Search inputs in iOS
+ *
+ * This overrides the extra rounded corners on search inputs in iOS so that the
+ * `.form-control` class can properly style them. Note that this cannot simply
+ * be added to `.form-control` as it's not specific enough.
+ */
+input[type="search"] {
+	-webkit-appearance: none;
+}
+
+/**
+ * Special styles for iOS temporal inputs
+ *
+ * In Mobile Safari, setting `display: block` on temporal inputs causes the
+ * text within the input to become vertically misaligned.
+ * As a workaround, we set a pixel line-height that matches the
+ * given height of the input. Since this fucks up everything else, we have to
+ * appropriately reset it for Internet Explorer and the size variations.
+ */
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+	line-height: @input-height-base;
+	// IE8+ misaligns the text within date inputs, so we reset
+	line-height: @line-height-base ~"\0";
+}
+
+/**
+ * Form groups
+ *
+ * Designed to help with the organization and spacing of vertical forms. For
+ * horizontal forms, use the predefined grid classes.
+ */
+.form-group {
+	margin-bottom: 15px;
+}
+
+/**
+ * Checkboxes and radios
+ *
+ * Indent the labels to position radios/checkboxes as hanging controls.
+ */
+
+.radio,
+.checkbox {
+	position: relative;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	label {
+		min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
+		padding-left: 20px;
+		margin-bottom: 0;
+		font-weight: normal;
+		cursor: pointer;
+	}
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+	position: absolute;
+	margin-left: -20px;
+	margin-top: 4px \9;
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+	margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline {
+	display: inline-block;
+	padding-left: 20px;
+	margin-bottom: 0;
+	vertical-align: middle;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+	margin-top: 0;
+	margin-left: 10px; // space out consecutive inline controls
+}
+
+// Apply same disabled cursor tweak as for inputs
+// Some special care is needed because <label>s don't inherit their parent's `cursor`.
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"] {
+	&[disabled],
+	&.disabled,
+	fieldset[disabled] & {
+		cursor: not-allowed;
+	}
+}
+
+// These classes are used directly on <label>s
+.radio-inline,
+.checkbox-inline {
+	&.disabled,
+	fieldset[disabled] & {
+		cursor: not-allowed;
+	}
+}
+
+// These classes are used on elements with <label> descendants
+.radio,
+.checkbox {
+	&.disabled,
+		fieldset[disabled] & {
+		label {
+			cursor: not-allowed;
+		}
+	}
+}
+
+/**
+ * Help text
+ *
+ * Apply to any element you wish to create light text for placement immediately
+ * below a form control. Use for general help, formatting, or instructional text.
+ */
+
+.help-block {
+	display: block; // account for any element using help-block
+	margin-top: 5px;
+	margin-bottom: 10px;
+	color: lighten(@text-color, 25%); // lighten the text some for contrast
+}
+
+/**
+ * Error styles by Parsley, based on the default parsley.config elements
+ */
+
+.parsley-error-container {
+	padding: 1em;
+	color: #000;
+	border: 2px solid @error-red;
+	background: lighten(@error-red, 35%);
+	margin: 1em 0;
+
+	ul {
+		margin: 0;
+		padding: 0 0 0 1em;
+	}
+}
+
+.success-container {
+	padding: 1em;
+	color: #1e3b20;
+	border: 1px solid #70c468;
+	background: #c5f6c0;
+}
+
+label.parsley-error {
+	font-weight: bold;
+}
+
+textarea.parsley-error,
+select.parsley-error,
+input.parsley-error {
+	border: 1px solid @error-red;
+}
+
+.parsley-error-line {
+	.font-size(14, 16);
+	color: @error-red;
+	display: block;
+	margin: 0;
+	width: 100%;
+
+	&.filled {
+		padding-top: .5em;
+	}
+}
+
+.parsley-custom-error-message {
+	margin-top: 0.5em;
+	display: inline-block;
+}
