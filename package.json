@@ -15,14 +15,14 @@
     "images": "images/"
   },
   "scripts": {
-    "build": "npm run build:js -s; npm run build:css -s; npm run build:img -s; npm run build:handlebars -s; npm run build:svg -s;",
+    "build": "npm run build:js -s; npm run build:css -s; npm run build:img -s; npm run build:hbs -s; npm run build:svg -s;",
     "build:js": "node assets/js/tasks/js.js",
     "build:css": "node assets/js/tasks/css.js",
     "build:img": "node assets/js/tasks/img.js",
     "build:hbs": "node assets/js/tasks/hbs.js",
     "build:svg": "node assets/js/tasks/svg.js",
 
-    "watch": "parallelshell \"npm run watch:js -s\" \"npm run watch:handlebars -s \" \"npm run watch:css -s \" \"npm run watch:img -s \" \"npm run watch:svg -s \"",
+    "watch": "parallelshell \"npm run watch:js -s\" \"npm run watch:hbs -s \" \"npm run watch:css -s \" \"npm run watch:img -s \" \"npm run watch:svg -s \"",
     "watch:js": "nodemon -s -q -x 'npm run build:js -s -- --watch'",
     "watch:hbs": "nodemon -s -q -x 'npm run build:hbs -s -- --watch'",
     "watch:css": "nodemon -s -q -x 'npm run build:css -s -- --watch'",
