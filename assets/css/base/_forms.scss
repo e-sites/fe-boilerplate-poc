@@ -1,0 +1,209 @@
+/**
+ * @section : Default form styles
+ * @project : PROJECT_NAAM
+ * @author  : Naam Developer <developer@e-sites.nl>
+ */
+
+$include-default-form-stacked: true;
+$include-default-form-aligned: true;
+$include-default-form-group: true;
+$include-default-form-inputs-disabled: true;
+$include-default-form-inputs-focus: true;
+
+.default-form {
+	fieldset {
+		margin: 0;
+		padding: 0.35em 0 0.75em;
+		border: 0;
+	}
+
+	legend {
+		display: block;
+		width: 100%;
+		padding: 0.3em 0;
+		margin-bottom: 0.3em;
+		font-size: 125%;
+		color: #333;
+		border-bottom: 1px solid #e5e5e5;
+	}
+
+	label {
+		margin: 0.5em 0 0.2em;
+	}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="url"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="week"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	select,
+	textarea {
+		padding: 0.5em 0.6em;
+		display: inline-block;
+		border: 1px solid $c-border-color;
+		background-color: white;
+		font-size: 16px;
+		min-width: 250px;
+		border-radius: 4px;
+		box-shadow: inset 0 1px 3px #ddd;
+
+		@if ($include-default-form-inputs-disabled) {
+			&[disabled] {
+				cursor: not-allowed;
+				background-color: #eaeded;
+				color: #ccc;
+				border-color: transparent;
+			}
+		}
+
+		@if ($include-default-form-inputs-focus) {
+			&:focus {
+				outline: 0;
+				border-color: darken($c-border-color, 25%);
+			}
+		}
+	}
+
+	select {
+		height: 2.25em;
+		border: 1px solid $c-border-color;
+		background-color: white;
+	}
+
+	select[multiple] {
+		height: auto;
+	}
+
+	.default-checkbox,
+	.default-radio {
+	    margin: 0.5em 0;
+	    display: block;
+	}
+}
+
+@if ($include-default-form-stacked) {
+	.default-form-stacked {
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="url"],
+		input[type="date"],
+		input[type="month"],
+		input[type="time"],
+		input[type="datetime"],
+		input[type="datetime-local"],
+		input[type="week"],
+		input[type="number"],
+		input[type="search"],
+		input[type="tel"],
+		input[type="color"],
+		select,
+		textarea {
+			display: block;
+			margin: 0.25em 0;
+		}
+
+		/*
+		Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+		since IE8 won't execute CSS that contains a CSS3 selector.
+		*/
+		input:not([type]) {
+			display: block;
+			margin: 0.25em 0;
+		}
+	}
+}
+
+@if ($include-default-form-aligned) {
+	.default-form-aligned {
+		input,
+		textarea,
+		select {
+			display: inline-block;
+			vertical-align: middle;
+
+			.lt-ie8 & {
+				display: inline;
+				zoom: 1;
+			}
+		}
+
+		.default-control-group {
+			margin-bottom: 0.5em;
+
+			label {
+				text-align: right;
+				display: inline-block;
+				vertical-align: middle;
+				width: 10em;
+				margin: 0 1em 0 0;
+			}
+		}
+
+		.default-controls {
+			margin: 1.5em 0 0 11.3em;
+		}
+	}
+}
+
+@if ($include-default-form-group) {
+	.default-form-group {
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="url"],
+		input[type="date"],
+		input[type="month"],
+		input[type="time"],
+		input[type="datetime"],
+		input[type="datetime-local"],
+		input[type="week"],
+		input[type="number"],
+		input[type="search"],
+		input[type="tel"],
+		input[type="color"],
+		select,
+		textarea {
+			display: block;
+			padding: 10px;
+			margin: 0 0 -1px;
+			border-radius: 0;
+			position: relative;
+			top: -1px;
+
+			&:focus {
+				z-index: 2;
+			}
+
+			&:first-child {
+				top: 1px;
+				border-radius: 4px 4px 0 0;
+			}
+
+			&:last-child {
+				top: -1px;
+				border-radius: 0 0 4px 4px;
+			}
+
+			&:first-child:last-child {
+				top: 1px;
+				border-radius: 4px;
+				margin: 0;
+			}
+		}
+
+		input
+		button {
+			margin: 0.35em 0;
+		}
+	}
+}

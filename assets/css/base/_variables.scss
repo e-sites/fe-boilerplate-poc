@@ -1,0 +1,52 @@
+/**
+ * @section : Global variables
+ * @project : PROJECT_NAAM
+ * @author  : Naam Developer <developer@e-sites.nl>
+ */
+
+/*------------------------------------*\
+    COLORS
+\*------------------------------------*/
+$c-black:				black;
+$c-white:				white;
+
+$c-primary-color:		#fc274a;
+$c-secondary-color:		orange;
+$c-tertiair:			green;
+
+$c-body-bg:				white;
+$c-text-color:			black;
+$c-link-color:			$c-primary-color;
+
+$c-border-color:		#ccc;
+
+/*------------------------------------*\
+    TYPOGRAPHY
+\*------------------------------------*/
+$f-font-family:			Arial, sans-serif;
+
+$f-size-xs:				12px;
+$f-size-s:				14px;
+$f-size:				16px;
+$f-size-l:				18px;
+$f-size-xl:				20px;
+
+$f-size-h1:				36px;
+$f-size-h2:				28px;
+$f-size-h3:				22px;
+$r-size-h4:				18px;
+
+/*------------------------------------*\
+    MEDIA QUERY BREAKPOINTS
+\*------------------------------------*/
+/* Breakpoints, like your shirt sizes */
+$bp-sm:					480px;
+$bp-md:					640px;
+$bp-lg:					960px;
+$bp-xl:					1140px;
+
+/* Max widths of the various breakpoints */
+$bp-max-xs:				$bp-sm - 1;
+$bp-max-sm:				$bp-md - 1;
+$bp-max-md:				$bp-lg - 1;
+$bp-max-lg:				$bp-xl - 1;
