@@ -10,15 +10,15 @@
 $c-black:				black;
 $c-white:				white;
 
-$c-primary-color:		#fc274a;
-$c-secondary-color:		orange;
+$c-primary:				#fc274a;
+$c-secondary:			orange;
 $c-tertiair:			green;
 
 $c-body-bg:				white;
-$c-text-color:			black;
-$c-link-color:			$c-primary-color;
+$c-text:				black;
+$c-link:				$c-primary;
 
-$c-border-color:		#ccc;
+$c-border:				#ccc;
 
 /*------------------------------------*\
     TYPOGRAPHY
@@ -34,7 +34,7 @@ $f-size-xl:				20px;
 $f-size-h1:				36px;
 $f-size-h2:				28px;
 $f-size-h3:				22px;
-$r-size-h4:				18px;
+$f-size-h4:				18px;
 
 /*------------------------------------*\
     MEDIA QUERY BREAKPOINTS
