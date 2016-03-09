@@ -16,18 +16,17 @@
   },
   "scripts": {
     "build": "npm run build:js -s; npm run build:css -s; npm run build:img -s; npm run build:hbs -s; npm run build:svg -s;",
-    "build:js": "node assets/js/tasks/js.js",
-    "build:css": "node assets/js/tasks/css.js",
-    "build:img": "node assets/js/tasks/img.js",
-    "build:hbs": "node assets/js/tasks/hbs.js",
-    "build:svg": "node assets/js/tasks/svg.js",
-
+    "build:js": "node tasks/js.js",
+    "build:css": "node tasks/css.js",
+    "build:img": "node tasks/img.js",
+    "build:hbs": "node tasks/hbs.js",
+    "build:svg": "node tasks/svg.js",
     "watch": "parallelshell \"npm run watch:js -s\" \"npm run watch:hbs -s \" \"npm run watch:css -s \" \"npm run watch:img -s \" \"npm run watch:svg -s \"",
-    "watch:js": "nodemon -s -q -x 'npm run build:js -s -- --watch'",
-    "watch:hbs": "nodemon -s -q -x 'npm run build:hbs -s -- --watch'",
-    "watch:css": "nodemon -s -q -x 'npm run build:css -s -- --watch'",
-    "watch:img": "nodemon -s -q -x 'npm run build:img -s -- --watch'",
-    "watch:svg": "nodemon -s -q -x 'npm run build:svg -s -- --watch'"
+    "watch:js": "nodemon -q tasks/js.js -- --watch -s",
+    "watch:hbs": "nodemon -q tasks/hbs.js -- --watch -s",
+    "watch:css": "nodemon -q tasks/css.js -- --watch -s",
+    "watch:img": "nodemon -q tasks/img.js -- --watch -s",
+    "watch:svg": "nodemon -q tasks/svg.js -- --watc -sh"
   },
   "repository": {
     "type": "git",
@@ -45,9 +44,8 @@
     "colors": "^1.1.2",
     "handlebars": "^4.0.5",
     "jshint": "^2.9.1",
-    "less": "^2.5.3",
-    "less-plugin-clean-css": "^1.5.1",
     "node-notifier": "^4.4.0",
+    "node-sass": "^3.4.2",
     "nsdeclare": "^0.1.0",
     "parallelshell": "^2.0.0",
     "shell-arguments": "^1.1.7"
