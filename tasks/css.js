@@ -9,7 +9,7 @@ var appRoot = require('app-root-path') + '/',
     chokidar = require('chokidar'),
     fs = require('fs'),
     colors = require('colors'),
-    arguments = require('shell-arguments'),
+    shellArgs = require('shell-arguments'),
     assetspaths = require(appRoot + 'package.json').assetspaths,
     csspath = appRoot + assetspaths.base + assetspaths.css,
     sass = require('node-sass'),
@@ -23,7 +23,7 @@ var appRoot = require('app-root-path') + '/',
 
 renderScss();
 
-if ( arguments.watch ) {
+if ( shellArgs.watch ) {
     watcher = chokidar.watch(csspath + '**/*.scss', {usePolling: true})
 
     watcher.on('ready', initWatch);
