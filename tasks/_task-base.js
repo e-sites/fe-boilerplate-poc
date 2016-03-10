@@ -5,60 +5,35 @@
  * @since: 09-03-0216
  */
 
-var appRoot = require('app-root-path') + '/',
-    chokidar = require('chokidar'),
-    fs = require('fs'),
-    colors = require('colors'),
-    shellArgs = require('shell-arguments'),
-    assetspaths = require(appRoot + 'package.json').assetspaths,
-    notifier = require('node-notifier');
+var notifier = require('node-notifier');
+var appRoot = require('app-root-path') + '/';
+var assetspaths = require(appRoot + 'package.json').assetspaths;
 
-doSomething();
+module.exports = {
+    register: function (options) {
+        var chokidar = require('chokidar');
+        var colors = require('colors');
+        var shellArgs = require('shell-arguments');
 
-if ( shellArgs.watch ) {
-    watcher = chokidar.watch('##FILETOWATCH##', {usePolling: true})
+        if ( !options || typeof options.function === 'undefined' ) throw Error('define a task function, you dummy!');
 
-    watcher.on('ready', initWatch);
-}
+        options.function();
 
-// Starts watching
-function initWatch() {
-    console.log('watching ##SOMETHING##'.underline);
+        if ( shellArgs.watch ) {
+            watcher = chokidar.watch(options.watchFile, {usePolling: true})
 
-    // Do something on change
-    watcher.on('all', doSomething);
-}
+            watcher.on('ready', initWatch);
+        }
 
-// Start doing something
-function doSomething() {
-    // If successful
-    success({
-        message: 'DID SOMETHING! YAY!'
-    });
+        // Starts watching
+        function initWatch() {
+            console.log((options.name + ': watching ' + options.watchFile.replace(appRoot, '') + ' \uD83D\uDC40 ').underline);
 
-    // Or less sucessful
-    error({
-        message: 'DID SOMETHING WRONG! NOES!'
-    });
-}
-
-// Handle successful outcome of doing something
-function success(result) {
-    console.log(result.message.green);
-
-    notifier.notify({
-        title: '##TASKNAME##',
-        message: result.message
-    });
-}
-
-// Handle errors
-function error(err) {
-    console.log(err.message.red);
-
-    notifier.notify({
-        title: '##TASKNAME##',
-        subtitle: '##PATH OF ERROR FILE##',
-        message: 'Error: ' + err.message
-    });
+            // Do something on change
+            watcher.on('all', options.function);
+        }
+    },
+    notifier: notifier,
+    appRoot: appRoot,
+    assetspaths: require(appRoot + 'package.json').assetspaths
 }

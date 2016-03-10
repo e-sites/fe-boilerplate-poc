@@ -1,47 +1,43 @@
 /**
- * Scss compilation module for node.js
+ * Scss compilation task
  *
  * @author: Iain van der Wiel <iain@e-sites.nl>
- * @since: 26-01-2016
+ * @since: 10-03-2016
  */
 
-var appRoot = require('app-root-path') + '/',
-    chokidar = require('chokidar'),
-    fs = require('fs'),
-    colors = require('colors'),
-    shellArgs = require('shell-arguments'),
-    assetspaths = require(appRoot + 'package.json').assetspaths,
-    csspath = appRoot + assetspaths.base + assetspaths.css,
-    sass = require('node-sass'),
-    scssConfig = {
-        file: csspath + '/styles.scss',
-        outputStyle: 'compressed',
-        sourceMap: true,
-        outFile: csspath + '/styles.map'
-    },
-    notifier = require('node-notifier');
+// Base task vars
+var task = require('./_task-base.js');
+var notifier = task.notifier;
+var assetspaths = task.assetspaths;
 
-renderScss();
+// Task specific vars
+var fs = require('fs');
+var sass = require('node-sass');
+var csspath = task.appRoot + assetspaths.base + assetspaths.css;
+var scssConfig = {
+    file: csspath + '/styles.scss',
+    outputStyle: 'compressed',
+    sourceMap: true,
+    outFile: csspath + '/styles.map'
+};
 
-if ( shellArgs.watch ) {
-    watcher = chokidar.watch(csspath + '**/*.scss', {usePolling: true})
+// Task configuration
+var taskConfig = {
+    name: 'Sass',
+    function: renderScss,
+    watchFile: csspath + '**/*.scss'
+};
 
-    watcher.on('ready', initWatch);
-}
-
-// Starts watching of scss files
-function initWatch() {
-    console.log('watching scss'.underline);
-
-    // Render scss on each change
-    watcher.on('all', renderScss);
-}
+// Register task
+task.register(taskConfig);
 
 // Take new input and render it
 function renderScss() {
     // Start rendering
     sass.render(scssConfig, function (err, result) {
-        if ( err ) handleError(err);
+        if ( err ) {
+            return handleError(err);
+        }
 
         // Write CSS
         fs.writeFile(csspath + 'styles.css', result.css, 'utf8', function () {
@@ -56,13 +52,15 @@ function renderScss() {
 // Handle writing of file
 function handleWrite(err, result) {
     if (err) {
-        throw err;
+        console.log('Error writing'.red);
+        console.log(err);
+        return;
     }
 
     console.log(('compiled scss in ' + result.stats.duration/1000 + 's').green);
 
     notifier.notify({
-        title: 'Sass',
+        title: taskConfig.name,
         message: 'Compiled scss'
     });
 }
@@ -79,7 +77,7 @@ function handleError(err) {
     console.log(errorMsg.red);
 
     notifier.notify({
-        title: 'Sass',
+        title: taskConfig.name,
         subtitle: errorPath,
         message: 'Error: ' + errorMsg
     });
