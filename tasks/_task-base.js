@@ -13,14 +13,18 @@ module.exports = {
     register: function (options) {
         var chokidar = require('chokidar');
         var colors = require('colors');
-        var shellArgs = require('shell-arguments');
+        var args = require('yargs').argv;
 
         if ( !options || typeof options.function === 'undefined' ) throw Error('define a task function, you dummy!');
 
         options.function();
 
-        if ( shellArgs.watch ) {
-            watcher = chokidar.watch(options.watchFile, {usePolling: true})
+        if ( args.watch ) {
+            watcher = chokidar.watch(options.watchFile, {
+                usePolling: true,
+                ignored: options.ignorePath,
+                ignoreInitial: false
+            });
 
             watcher.on('ready', initWatch);
         }
