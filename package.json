@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "FE boilerplate test",
   "main": "index.js",
-  "browserify-shim": {
-    "jquery": "global:$"
-  },
   "assetspaths": {
     "base": "assets/",
     "css": "css/",
@@ -22,33 +19,40 @@
     "build:hbs": "node tasks/hbs.js",
     "build:svg": "node tasks/svg.js",
     "watch": "parallelshell \"npm run watch:js -s\" \"npm run watch:hbs -s \" \"npm run watch:css -s \" \"npm run watch:img -s \" \"npm run watch:svg -s \"",
-    "watch:js": "nodemon -q tasks/js.js -- --watch -s",
+    "watch:js": "nodemon -q --ignore assets/js tasks/js.js -- --watch -s",
     "watch:hbs": "nodemon -q tasks/hbs.js -- --watch -s",
     "watch:css": "nodemon -q tasks/css.js -- --watch -s",
     "watch:img": "nodemon -q tasks/img.js -- --watch -s",
-    "watch:svg": "nodemon -q tasks/svg.js -- --watc -sh"
+    "watch:svg": "nodemon -q tasks/svg.js -- --watch -s"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iainvdw/fe-boilerplate-poc.git"
+    "url": "git+https://github.com/e-sites/fe-boilerplate-poc.git"
   },
   "author": "Iain van der Wiel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iainvdw/fe-boilerplate-poc/issues"
+    "url": "https://github.com/e-sites/fe-boilerplate-poc/issues"
   },
-  "homepage": "https://github.com/iainvdw/fe-boilerplate-poc#readme",
+  "homepage": "https://github.com/e-sites/fe-boilerplate-poc#readme",
   "devDependencies": {
     "app-root-path": "^1.0.0",
     "chokidar": "^1.4.2",
     "colors": "^1.1.2",
+    "del": "^2.2.0",
     "handlebars": "^4.0.5",
     "jshint": "^2.9.1",
+    "node-mkdirp": "0.0.1",
     "node-notifier": "^4.4.0",
     "node-sass": "^3.4.2",
     "nsdeclare": "^0.1.0",
     "optimage": "^0.2.0",
     "parallelshell": "^2.0.0",
-    "shell-arguments": "^1.1.7"
+    "pn": "^1.0.0",
+    "shell-arguments": "^1.1.7",
+    "svg-sprite": "^1.2.19",
+    "svg2png": "^3.0.0",
+    "walk": "^2.3.9",
+    "yargs": "^4.7.0"
   }
 }

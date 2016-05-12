@@ -19,15 +19,14 @@ module.exports = {
         };
         var chokidarOptions = Object.assign(chokidarDefaultOptions, options.chokidarOptions);
         var colors = require('colors');
-        var shellArgs = require('shell-arguments');
+        var args = require('yargs').argv;
         var watchEvents = options.watchEvents || ['all'];
-        var writeFinish = options.writeFinish || false;
 
         if ( !options || typeof options.function === 'undefined' ) throw Error('define a task function, you dummy!');
 
         options.function();
 
-        if ( shellArgs.watch ) {
+        if ( args.watch ) {
             watcher = chokidar.watch(options.watchPath, chokidarOptions)
 
             watcher.on('ready', initWatch);
