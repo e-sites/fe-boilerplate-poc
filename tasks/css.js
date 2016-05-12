@@ -25,7 +25,7 @@ var scssConfig = {
 var taskConfig = {
     name: 'Sass',
     function: renderScss,
-    watchFile: csspath + '**/*.scss'
+    watchPath: csspath + '**/*.scss'
 };
 
 // Register task

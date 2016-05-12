@@ -12,25 +12,52 @@ var assetspaths = require(appRoot + 'package.json').assetspaths;
 module.exports = {
     register: function (options) {
         var chokidar = require('chokidar');
+        var chokidarDefaultOptions = {
+            usePolling: true,
+            ignored: /[\/\\]\./,
+            atomic: true
+        };
+        var chokidarOptions = Object.assign(chokidarDefaultOptions, options.chokidarOptions);
         var colors = require('colors');
         var shellArgs = require('shell-arguments');
+        var watchEvents = options.watchEvents || ['all'];
+        var writeFinish = options.writeFinish || false;
 
         if ( !options || typeof options.function === 'undefined' ) throw Error('define a task function, you dummy!');
 
         options.function();
 
         if ( shellArgs.watch ) {
-            watcher = chokidar.watch(options.watchFile, {usePolling: true})
+            watcher = chokidar.watch(options.watchPath, chokidarOptions)
 
             watcher.on('ready', initWatch);
         }
 
         // Starts watching
         function initWatch() {
-            console.log((options.name + ': watching ' + options.watchFile.replace(appRoot, '') + ' \uD83D\uDC40 ').underline);
+            console.log((options.name + ': watching ' + options.watchPath.replace(appRoot, '') + ' \uD83D\uDC40 ').underline);
 
             // Do something on change
-            watcher.on('all', options.function);
+            if ( options.watchEvents ) {
+                var type = watchEvents.constructor.name;
+
+                if ( type === 'String' ) {
+                    watchEvents = ( watchEvents.indexOf(',') > -1 )? watchEvents.split(',') : [watchEvents];
+                } else if ( type != 'Array' ) {
+                    console.log('error creating watchers'.underline.red);
+                    console.log('Can\'t create watcher(s) from ' + type + '.'.red);
+                }
+
+                watchEvents.forEach( function(event, index) {
+                    watchEvents[index] = event.trim();
+                } );
+            }
+
+            watchEvents.forEach( function(event) {
+                watcher.on(event, options.function);
+            } );
+
+            console.log(`Events: ${watchEvents.join(', ')}`);
         }
     },
     notifier: notifier,
