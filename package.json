@@ -1,53 +1,26 @@
 {
-  "name": "fe-boilerplate-poc",
-  "version": "1.0.0",
-  "description": "FE boilerplate test",
-  "main": "index.js",
-  "browserify-shim": {
-    "jquery": "global:$"
-  },
-  "assetspaths": {
-    "base": "assets/",
-    "css": "css/",
-    "js": "js/",
-    "handlebars": "js/templates/",
-    "svg": "svg/",
-    "images": "images/"
-  },
-  "scripts": {
-    "build": "npm run build:js -s; npm run build:css -s; npm run build:img -s; npm run build:hbs -s; npm run build:svg -s;",
-    "build:js": "node tasks/js.js",
-    "build:css": "node tasks/css.js",
-    "build:img": "node tasks/img.js",
-    "build:hbs": "node tasks/hbs.js",
-    "build:svg": "node tasks/svg.js",
-    "watch": "parallelshell \"npm run watch:js -s\" \"npm run watch:hbs -s \" \"npm run watch:css -s \" \"npm run watch:img -s \" \"npm run watch:svg -s \"",
-    "watch:js": "nodemon -q tasks/js.js -- --watch -s",
-    "watch:hbs": "nodemon -q tasks/hbs.js -- --watch -s",
-    "watch:css": "nodemon -q tasks/css.js -- --watch -s",
-    "watch:img": "nodemon -q tasks/img.js -- --watch -s",
-    "watch:svg": "nodemon -q tasks/svg.js -- --watc -sh"
-  },
+  "name": "gulp-frontend-tasks",
+  "version": "0.1.0",
+  "description": "A collection of useful Gulp tasks to automate your front-end workflow",
+  "author": "Iain van der Wiel <iain@e-sites.nl>",
+  "readme": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iainvdw/fe-boilerplate-poc.git"
+    "url": "https://github.com/e-sites/gulp-frontend-tasks.git"
   },
-  "author": "Iain van der Wiel",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/iainvdw/fe-boilerplate-poc/issues"
-  },
-  "homepage": "https://github.com/iainvdw/fe-boilerplate-poc#readme",
   "devDependencies": {
-    "app-root-path": "^1.0.0",
-    "chokidar": "^1.4.2",
-    "colors": "^1.1.2",
-    "handlebars": "^4.0.5",
-    "jshint": "^2.9.1",
-    "node-notifier": "^4.4.0",
-    "node-sass": "^3.4.2",
-    "nsdeclare": "^0.1.0",
-    "parallelshell": "^2.0.0",
-    "shell-arguments": "^1.1.7"
+    "gulp": "^3.9.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tasker": "^0.2.1",
+    "gulp-uglify": "^1.5.4",
+    "require-dir": "^0.3.0",
+    "walk": "^2.3.9"
+  },
+  "scripts": {
+    "postinstall": "node assets/js/install-deps.js"
   }
 }

@@ -19,9 +19,6 @@
 	 */
 	function _init() {
 
-		// Init placeholder plugin
-		$('input, textarea', 'form').placeholder();
-
 		// Mimic autofocus for IE<10
 		$('[autofocus]').autofocus();
 
