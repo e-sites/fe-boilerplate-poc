@@ -45,4 +45,4 @@ gulp.task('js', ['jsconcat'], function () {
 
 tasker.addTask('default', 'js');
 tasker.addTask('deploy', 'js');
-//tasker.addTask('watch', 'js', [conf.path.js + '/**/*.js', '!' + conf.path.js + '/build/**/*', '!' + conf.path.js + '/tasks/**/*.js']);
+tasker.addTask('watch', 'js', [conf.path.js + '/**/*.js', '!' + conf.path.js + '/build/**/*', '!' + conf.path.js + '/tasks/**/*.js']);
