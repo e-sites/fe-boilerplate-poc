@@ -1,0 +1,8 @@
+{
+    "groups": {
+        "build": [
+            "assets/js/misc/functions.js",
+            "assets/js/misc/events.js"
+        ]
+    }
+}

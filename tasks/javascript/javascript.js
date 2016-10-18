@@ -7,7 +7,7 @@
 
 var group = require('gulp-group-files'),
 	jsPath = conf.path.js,
-	taskConf = JSON.parse(fs.readFileSync(__dirname + '/task.json', 'utf8')).conf;
+	jsGroups = JSON.parse(fs.readFileSync(__dirname + '/groups.json', 'utf8')).groups;
 
 gulp.task('clean:js', function () {
 	var del = require('del');
@@ -17,7 +17,7 @@ gulp.task('clean:js', function () {
 	]);
 });
 
-gulp.task('jsconcat', ['clean:js'], group(taskConf.jsGroups, function (name, files) {
+gulp.task('jsconcat', ['clean:js'], group(jsGroups, function (name, files) {
 	var uglify = require('gulp-uglify'),
 		concat = require('gulp-concat');
 

@@ -9,7 +9,7 @@
 			'svg': './assets/svg',
 			'js': './assets/js',
 			'sprite': './assets/images/sprites',
-			'tasks': './assets/js/tasks/'
+			'tasks': './tasks/'
 		}
 	};
 	global.gulp = require('gulp');
@@ -22,7 +22,7 @@
 
 	// Load all tasks
 	tasker.loadTasks({
-		path: '/assets/js/tasks'
+		path: '/tasks'
 	});
 
 	/**

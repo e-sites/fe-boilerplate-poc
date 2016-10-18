@@ -11,16 +11,24 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6",
+    "gulp-group-files": "^2.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-rev": "^7.0.0",
     "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "^2",
+    "gulp-svg2png": "^0.3.0",
+    "gulp-svgstore": "^6.1.0",
     "gulp-tasker": "^0.2.1",
     "gulp-uglify": "^1.5.4",
     "require-dir": "^0.3.0",
     "walk": "^2.3.9"
   },
-  "scripts": {
-    "postinstall": "node assets/js/install-deps.js"
+  "dependencies": {
+    "del": "^2.2.2",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-imagemin": "^3.0.3"
   }
 }
