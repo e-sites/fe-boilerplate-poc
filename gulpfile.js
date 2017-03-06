@@ -5,11 +5,11 @@
 	// Expose config, Gulp and some plugins that are used by multiple tasks
 	global.conf = {
 		'path': {
-			'css': './assets/css',
-			'svg': './assets/svg',
-			'js': './assets/js',
-			'sprite': './assets/images/sprites',
-			'tasks': './assets/js/tasks/'
+			'css': './web/assets/css',
+			'svg': './web/assets/svg',
+			'js': './web/assets/js',
+			'build': './web/build',
+			'tasks': '/tasks/'
 		}
 	};
 	global.gulp = require('gulp');
@@ -17,12 +17,11 @@
 	global.sourcemaps = require('gulp-sourcemaps');
 	global.tasker = require('gulp-tasker');
 	global.fs = require('fs');
-
-	var notify = require('gulp-notify');
+	global.notify = require('gulp-notify');
 
 	// Load all tasks
 	tasker.loadTasks({
-		path: '/assets/js/tasks'
+		path: conf.path.tasks
 	});
 
 	/**
@@ -54,15 +53,15 @@
 	};
 
 	// Default task when run with 'gulp'
-	gulp.task('default', tasker.getTasks('default').tasks);
+	gulp.task('default', gulp.parallel(tasker.getTasks('default').tasks));
 
 	// Default task when run with 'gulp deploy'
-	gulp.task('deploy', tasker.getTasks('deploy').tasks);
+	gulp.task('deploy', gulp.parallel(tasker.getTasks('deploy').tasks));
 
 	// Watch task when run with 'gulp watch'
 	gulp.task('watch', function () {
 		tasker.getTasks('watch').tasks.forEach(function(task) {
-			gulp.watch(task.folders, task.tasks);
+			gulp.watch(task.folders, gulp.parallel(task.tasks));
 		});
 	});
 }(global));

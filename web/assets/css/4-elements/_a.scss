@@ -1,0 +1,13 @@
+a {
+	text-decoration: none;
+	color: $color-fox;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+
+	&.underlined {
+		text-decoration: underline;
+	}
+}

@@ -1,0 +1,33 @@
+html,
+body {
+	color: $color-swan;
+	font-family: $font-regular;
+	font-size: 16px;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	line-height: 1.25;
+}
+
+/**
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+	background: $color-fox;
+	color: $color-swan;
+	text-shadow: none;
+}
+
+::selection {
+	background: $color-fox;
+	color: $color-swan;
+	text-shadow: none;
+}
+
+button {
+	cursor: pointer;
+}

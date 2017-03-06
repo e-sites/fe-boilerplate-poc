@@ -1,0 +1,73 @@
+/**
+ * @section : Utility / helper classes
+ */
+
+/*------------------------------------*\
+    NON-SEMANTIC HELPERS
+\*------------------------------------*/
+.clear {
+	clear: both;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.hide {
+	display: none;
+}
+
+.strikethrough {
+	text-decoration: line-through;
+}
+
+/**
+ * The Magnificent Clearfix
+ * Updated to prevent margin-collapsing on child elements
+ * @see http://j.mp/bestclearfix
+ */
+.clearfix {
+	&:before,
+	&:after {
+		content: "\0020";
+		display: block;
+		height: 0;
+		overflow: hidden;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	.lt-ie9 & {
+		zoom: 1;
+	}
+}
+
+.hide {
+	display: none;
+}
