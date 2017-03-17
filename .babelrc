@@ -1,0 +1,11 @@
+{
+	"presets": [
+		["env", {
+			"targets": {
+				"browsers": ["last 3 versions", "safari >= 8", "ie >= 9"]
+			},
+			"debug": true
+		}],
+		"stage-3"
+	]
+}

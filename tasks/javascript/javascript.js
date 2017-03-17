@@ -5,44 +5,77 @@
  * @version  0.1.0
  */
 
-var group = require('gulp-group-files'),
-	jsPath = conf.path.js,
-	jsGroups = JSON.parse(fs.readFileSync(__dirname + '/groups.json', 'utf8')).groups;
+const gulp = require('gulp');
+const del = require('del');
+const tasker = require('gulp-tasker');
+const conf = require('../base/conf');
+const {handleError, handleSuccess} = require('../base/handlers');
+const gulpif = require('gulp-if');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
+const async = require('async');
+const rev = require('gulp-rev');
+const notify = require('gulp-notify');
 
-gulp.task('clean:js', function () {
-	var del = require('del');
+const jsFiles = ['app.js'];
+const jsPath = conf.path.build + '/js';
+const debug = process.env.NODE_ENV !== 'production';
 
-	del([
-		jsPath + '/build/*'
-	]);
-});
 
-gulp.task('jsconcat', ['clean:js'], group(jsGroups, function (name, files) {
-	var uglify = require('gulp-uglify'),
-		concat = require('gulp-concat');
+const clean = (done) => {
+	del([jsPath + '/*']);
 
-	return gulp.src(files)
-			.pipe(handleError('jsconcat', 'JS concatenation failed'))
-			.pipe(sourcemaps.init())
-			.pipe(concat(name + '.js'))
-			.pipe(uglify())
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest(jsPath + '/build'))
-			.pipe(handleSuccess('jsconcat', 'JS concatenation succeeded'));
-}));
+	done();
+}
 
-gulp.task('js', ['jsconcat'], function () {
-	var rev = require('gulp-rev');
+const js = (allDone) => {
+	async.each(jsFiles, (file, jsDone) => {
+		// set up the browserify instance on a task basis
+		const b = browserify({
+			entries: conf.path.js + '/' + file,
+			debug: debug
+		});
 
-	return gulp.src(jsPath + '/build/*.js')
-			.pipe(handleError('js', 'JS manifest generation failed'))
+		// See .babelrc for config
+		b.transform('babelify')
+			.bundle()
+			.on('error', notify.onError(function(err) {
+				return {
+					title: 'js',
+					message: 'Error: ' + (err.annotated
+						? err.annotated
+						: err.message
+							? err.message
+							: err)
+				}
+			}))
+			.pipe(source(file))
+			.pipe(buffer())
+			.pipe(gulpif(!debug, uglify()))
+			// Normal output
+			.pipe(gulp.dest(jsPath))
+
+			// Revisioned output
 			.pipe(rev())
-			.pipe(gulp.dest(jsPath + '/build'))
-			.pipe(rev.manifest())
-			.pipe(gulp.dest(jsPath + '/build'))
-			.pipe(handleSuccess('js', 'JS manifest generation succeeded'));
-});
+			.pipe(gulp.dest(jsPath))
 
-tasker.addTask('default', 'js');
-tasker.addTask('deploy', 'js');
-tasker.addTask('watch', 'js', [conf.path.js + '/**/*.js', '!' + conf.path.js + '/build/**/*', '!' + conf.path.js + '/tasks/**/*.js']);
+			// Manifest for revisions
+			.pipe(rev.manifest())
+			.pipe(gulp.dest(jsPath))
+			.pipe(handleSuccess('js', 'JS build succeeded for ' + file, jsDone()));
+	}, (err) => {
+		if (err)
+			console.error(err);
+
+		allDone();
+	});
+}
+
+const jsTask = gulp.series(clean, js);
+
+gulp.task('js', jsTask);
+
+tasker.addTask('default', jsTask);
+tasker.addTask('watch', jsTask, [conf.path.js + '/**/*.js']);

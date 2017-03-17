@@ -1,29 +1,62 @@
 /**
  * Compiles the main styles.scss file and creates a source-map
  *
- * @author   Wouter Buit <wouter@e-sites.nl>
+ * @author   Iain van der Wiel <iain@e-sites.nl>
  * @version  1.0
  */
 
-gulp.task('sass', function () {
-	var sass = require('gulp-sass');
-	var autoprefixer = require('gulp-autoprefixer');
+const gulp = require('gulp');
+const gulpif = require('gulp-if');
+const del = require('del');
+const tasker = require('gulp-tasker');
+const conf = require('../base/conf');
+const {handleError, handleSuccess} = require('../base/handlers');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+const rev = require('gulp-rev');
+const sourcemaps = require('gulp-sourcemaps');
 
-	return gulp.src([conf.path.css + '/styles.scss'])
+const cssPath = conf.path.build + '/css';
+const debug = process.env.NODE_ENV !== 'production';
+
+const clean = (done) => {
+	del([cssPath + '/*']);
+
+	done();
+}
+
+const compilesass = () => {
+	return gulp.src([
+			conf.path.css + '/styles.scss'
+		])
 		.pipe(handleError('sass', 'SASS compiling failed'))
-		.pipe(sourcemaps.init())
-		.pipe(
-			sass({outputStyle: 'compressed'})
-				.on('error', (err) => { console.log(err.message); this.emit('end');})
-		)
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions', 'ios_saf 8']
+		.pipe(gulpif(debug, sourcemaps.init()))
+		.pipe(sass().on('error', sass.logError))
+		.pipe(cleanCSS({
+			level: debug ? 0 : 2
 		}))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(conf.path.css))
-		.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
-});
+		.pipe(autoprefixer({
+			browsers: ['last 3 versions', 'ios_saf 7']
+		}))
+		// Normal output
+		.pipe(gulpif(debug, sourcemaps.write('./')))
+		.pipe(gulp.dest(cssPath))
 
-tasker.addTask('default', 'sass');
-tasker.addTask('deploy', 'sass');
-tasker.addTask('watch', 'sass', conf.path.css + '/**/*.scss');
+		// Revisioned output
+		.pipe(rev())
+		.pipe(gulp.dest(cssPath))
+
+		// Manifest for revisions
+		.pipe(rev.manifest())
+		.pipe(gulp.dest(cssPath))
+		.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
+}
+
+const sassTask = gulp.series(clean, compilesass);
+
+gulp.task('sass', sassTask);
+
+tasker.addTask('default', sassTask);
+tasker.addTask('deploy', sassTask);
+tasker.addTask('watch', sassTask, conf.path.css + '/**/*.scss');
