@@ -52,11 +52,7 @@
   "dependencies": {
     "bourbon": "^4.3.0",
     "bourbon-neat": "^1.8.0",
-    "es5-shim": "^4.5.9",
-    "iban": "^0.0.8",
     "normalize.css": "^5.0.0",
-    "parsleyjs": "^2.6.2",
-    "scriptjs": "^2.5.8",
     "svgxuse": "^1.2.1"
   }
 }
