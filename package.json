@@ -1,5 +1,5 @@
 {
-  "name": "fe-boilerplate-poc",
+  "name": "fe-boilerplate",
   "version": "1.0.0",
   "description": "A collection of useful Gulp tasks to automate your front-end workflow",
   "author": "Iain van der Wiel <iain@e-sites.nl>",
