@@ -1,0 +1,14 @@
+/**
+ * Form validation styling
+ */
+
+.parsley-error-line.filled {
+  display: block;
+  margin-bottom: $small-spacing;
+  border-left: 2px solid $red;
+  padding: 0 $small-spacing;
+}
+
+.parsley-error {
+  box-shadow: inset 14px 0 0 -10px $red !important;
+}

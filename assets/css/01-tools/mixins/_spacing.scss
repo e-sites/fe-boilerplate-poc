@@ -1,0 +1,28 @@
+/**
+ * Spacing mixins
+ */
+
+@mixin v-spacing($spacing: $base-spacing) {
+	padding-top: $spacing;
+	padding-bottom: $spacing;
+
+	@include media($md-up) {
+		padding-top: $spacing * 1.5;
+		padding-bottom: $spacing * 1.5;
+	}
+}
+
+@mixin h-spacing($spacing: $base-spacing) {
+	padding-left: $spacing;
+	padding-right: $spacing;
+
+	@include media($md-up) {
+		padding-left: $spacing * 1.5;
+		padding-right: $spacing * 1.5;
+	}
+}
+
+@mixin spacing($spacing: $base-spacing) {
+	@include v-spacing($spacing: $spacing);
+	@include h-spacing($spacing: $spacing);
+}

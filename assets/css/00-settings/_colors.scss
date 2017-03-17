@@ -1,0 +1,36 @@
+// Brand colors
+$brand-primary: #f0f;
+$brand-sec: #ff0;
+$brand-tert: #0ff;
+
+// Status colors
+$red: #FC3030;
+$green: #74BD00;
+
+// Grays
+$gray-light: #F5F5F6;
+$gray-medium: #E0E0E4;
+$gray-dark: #2C2F33;
+
+// Dark and light
+$dark: #000;
+$light: #fff;
+
+// Base colors
+$primary-color: $brand-primary;
+$secondary-color:  $brand-sec;
+$tertiary-color:  $brand-tert;
+
+// Font Colors
+$base-font-color: $gray-dark;
+$action-color: $primary-color;
+
+// Button Colors
+$base-button-color: $primary-color;
+$secondary-button-color: $secondary-color;
+
+// Border Colors
+$base-border-color: $gray-medium;
+
+// Background Colors
+$base-background-color: $light;

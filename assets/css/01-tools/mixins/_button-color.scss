@@ -1,0 +1,23 @@
+/**
+* Button color mixin
+*/
+
+@mixin btn-color($property: 'background-color', $color: $base-button-color) {
+	@include btn-hover-color($property, $color, 0.7);
+	#{$property}: $color;
+
+	&:disabled {
+		&,
+		&:focus,
+		&:hover {
+			#{$property}: rgba($color, 0.5);
+		}
+	}
+}
+
+@mixin btn-hover-color($property: 'background-color', $color: $base-button-color, $transparency: 1) {
+	&:focus,
+	&:hover {
+		#{$property}: rgba($color, $transparency);
+	}
+}

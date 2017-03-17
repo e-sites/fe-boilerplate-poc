@@ -1,0 +1,21 @@
+// Typography
+$font-regular: Arial, sans-serif;
+$font-heading: Verdana, $font-regular;
+
+$base-font-family: $font-regular;
+$heading-font-family: $font-heading;
+
+// Font Sizes
+$base-font-size: 1rem;
+$larger-font-size: 1.5rem;
+$large-font-size: 1.25rem;
+$small-font-size: .875rem;
+$smaller-font-size: .8125rem;
+$button-font-size: 1.0625rem;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Line height scale
+$heading-scale: 1.21;

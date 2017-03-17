@@ -1,0 +1,22 @@
+/**
+ * Layout wrappers
+ */
+
+.wrapper-inner {
+  @include row;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+	width: 100%;
+	max-width: $max-width;
+}
+
+.wrapper-inner--vspacing {
+    @include v-spacing($base-spacing);
+
+    @include media($md-up) {
+        @include v-spacing($base-spacing * 2);
+    }
+}

@@ -1,0 +1,68 @@
+body {
+	color: $base-font-color;
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $heading-font-family;
+	font-weight: normal;
+	font-size: $base-font-size;
+	line-height: $heading-line-height;
+	margin: 0 0 $small-spacing;
+}
+
+h1 {font-size: heading-scale(6)}
+h2 {font-size: heading-scale(5)}
+h3 {font-size: heading-scale(4)}
+h4 {font-size: heading-scale(3)}
+h5 {font-size: heading-scale(2)}
+h6 {font-size: heading-scale(1)}
+
+p {
+	margin: 0 0 $small-spacing;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+a {
+	color: $primary-color;
+	fill: currentColor;
+	transition: color $base-duration $base-timing;
+
+	&:active,
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
+
+  &[href="#page-entity-not-found"] {
+	outline: 1px dashed $red;
+	outline-offset: 5px;
+  }
+}
+
+:link,
+#{$all-buttons} {
+	&:focus {
+		outline: 0;
+		box-shadow: 0 0 1px $primary-color;
+	}
+}
+
+hr {
+	border-bottom: $base-border;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	margin: $base-spacing 0;
+}

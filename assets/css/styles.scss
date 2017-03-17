@@ -1,14 +1,17 @@
 /**
- * @section : Styles CSS
- * @project : PROJECT_NAAM
- * @author  : Naam Developer <developer@e-sites.nl>
+ * Sites styles for Coosto
+ *
+ * @author: Iain van der Wiel <iain@e-sites.nl>
+ * @since: 03-01-2017
  */
 
-/*------------------------------------*\
-   BASE
-\*------------------------------------*/
-@import "bourbon/bourbon";
-@import "base/variables";
-@import "base/css-reset-and-normalize";
-@import "base/grid";
-//@import "base/forms";
+// Suppress Bourbon deprecation warnings
+$output-bourbon-deprecation-warnings: false;
+
+@import '00-settings/00-settings';
+@import '01-tools/00-tools';
+@import '02-generic/00-generic';
+@import '03-base/00-base';
+@import '04-objects/00-objects';
+@import '05-components/00-components';
+@import '06-trumps/00-trumps';
