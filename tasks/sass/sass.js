@@ -20,7 +20,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const cssPath = conf.path.build + '/css';
 const debug = process.env.NODE_ENV !== 'production';
 
-const clean = (done) => {
+const cleansass = (done) => {
 	del([cssPath + '/*']);
 
 	done();
@@ -53,7 +53,7 @@ const compilesass = () => {
 		.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
 }
 
-const sassTask = gulp.series(clean, compilesass);
+const sassTask = gulp.series(cleansass, compilesass);
 
 gulp.task('sass', sassTask);
 

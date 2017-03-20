@@ -24,7 +24,7 @@ const jsPath = conf.path.build + '/js';
 const debug = process.env.NODE_ENV !== 'production';
 
 
-const clean = (done) => {
+const cleanjs = (done) => {
 	del([jsPath + '/*']);
 
 	done();
@@ -73,7 +73,7 @@ const js = (allDone) => {
 	});
 }
 
-const jsTask = gulp.series(clean, js);
+const jsTask = gulp.series(cleanjs, js);
 
 gulp.task('js', jsTask);
 

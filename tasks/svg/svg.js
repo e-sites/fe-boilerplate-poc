@@ -14,7 +14,7 @@ const svgstore = require('gulp-svgstore');
 const imagemin = require('gulp-imagemin');
 const rename = require('gulp-rename');
 
-const clean = (done) => {
+const cleansvg = (done) => {
 	del([conf.path.build + '/svg/*']);
 
 	done();
@@ -43,7 +43,7 @@ const svgconcat = () => {
 		.pipe(handleSuccess('svgconcat', 'SVG concatenation succeeded'));
 }
 
-const svgTask = gulp.series(clean, svgconcat);
+const svgTask = gulp.series(cleansvg, svgconcat);
 
 gulp.task('svg', svgTask);
 
