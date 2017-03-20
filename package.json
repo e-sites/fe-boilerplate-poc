@@ -1,6 +1,6 @@
 {
   "name": "fe-boilerplate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A collection of useful Gulp tasks to automate your front-end workflow",
   "author": "Iain van der Wiel <iain@e-sites.nl>",
   "readme": "README.md",
