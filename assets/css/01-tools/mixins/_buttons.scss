@@ -18,7 +18,7 @@
 	padding: $small-spacing $base-spacing;
 	text-decoration: none;
 	text-align: center;
-	transition: background-color $base-duration $base-timing;
+	transition: background-color $animation-base-duration $animation-base-timing;
 	user-select: none;
 	vertical-align: middle;
 	white-space: nowrap;
@@ -58,16 +58,16 @@
 
 // Button skins
 @mixin btn-primary {
-	@include btn-color(background-color, $primary-color);
+	@include btn-color(background-color, $color-primary);
 }
 
 @mixin btn-secondary {
-	@include btn-color(background-color, $secondary-color);
+	@include btn-color(background-color, $color-secondary);
 }
 
 @mixin btn-tertiary {
-	@include btn-color(background-color, $tertiary-color);
-	@include btn-color(color, $base-font-color);
+	@include btn-color(background-color, $color-tertiary);
+	@include btn-color(color, $color-base-font);
 }
 
 // Ghost buttons
@@ -83,22 +83,22 @@
 }
 
 @mixin btn-ghost-primary {
-	@include btn-color(color, $primary-color);
-	@include btn-hover-color(background-color, $primary-color);
+	@include btn-color(color, $color-primary);
+	@include btn-hover-color(background-color, $color-primary);
 	@include btn-hover-color(color, #fff);
 }
 
 @mixin btn-ghost-secondary {
-	@include btn-color(color, $secondary-color);
-	@include btn-hover-color(background-color, $secondary-color);
+	@include btn-color(color, $color-secondary);
+	@include btn-hover-color(background-color, $color-secondary);
 	@include btn-hover-color(color, #fff);
 }
 
 @mixin btn-ghost-tertiary {
-	@include btn-color(border-color, $tertiary-color);
-	@include btn-color(color,  $secondary-color);
-	@include btn-hover-color(border-color, $secondary-color);
-	@include btn-hover-color(color, $secondary-color);
+	@include btn-color(border-color, $color-tertiary);
+	@include btn-color(color,  $color-secondary);
+	@include btn-hover-color(border-color, $color-secondary);
+	@include btn-hover-color(color, $color-secondary);
 }
 
 
@@ -107,7 +107,7 @@
 	border-radius: 0;
 	padding: 0;
 	font-family: $font-regular;
-	color: $base-font-color;
+	color: $color-base-font;
 	box-shadow: none;
 	background-color: transparent;
 

@@ -1,5 +1,5 @@
 body {
-	color: $base-font-color;
+	color: $color-base-font;
 	font-family: $base-font-family;
 	font-size: $base-font-size;
 	line-height: $base-line-height;
@@ -35,9 +35,9 @@ strong {
 }
 
 a {
-	color: $primary-color;
+	color: $color-primary;
 	fill: currentColor;
-	transition: color $base-duration $base-timing;
+	transition: color $animation-base-duration $animation-base-timing;
 
 	&:active,
 	&:focus,
@@ -46,7 +46,7 @@ a {
 	}
 
   &[href="#page-entity-not-found"] {
-	outline: 1px dashed $red;
+	outline: 1px dashed $color-red;
 	outline-offset: 5px;
   }
 }
@@ -55,7 +55,7 @@ a {
 #{$all-buttons} {
 	&:focus {
 		outline: 0;
-		box-shadow: 0 0 1px $primary-color;
+		box-shadow: 0 0 1px $color-primary;
 	}
 }
 
