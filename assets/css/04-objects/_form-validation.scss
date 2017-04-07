@@ -3,12 +3,12 @@
  */
 
 .parsley-error-line.filled {
-  display: block;
-  margin-bottom: $small-spacing;
-  border-left: 2px solid $color-red;
-  padding: 0 $small-spacing;
+	display: block;
+	margin-bottom: $spacing-small;
+	border-left: 2px solid $color-red;
+	padding: 0 $spacing-small;
 }
 
 .parsley-error {
-  box-shadow: inset 14px 0 0 -10px $color-red !important;
+	box-shadow: inset 14px 0 0 -10px $color-red !important;
 }

@@ -3,44 +3,44 @@
  */
 
 .btn {
-	@include btn;
+	//@include btn;
 }
 
 .btn-primary {
-	@include btn;
-	@include btn-primary;
+	//@include btn;
+	//@include btn-primary;
 }
 
 .btn-secondary {
-	@include btn;
-	@include btn-secondary;
+	//@include btn;
+	//@include btn-secondary;
 }
 
 .btn-tertiary {
-	@include btn;
-	@include btn-tertiary;
+	//@include btn;
+	//@include btn-tertiary;
 }
 
 .btn-ghost-primary {
-	@include btn;
-	@include btn-ghost;
-	@include btn-ghost-primary;
+	//@include btn;
+	//@include btn-ghost;
+	//@include btn-ghost-primary;
 }
 
 .btn-ghost-secondary {
-	@include btn;
-	@include btn-ghost;
-	@include btn-ghost-secondary;
+	//@include btn;
+	//@include btn-ghost;
+	//@include btn-ghost-secondary;
 }
 
 .btn-ghost-tertiary {
-	@include btn;
-	@include btn-ghost;
-	@include btn-ghost-tertiary;
+	//@include btn;
+	//@include btn-ghost;
+	//@include btn-ghost-tertiary;
 }
 
 .btn-sm {
-	@include btn-sm;
+	//@include btn-sm;
 }
 
 .btn-clean {

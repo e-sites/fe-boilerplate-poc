@@ -7,15 +7,15 @@
 	display: inline-block;
 	appearance: none;
 	border: 0;
-	border-radius: $button-border-radius;
+	border-radius: $border-radius-button;
 	color: #fff;
 	cursor: pointer;
 	font-family: $font-heading;
-	font-size: $button-font-size;
+	font-size: $font-size-button;
 	font-weight: normal;
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.625;
-	padding: $small-spacing $base-spacing;
+	padding: $spacing-small $spacing-base;
 	text-decoration: none;
 	text-align: center;
 	transition: background-color $animation-base-duration $animation-base-timing;
@@ -33,11 +33,11 @@
 	svg {
 
 		&:first-child {
-			margin-right: $small-spacing;
+			margin-right: $spacing-small;
 		}
 
 		&:last-child {
-			margin-left: $small-spacing;
+			margin-left: $spacing-small;
 		}
 
 		&:first-child:last-child {
@@ -48,12 +48,12 @@
 
 // Button sizing
 @mixin btn-sm {
-	padding: $small-spacing / 2 $base-spacing;
-	font-size: $smaller-font-size;
+	padding: $spacing-small / 2 $spacing-base;
+	font-size: $font-size-smaller;
 }
 
 @mixin btn-md {
-	font-size: $small-font-size;
+	font-size: $font-size-small;
 }
 
 // Button skins

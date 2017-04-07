@@ -2,7 +2,7 @@
  * Spacing mixins
  */
 
-@mixin v-spacing($spacing: $base-spacing) {
+@mixin v-spacing($spacing: $spacing-base) {
 	padding-top: $spacing;
 	padding-bottom: $spacing;
 
@@ -12,7 +12,7 @@
 	}
 }
 
-@mixin h-spacing($spacing: $base-spacing) {
+@mixin h-spacing($spacing: $spacing-base) {
 	padding-left: $spacing;
 	padding-right: $spacing;
 
@@ -22,7 +22,7 @@
 	}
 }
 
-@mixin spacing($spacing: $base-spacing) {
+@mixin spacing($spacing: $spacing-base) {
 	@include v-spacing($spacing: $spacing);
 	@include h-spacing($spacing: $spacing);
 }
