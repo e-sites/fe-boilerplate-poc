@@ -12,7 +12,6 @@ const tasker = require('gulp-tasker');
 const conf = require('../base/conf');
 const {handleError, handleSuccess} = require('../base/handlers');
 const sass = require('gulp-sass');
-const importCss = require('gulp-import-css');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const rev = require('gulp-rev');
@@ -34,7 +33,6 @@ const compilesass = () => {
 		.pipe(handleError('sass', 'SASS compiling failed'))
 		.pipe(gulpif(debug, sourcemaps.init()))
 		.pipe(sass().on('error', sass.logError))
-		.pipe(importCss())
 		.pipe(cleanCSS({
 			level: debug ? 0 : 2
 		}))
