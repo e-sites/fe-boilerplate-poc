@@ -33,7 +33,7 @@ textarea {
 select {
 	display: inline-block;
 	vertical-align: top;
-	background-color: $base-background-color;
+	background-color: $color-base-background;
 	border: $base-border;
 	border-radius: $base-border-radius;
 	box-sizing: border-box;
@@ -55,7 +55,7 @@ select {
 	}
 
 	&:disabled {
-		background-color: shade($base-background-color, 5%);
+		background-color: shade($color-base-background, 5%);
 		cursor: not-allowed;
 
 		&:hover {
