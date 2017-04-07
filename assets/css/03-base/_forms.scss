@@ -37,20 +37,20 @@ select {
 	border: $base-border;
 	border-radius: $base-border-radius;
 	box-sizing: border-box;
-	color: $base-font-color;
+	color: $color-base-font;
 	font-family: $base-font-family;
 	font-size: $base-font-size;
 	line-height: 1.5;
 	margin-bottom: $small-spacing;
 	padding: $small-spacing ($small-spacing * 1.5);
-	transition: border-color $base-duration $base-timing;
+	transition: border-color $animation-base-duration $animation-base-timing;
 	width: 100%;
 	max-width: 380px;
-	background: $gray-light;
+	background: $color-gray-light;
 
 	&:focus,
 	&:hover {
-		border-color: $action-color;
+		border-color: $color-action;
 		outline: none;
 	}
 
@@ -66,7 +66,7 @@ select {
 	&.form-error,
 	&:invalid,
 	&:user-invalid {
-		border-color: $red;
+		border-color: $color-red;
 	}
 }
 
@@ -110,5 +110,5 @@ select {
 	width: 100%;
 }
 @include placeholder {
-	color: rgba($base-font-color, 0.7);
+	color: rgba($color-base-font, 0.7);
 }
