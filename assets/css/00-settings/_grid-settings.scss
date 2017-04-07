@@ -4,12 +4,12 @@
 $column: 65px;
 $gutter: 30px;
 $grid-columns: 12;
-$max-width: 74em;
+$max-width: 1200px;
 
 // Neat Breakpoints
-$sm-width: 30em;
-$md-width: 40em;
-$lg-width: 60em;
+$sm-width: 480px;
+$md-width: 640px;
+$lg-width: 960px;
 $xl-width: $max-width;
 
 /* Max widths of the various breakpoints */

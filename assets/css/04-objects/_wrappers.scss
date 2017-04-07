@@ -3,7 +3,7 @@
  */
 
 .wrapper-inner {
-  @include row;
+	@include row;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -14,9 +14,9 @@
 }
 
 .wrapper-inner--vspacing {
-    @include v-spacing($base-spacing);
+    @include v-spacing($spacing-base);
 
     @include media($md-up) {
-        @include v-spacing($base-spacing * 2);
+        @include v-spacing($spacing-base * 2);
     }
 }

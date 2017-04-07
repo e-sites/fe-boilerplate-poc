@@ -1,12 +1,8 @@
 // Other Sizes
-$base-spacing: 20px;
-$small-spacing: $base-spacing / 2;
-$base-z-index: 0;
+$spacing-base: 20px;
+$spacing-small: $spacing-base / 2;
 
 // Border
-$base-border: 1px solid $color-base-border;
-$base-border-radius: $small-spacing;
-$button-border-radius: 25px;
-
-// Fixed header offsetting
-$toolbar-offset: 80px;
+$border-base: 1px solid $color-base-border;
+$border-base-radius: $spacing-small;
+$border-radius-button: 25px;
