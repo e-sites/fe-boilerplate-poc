@@ -4,19 +4,19 @@
 $column: 65px;
 $gutter: 30px;
 $grid-columns: 12;
-$max-width: 1200px;
+$max-width: 74em;
 
 // Neat Breakpoints
-$sm-width: 480px;
-$md-width: 640px;
-$lg-width: 960px;
+$sm-width: 30em;
+$md-width: 40em;
+$lg-width: 60em;
 $xl-width: $max-width;
 
 /* Max widths of the various breakpoints */
-$xs-max-width: ($sm-width - 1);
-$sm-max-width: ($md-width - 1);
-$md-max-width: ($lg-width - 1);
-$lg-max-width: ($xl-width - 1);
+$xs-max-width: ($sm-width - 0.01);
+$sm-max-width: ($md-width - 0.01);
+$md-max-width: ($lg-width - 0.01);
+$lg-max-width: ($xl-width - 0.01);
 
 $sm-up: new-breakpoint(min-width $sm-width);
 $md-up: new-breakpoint(min-width $md-width);
