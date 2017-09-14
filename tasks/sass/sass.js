@@ -27,7 +27,7 @@ const cleansass = (done) => {
 }
 
 const compilesass = () => {
-	return gulp.src([
+	let compilesass = gulp.src([
 			conf.path.css + '/styles.scss'
 		])
 		.pipe(handleError('sass', 'SASS compiling failed'))
@@ -39,18 +39,27 @@ const compilesass = () => {
 		.pipe(autoprefixer({
 			browsers: ['last 3 versions', 'ios_saf 7']
 		}))
+
 		// Normal output
 		.pipe(gulpif(debug, sourcemaps.write('./')))
-		.pipe(gulp.dest(cssPath))
+		.pipe(gulp.dest(cssPath));
 
-		// Revisioned output
-		.pipe(rev())
-		.pipe(gulp.dest(cssPath))
+		// Writing revision in new file?
+		if ( conf.revisionfiles ) {
 
-		// Manifest for revisions
-		.pipe(rev.manifest())
-		.pipe(gulp.dest(cssPath))
-		.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
+			// Revisioned output
+			compilesass.pipe(rev())
+				.pipe(gulp.dest(cssPath))
+
+				// Manifest for revisions
+				.pipe(rev.manifest())
+				.pipe(gulp.dest(cssPath))
+		}
+
+		// Add success message :)
+		compilesass.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
+
+		return compilesass;
 }
 
 const sassTask = gulp.series(cleansass, compilesass);

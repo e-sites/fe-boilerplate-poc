@@ -23,12 +23,11 @@ const jsFiles = ['app.js'];
 const jsPath = conf.path.build + '/js';
 const debug = process.env.NODE_ENV !== 'production';
 
-
 const cleanjs = (done) => {
 	del([jsPath + '/*']);
 
 	done();
-}
+};
 
 const js = (allDone) => {
 	async.each(jsFiles, (file, jsDone) => {
@@ -38,8 +37,7 @@ const js = (allDone) => {
 			debug: debug
 		});
 
-		// See .babelrc for config
-		b.transform('babelify')
+		let compilejs = b.transform('babelify')
 			.bundle()
 			.on('error', notify.onError(function(err) {
 				return {
@@ -53,25 +51,33 @@ const js = (allDone) => {
 			}))
 			.pipe(source(file))
 			.pipe(buffer())
-			.pipe(gulpif(!debug, uglify()))
-			// Normal output
-			.pipe(gulp.dest(jsPath))
+			.pipe(gulpif(!debug, uglify()));
 
-			// Revisioned output
-			.pipe(rev())
-			.pipe(gulp.dest(jsPath))
+		// Writing revision in new file?
+		if ( conf.revisionfiles ) {
+			compilejs
+				.pipe(rev())
+				.pipe(gulp.dest(jsPath))
 
-			// Manifest for revisions
-			.pipe(rev.manifest())
-			.pipe(gulp.dest(jsPath))
-			.pipe(handleSuccess('js', 'JS build succeeded for ' + file, jsDone()));
+				.pipe(rev.manifest())
+				.pipe(gulp.dest(jsPath));
+		} else {
+			compilejs
+				.pipe(gulp.dest(jsPath));
+		}
+
+		// Add success message :)
+		compilejs.pipe(handleSuccess('js', 'JS build succeeded for ' + file, jsDone()));
+
+		return compilejs;
+
 	}, (err) => {
 		if (err)
 			console.error(err);
 
 		allDone();
 	});
-}
+};
 
 const jsTask = gulp.series(cleanjs, js);
 
