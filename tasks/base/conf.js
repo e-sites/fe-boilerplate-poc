@@ -7,6 +7,7 @@ module.exports = {
 		build: './build',
 		tasks: '/tasks/'
 	},
+	revisionfiles: false,
 	mjml: {
 		enabled: false,
 		extension: '.twig' // false, .twig, .tpl, whatever you want
