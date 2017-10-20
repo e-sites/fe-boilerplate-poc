@@ -4,6 +4,7 @@
  * @author   Iain van der Wiel <iain@e-sites.nl>
  * @version  0.1.0
  */
+
 const fs = require('fs');
 const gulp = require('gulp');
 const del = require('del');
@@ -52,7 +53,6 @@ const js = (allDone) => {
 			.pipe(gulpif(!debug, uglify()));
 
 		// Writing revision in new file?
-		console.log(config.revisionFiles);
 		if ( config.revisionFiles ) {
 			compilejs
 				.pipe(rev())

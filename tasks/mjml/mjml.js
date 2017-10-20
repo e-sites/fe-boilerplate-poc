@@ -5,6 +5,7 @@
  * @version  0.1.0
  */
 
+const fs = require('fs');
 const gulp = require('gulp');
 const tasker = require('gulp-tasker');
 const {handleError, handleSuccess} = require('../base/handlers');
