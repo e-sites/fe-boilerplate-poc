@@ -11,6 +11,7 @@
   "license": "MIT",
   "config": {
     "paths": {
+      "tasks": "/tasks",
       "source": {
         "root": "./assets",
         "css": "./assets/css",
