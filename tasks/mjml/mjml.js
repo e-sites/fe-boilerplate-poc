@@ -7,18 +7,19 @@
 
 const gulp = require('gulp');
 const tasker = require('gulp-tasker');
-const conf = require('../base/conf');
 const {handleError, handleSuccess} = require('../base/handlers');
 const rename = require('gulp-rename');
 const mjml = require('gulp-mjml');
 
+const config = JSON.parse(fs.readFileSync('./package.json')).config;
+
 const mjmlconvert = () => {
 	return gulp
-		.src(conf.path.mjml + '/**/*.mjml')
+		.src(config.paths.source.mjml + '/**/*.mjml')
 		.pipe(handleError('mjmlconvert', 'MJML generation faild'))
 		.pipe(mjml())
 		.pipe(rename(function (file) {
-			file.extname += conf.mjml.extension.length > 0 ? conf.mjml.extension : '';
+			file.extname += config.mjml.extension.length > 0 ? config.mjml.extension : '';
 		}))
 		.pipe(gulp.dest(function (file) {
 			return file.base;
@@ -28,10 +29,10 @@ const mjmlconvert = () => {
 
 const mjmlTask = gulp.series(mjmlconvert);
 
-if ( conf.mjml.enabled ) {
+if ( config.mjml.enabled ) {
 	gulp.task('mjml', mjmlTask);
 
 	tasker.addTask('default', mjmlTask);
 	tasker.addTask('deploy', mjmlTask);
-	tasker.addTask('watch', mjmlTask, conf.path.mjml + '/**/*.mjml');
+	tasker.addTask('watch', mjmlTask, config.paths.source.mjml + '/**/*.mjml');
 }
