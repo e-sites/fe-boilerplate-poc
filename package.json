@@ -13,7 +13,7 @@
     "paths": {
       "source": {
         "root": "./assets",
-        "scss": "./assets/scss",
+        "css": "./assets/css",
         "js": "./assets/js",
         "images": "./assets/images",
         "svg": "./assets/svg",

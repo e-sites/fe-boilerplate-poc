@@ -17,7 +17,7 @@ First of all, make a checkout of this repository by doing:
 
 If you have Yarn installed, run `yarn` or otherwise run `npm install`.
 
-Configure the paths for Gulp to watch in `tasks/base/conf.js` and where to store the built output. 
+Configure the paths for Gulp to watch in `tasks/base/conf.js` and where to store the built output.
 
 Then run `gulp watch` and the tasks should start watching the configured folders. Tasks are run automatically for a first time when watching. If you don't need watching, just run `gulp`.
 
@@ -25,7 +25,7 @@ Then run `gulp watch` and the tasks should start watching the configured folders
 
 These tasks are included in this setup:
 
-- `gulp sass`
+- `gulp css`
 - `gulp js`
 - `gulp svg`
 - `gulp sprite` (Requires Glue)
