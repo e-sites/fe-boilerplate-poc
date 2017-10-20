@@ -17,18 +17,18 @@ const cleanCSS = require('gulp-clean-css');
 const rev = require('gulp-rev');
 const sourcemaps = require('gulp-sourcemaps');
 
-const pkgConfig = JSON.parse(fs.readFileSync('./package.json')).config;
+const config = JSON.parse(fs.readFileSync('./package.json')).config;
 
 const debug = process.env.NODE_ENV !== 'production';
 
 const cleancss = (done) => {
-	del([pkgConfig.paths.dist.css + '/*']);
+	del([config.paths.dist.css + '/*']);
 	done();
 }
 
 const compilecss = () => {
 	let compilesass = gulp.src([
-			pkgConfig.paths.source.css + '/styles.scss'
+			config.paths.source.css + '/styles.scss'
 		])
 		.pipe(handleError('sass', 'SASS compiling failed'))
 		.pipe(gulpif(debug, sourcemaps.init()))
@@ -40,18 +40,18 @@ const compilecss = () => {
 
 		// Normal output
 		.pipe(gulpif(debug, sourcemaps.write('./')))
-		.pipe(gulp.dest(pkgConfig.paths.dist.css));
+		.pipe(gulp.dest(config.paths.dist.css));
 
 		// Writing revision in new file?
-		if ( pkgConfig.revisionFiles ) {
+		if ( config.revisionFiles ) {
 
 			// Revisioned output
 			compilesass.pipe(rev())
-				.pipe(gulp.dest(pkgConfig.paths.dist.css))
+				.pipe(gulp.dest(config.paths.dist.css))
 
 				// Manifest for revisions
 				.pipe(rev.manifest())
-				.pipe(gulp.dest(pkgConfig.paths.dist.css))
+				.pipe(gulp.dest(config.paths.dist.css))
 		}
 
 		// Add success message :)
@@ -66,4 +66,4 @@ gulp.task('css', cssTask);
 
 tasker.addTask('default', cssTask);
 tasker.addTask('deploy', cssTask);
-tasker.addTask('watch', cssTask, pkgConfig.paths.source.scss + '/**/*.scss');
+tasker.addTask('watch', cssTask, config.paths.source.scss + '/**/*.scss');
