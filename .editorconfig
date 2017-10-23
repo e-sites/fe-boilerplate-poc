@@ -2,9 +2,9 @@
 root = true
 
 # Unix-style newlines with a newline ending every file
-[*.{html,css,js,json,twig,tpl,cmp}]
+[*.{html,css,scss,js,json,twig,tpl,cmp}]
 charset = utf-8
 end_of_line = crlf
 insert_final_newline = true
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
