@@ -24,14 +24,15 @@
     "babelify": "^7.3.0",
     "browserify": "^13.3.0",
     "del": "^0.1.3",
-    "eslint": "^3.13.1",
-    "eslint-plugin-compat": "^1.0.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.3.2",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.0.3",
-	"gulp-mjml": "^2.2.0",
+    "gulp-mjml": "^2.2.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
@@ -49,6 +50,6 @@
     "bourbon-neat": "1.8.0",
     "normalize.css": "^6.0.0",
     "svgxuse": "^1.2.3",
-	"jquery": "^3.2.0"
+    "jquery": "^3.2.0"
   }
 }

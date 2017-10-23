@@ -1,14 +1,7 @@
 {
-	"parser": "babel-eslint",
-	"env": {
-		"browser": true,
-		"es6": true
-	},
-	"plugins": ["compat"],
-	"ecmaFeatures": {
-		"experimentalObjectRestSpread": true,
-	},
-	"rules": {
-		"compat/compat": 2
-	}
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "node": true
+  }
 }
