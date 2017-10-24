@@ -1,10 +1,13 @@
 const fs = require('fs');
 const Encore = require('@symfony/webpack-encore');
 
+
 const { paths, js: { entries, vendor } } = JSON.parse(fs.readFileSync('./package.json')).config;
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'dev';
 
+
 Encore.configureRuntimeEnvironment(env);
+
 
 Encore
   // directory where all compiled assets will be stored
@@ -24,16 +27,24 @@ Encore
   // create hashed filenames (e.g. app.abc123.css)
   .enableVersioning();
 
+
 // Dynamically load entry points
 entries.forEach((entry) => {
   Encore.addEntry(entry.replace('.js', ''), `${paths.source.js}/${entry}`);
 });
 
-const config = Encore.getWebpackConfig();
 
-config.bail = true;
+// Check for errors and exit the process
+if (env === 'production') {
+  Encore.addPlugin(function () { // eslint-disable-line func-names, needed to expose `this`
+    this.plugin('done', (stats) => {
+      if (stats.compilation.errors && stats.compilation.errors.length) {
+        throw new Error('webpack build failed');
+      }
+    });
+  });
+}
 
-console.log(config);
 
 // export the final configuration
-module.exports = config;
+module.exports = Encore.getWebpackConfig();
