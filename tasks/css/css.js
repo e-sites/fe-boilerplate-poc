@@ -17,18 +17,18 @@ const cleanCSS = require('gulp-clean-css');
 const rev = require('gulp-rev');
 const sourcemaps = require('gulp-sourcemaps');
 
-const config = JSON.parse(fs.readFileSync('./package.json')).config;
+const { paths, revisionFiles } = JSON.parse(fs.readFileSync('./package.json')).config;
 
 const debug = process.env.NODE_ENV !== 'production';
 
 const cleancss = (done) => {
-	del([config.paths.dist.css + '/*']);
+	del([paths.dist.css + '/*']);
 	done();
 }
 
 const compilecss = () => {
 	let compilesass = gulp.src([
-			config.paths.source.css + '/styles.scss'
+			paths.source.css + '/styles.scss'
 		])
 		.pipe(handleError('sass', 'SASS compiling failed'))
 		.pipe(gulpif(debug, sourcemaps.init()))
@@ -37,27 +37,25 @@ const compilecss = () => {
 			level: debug ? 0 : 2
 		}))
 		.pipe(autoprefixer())
+		.pipe(gulpif(debug, sourcemaps.write('./')));
 
-		// Normal output
-		.pipe(gulpif(debug, sourcemaps.write('./')))
-		.pipe(gulp.dest(config.paths.dist.css));
+	if ( revisionFiles ) {
+		// Revisioned output
+		compilesass.pipe(rev())
+			.pipe(gulp.dest(paths.dist.css))
 
-		// Writing revision in new file?
-		if ( config.revisionFiles ) {
+			// Manifest for revisions
+			.pipe(rev.manifest())
+			.pipe(gulp.dest(paths.dist.css))
+	} else {
+		// normal output
+		compilesass.pipe(gulp.dest(paths.dist.css));
+	}
 
-			// Revisioned output
-			compilesass.pipe(rev())
-				.pipe(gulp.dest(config.paths.dist.css))
+	// Add success message :)
+	compilesass.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
 
-				// Manifest for revisions
-				.pipe(rev.manifest())
-				.pipe(gulp.dest(config.paths.dist.css))
-		}
-
-		// Add success message :)
-		compilesass.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
-
-		return compilesass;
+	return compilesass;
 }
 
 const cssTask = gulp.series(cleancss, compilecss);
@@ -66,4 +64,4 @@ gulp.task('css', cssTask);
 
 tasker.addTask('default', cssTask);
 tasker.addTask('deploy', cssTask);
-tasker.addTask('watch', cssTask, config.paths.source.scss + '/**/*.scss');
+tasker.addTask('watch', cssTask, paths.source.scss + '/**/*.scss');
