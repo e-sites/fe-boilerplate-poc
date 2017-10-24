@@ -1,1 +1,2 @@
 assets/js/polyfills/**/*.js
+build/**/*.js

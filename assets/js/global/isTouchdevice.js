@@ -4,9 +4,11 @@
  * @author Boye Oomens <boye@e-sites.nl>
  * @type {Boolean}
  */
-module.exports = function () {
-	var msGesture = window.navigator && window.navigator.msMaxTouchPoints && window.MSGesture,
-		touch = (( 'ontouchstart' in window ) || msGesture || window.DocumentTouch && document instanceof DocumentTouch);
+function isTouchDevice() {
+  const msGesture = window.navigator && window.navigator.msMaxTouchPoints && window.MSGesture;
+  const touch = ((('ontouchstart' in window) || msGesture || window.DocumentTouch) && document instanceof window.DocumentTouch);
 
-	return !!touch;
+  return !!touch;
 }
+
+module.exports = isTouchDevice;
