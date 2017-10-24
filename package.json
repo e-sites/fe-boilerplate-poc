@@ -13,7 +13,6 @@
     "paths": {
       "tasks": "/tasks",
       "source": {
-        "root": "./assets",
         "css": "./assets/css",
         "js": "./assets/js",
         "images": "./assets/images",
@@ -21,7 +20,6 @@
         "mjml": "./assets/path-to-mail"
       },
       "dist": {
-        "root": "./build",
         "css": "./build/css",
         "js": "./build/js",
         "images": "./build/images",
