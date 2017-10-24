@@ -1,10 +1,14 @@
 # top-most EditorConfig file
 root = true
 
-# Unix-style newlines with a newline ending every file
-[*.{html,css,scss,js,json,twig,tpl,cmp}]
+# Default Unix-style en of lines with a newline ending every file
+[*]
 charset = utf-8
 end_of_line = crlf
 insert_final_newline = true
 indent_style = space
 indent_size = 2
+
+# Indent 4 spaces for php and yml
+[*.{php,yml}]
+indent_size = 4
