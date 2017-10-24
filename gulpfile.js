@@ -1,10 +1,13 @@
-// Expose config, Gulp and some plugins that are used by multiple tasks
-const conf = require('./tasks/base/conf.js');
+// Gulp and some plugins that are used by multiple tasks
+const fs = require('fs');
 const gulp = require('gulp');
 const tasker = require('gulp-tasker');
 
+// Expose config
+const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
+
 // Load all tasks
-tasker.loadTasks({ path: conf.path.tasks });
+tasker.loadTasks({path: paths.tasks});
 
 // Default task when run with 'gulp deploy'
 gulp.task('deploy', gulp.parallel(tasker.getTasks('deploy').tasks));

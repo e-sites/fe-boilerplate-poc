@@ -5,10 +5,10 @@
  * @version  0.1.0
  */
 
+const fs = require('fs');
 const gulp = require('gulp');
 const del = require('del');
 const tasker = require('gulp-tasker');
-const conf = require('../base/conf');
 const {handleError, handleSuccess} = require('../base/handlers');
 const gulpif = require('gulp-if');
 const browserify = require('browserify');
@@ -19,13 +19,12 @@ const async = require('async');
 const rev = require('gulp-rev');
 const notify = require('gulp-notify');
 
+const config = JSON.parse(fs.readFileSync('./package.json')).config;
 const jsFiles = ['app.js'];
-const jsPath = conf.path.build + '/js';
 const debug = process.env.NODE_ENV !== 'production';
 
 const cleanjs = (done) => {
-	del([jsPath + '/*']);
-
+	del([config.paths.dist.js + '/*']);
 	done();
 };
 
@@ -33,7 +32,7 @@ const js = (allDone) => {
 	async.each(jsFiles, (file, jsDone) => {
 		// set up the browserify instance on a task basis
 		const b = browserify({
-			entries: conf.path.js + '/' + file,
+			entries: config.paths.source.js + '/' + file,
 			debug: debug
 		});
 
@@ -54,16 +53,16 @@ const js = (allDone) => {
 			.pipe(gulpif(!debug, uglify()));
 
 		// Writing revision in new file?
-		if ( conf.revisionfiles ) {
+		if ( config.revisionFiles ) {
 			compilejs
 				.pipe(rev())
-				.pipe(gulp.dest(jsPath))
+				.pipe(gulp.dest(config.paths.dist.js))
 
 				.pipe(rev.manifest())
-				.pipe(gulp.dest(jsPath));
+				.pipe(gulp.dest(config.paths.dist.js));
 		} else {
 			compilejs
-				.pipe(gulp.dest(jsPath));
+				.pipe(gulp.dest(config.paths.dist.js));
 		}
 
 		// Add success message :)
@@ -84,4 +83,4 @@ const jsTask = gulp.series(cleanjs, js);
 gulp.task('js', jsTask);
 
 tasker.addTask('default', jsTask);
-tasker.addTask('watch', jsTask, [conf.path.js + '/**/*.js']);
+tasker.addTask('watch', jsTask, [config.paths.source.js + '/**/*.js']);

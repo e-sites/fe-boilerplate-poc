@@ -9,6 +9,29 @@
     "url": "https://github.com/e-sites/gulp-frontend-tasks.git"
   },
   "license": "MIT",
+  "config": {
+    "paths": {
+      "tasks": "/tasks",
+      "source": {
+        "css": "./assets/css",
+        "js": "./assets/js",
+        "images": "./assets/images",
+        "svg": "./assets/svg",
+        "mjml": "./assets/path-to-mail"
+      },
+      "dist": {
+        "css": "./build/css",
+        "js": "./build/js",
+        "images": "./build/images",
+        "svg": "./build/svg"
+      }
+    },
+    "revisionFiles": false,
+    "mjml": {
+      "enabled": false,
+      "extension": ".twig"
+    }
+  },
   "browserslist": [
     "last 2 versions",
     "ie >= 10"
