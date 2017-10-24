@@ -28,8 +28,9 @@ const js = (allDone) => {
     allDone();
   });
 
-  return stream
-    .pipe(gulp.dest(paths.dist.js));
+  stream.pipe(gulp.dest(paths.dist.js));
+
+  return stream;
 };
 
 const jsTask = gulp.series(js);
