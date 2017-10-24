@@ -10,6 +10,15 @@
   },
   "license": "MIT",
   "config": {
+    "js": {
+      "entries": [
+        "app.js"
+      ],
+      "vendor": [
+        "svgxuse",
+        "jquery"
+      ]
+    },
     "paths": {
       "tasks": "/tasks",
       "source": {
@@ -37,15 +46,8 @@
     "ie >= 10"
   ],
   "devDependencies": {
+    "@symfony/webpack-encore": "^0.16.0",
     "async": "^2.1.4",
-    "babel-eslint": "^7.1.1",
-    "babel-plugin-external-helpers": "^6.18.0",
-    "babel-preset-env": "^1.1.8",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-3": "^6.17.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.3.0",
     "del": "^0.1.3",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -64,14 +66,12 @@
     "gulp-sourcemaps": "^1.9.1",
     "gulp-svgstore": "^6.0.0",
     "gulp-tasker": "^0.3.0",
-    "gulp-uglify": "^2.0.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "webpack-stream": "^4.0.0"
   },
   "dependencies": {
     "bourbon": "4.3.3",
     "bourbon-neat": "1.8.0",
-    "normalize.css": "^6.0.0",
+    "normalize.css": "^7.0.0",
     "svgxuse": "^1.2.3",
     "jquery": "^3.2.0"
   }
