@@ -7,7 +7,9 @@ const tasker = require('gulp-tasker');
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
 // Load all tasks
-tasker.loadTasks({path: paths.tasks});
+tasker.loadTasks({
+  path: paths.tasks,
+});
 
 // Default task when run with 'gulp deploy'
 gulp.task('deploy', gulp.parallel(tasker.getTasks('deploy').tasks));
