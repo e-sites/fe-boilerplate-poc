@@ -63,4 +63,4 @@ gulp.task('css', cssTask);
 
 tasker.addTask('default', cssTask);
 tasker.addTask('deploy', cssTask);
-tasker.addTask('watch', cssTask, `${paths.source.scss}/**/*.scss`);
+tasker.addTask('watch', cssTask, `${paths.source.css}/**/*.scss`);
