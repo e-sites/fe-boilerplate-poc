@@ -24,12 +24,16 @@ Encore
   // create hashed filenames (e.g. app.abc123.css)
   .enableVersioning();
 
-
 // Dynamically load entry points
 entries.forEach((entry) => {
   Encore.addEntry(entry.replace('.js', ''), `${paths.source.js}/${entry}`);
 });
 
+const config = Encore.getWebpackConfig();
+
+config.bail = true;
+
+console.log(config);
 
 // export the final configuration
-module.exports = Encore.getWebpackConfig();
+module.exports = config;
