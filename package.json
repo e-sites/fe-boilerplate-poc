@@ -9,6 +9,29 @@
     "url": "https://github.com/e-sites/gulp-frontend-tasks.git"
   },
   "license": "MIT",
+  "config": {
+    "paths": {
+      "tasks": "/tasks",
+      "source": {
+        "css": "./assets/css",
+        "js": "./assets/js",
+        "images": "./assets/images",
+        "svg": "./assets/svg",
+        "mjml": "./assets/path-to-mail"
+      },
+      "dist": {
+        "css": "./build/css",
+        "js": "./build/js",
+        "images": "./build/images",
+        "svg": "./build/svg"
+      }
+    },
+    "revisionFiles": false,
+    "mjml": {
+      "enabled": false,
+      "extension": ".twig"
+    }
+  },
   "browserslist": [
     "last 2 versions",
     "ie >= 10"
@@ -31,7 +54,7 @@
     "gulp-clean-css": "^2.3.2",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.0.3",
-	"gulp-mjml": "^2.2.0",
+    "gulp-mjml": "^2.2.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
@@ -49,6 +72,6 @@
     "bourbon-neat": "1.8.0",
     "normalize.css": "^6.0.0",
     "svgxuse": "^1.2.3",
-	"jquery": "^3.2.0"
+    "jquery": "^3.2.0"
   }
 }
