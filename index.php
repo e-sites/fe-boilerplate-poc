@@ -1,3 +1,7 @@
+<?php
+  $manifest = json_decode(file_get_contents('build/js/manifest.json'), true);
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -26,7 +30,10 @@
 
 <body>
   <h1>content</h1>
-  <script src="/build/js/app.js"></script>
+
+  <script src="build/js<?php echo $manifest['manifest.js']; ?>"></script>
+  <script src="build/js<?php echo $manifest['vendor.js']; ?>"></script>
+  <script src="build/js<?php echo $manifest['app.js']; ?>"></script>
 </body>
 
 </html>
