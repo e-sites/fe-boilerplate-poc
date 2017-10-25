@@ -14,8 +14,10 @@ const parsemjml = require('gulp-mjml');
 
 const { paths, mjml } = JSON.parse(fs.readFileSync('./package.json')).config;
 
+const folder = paths.folders.mjml;
+
 const mjmlconvert = () => gulp
-  .src(`${paths.source.mjml}/**/*.mjml`)
+  .src(`${paths.source + folder}/**/*.mjml`)
   .pipe(handleError('mjmlconvert', 'MJML generation failed'))
   .pipe(parsemjml())
   .pipe(rename((file) => {

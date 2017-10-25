@@ -21,25 +21,15 @@
     },
     "paths": {
       "tasks": "/tasks",
-      "source": {
-        "css": "./assets/css",
-        "js": "./assets/js",
-        "images": "./assets/images",
-        "svg": "./assets/svg",
-        "mjml": "./assets/path-to-mail"
-      },
-      "temp": {
-        "root": "./_tmp",
-        "css": "./_tmp/css",
-        "js": "./_tmp/js",
-        "svg": "./_tmp/svg"
-      },
-      "dist": {
-        "root": "./build",
-        "css": "./build/css",
-        "js": "./build/js",
-        "images": "./build/images",
-        "svg": "./build/svg"
+      "source": "./assets",
+      "temp": "./_tmp",
+      "dist": "./build",
+      "folders": {
+        "css": "/css",
+        "js": "/js",
+        "images": "/images",
+        "svg": "/svg",
+        "mjml": "/path-to-mail"
       }
     },
     "revisionFiles": true,

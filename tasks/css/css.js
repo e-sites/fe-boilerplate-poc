@@ -18,16 +18,18 @@ const { handleError, handleSuccess } = require('../base/handlers');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
+const folder = paths.folders.css;
+
 const debug = process.env.NODE_ENV !== 'production';
 
 const cleancss = (done) => {
-  del([`${paths.dist.css}/*`]);
-  del([`${paths.temp.css}/*`]);
+  del([`${paths.dist + folder}/*`]);
+  del([`${paths.temp + folder}/*`]);
   done();
 };
 
 const compilecss = () => gulp
-  .src([`${paths.source.css}/styles.scss`])
+  .src([`${paths.source + folder}/styles.scss`])
   .pipe(handleError('sass', 'SASS compiling failed'))
   .pipe(gulpif(debug, sourcemaps.init()))
   .pipe(sass().on('error', sass.logError))
@@ -36,7 +38,7 @@ const compilecss = () => gulp
   }))
   .pipe(autoprefixer())
   .pipe(gulpif(debug, sourcemaps.write('./')))
-  .pipe(gulp.dest(paths.temp.css))
+  .pipe(gulp.dest(paths.temp + folder))
   .pipe(handleSuccess('sass', 'SASS compiling succeeded'));
 
 const cssTask = gulp.series(cleancss, compilecss);
@@ -45,4 +47,4 @@ gulp.task('css', cssTask);
 
 tasker.addTask('default', cssTask);
 tasker.addTask('deploy', cssTask);
-tasker.addTask('watch', cssTask, `${paths.source.css}/**/*.scss`);
+tasker.addTask('watch', cssTask, `${paths.source + folder}/**/*.scss`);

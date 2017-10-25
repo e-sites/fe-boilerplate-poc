@@ -16,9 +16,11 @@ const webpackConfig = require('../../webpack.config.js');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
+const folder = paths.folders.js;
+
 const clean = (done) => {
-  del([`${paths.dist.js}/*`]);
-  del([`${paths.temp.js}/*`]);
+  del([`${paths.dist + folder}/*`]);
+  del([`${paths.temp + folder}/*`]);
   done();
 };
 
@@ -27,7 +29,7 @@ const js = (allDone) => {
 
   return stream
     .on('error', notify.onError(error => error))
-    .pipe(gulp.dest(paths.temp.js))
+    .pipe(gulp.dest(paths.temp + folder))
     .on('close', () => {
       notifier.notify({
         title: 'js',
@@ -42,4 +44,4 @@ const jsTask = gulp.series(clean, js);
 gulp.task('js', jsTask);
 
 tasker.addTask('default', jsTask);
-tasker.addTask('watch', jsTask, [`${paths.source.js}/**/*.js`]);
+tasker.addTask('watch', jsTask, [`${paths.source + folder}/**/*.js`]);

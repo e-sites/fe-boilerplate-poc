@@ -16,14 +16,16 @@ const rename = require('gulp-rename');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
+const folder = paths.folders.svg;
+
 const cleansvg = (done) => {
-  del([`${paths.dist.svg}/*`]);
-  del([`${paths.temp.svg}/*`]);
+  del([`${paths.dist + folder}/*`]);
+  del([`${paths.temp + folder}/*`]);
   done();
 };
 
 const svgconcat = () => gulp
-  .src(`${paths.source.svg}/*.svg`)
+  .src(`${paths.source + folder}/*.svg`)
   .pipe(svgstore())
   .pipe(handleError('svgconcat', 'SVG concatenation failed'))
   .pipe(imagemin([
@@ -46,7 +48,7 @@ const svgconcat = () => gulp
   ]))
   .pipe(handleError('svgconcat', 'SVG concatenation failed'))
   .pipe(rename('dist.svg'))
-  .pipe(gulp.dest(paths.temp.svg))
+  .pipe(gulp.dest(paths.temp + folder))
   .pipe(handleSuccess('svgconcat', 'SVG concatenation succeeded'));
 
 const svgTask = gulp.series(cleansvg, svgconcat);
@@ -55,4 +57,4 @@ gulp.task('svg', svgTask);
 
 tasker.addTask('default', svgTask);
 tasker.addTask('deploy', svgTask);
-tasker.addTask('watch', svgTask, `${paths.source.svg}/*.svg`);
+tasker.addTask('watch', svgTask, `${paths.source + folder}/*.svg`);

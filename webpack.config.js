@@ -3,6 +3,9 @@ const Encore = require('@symfony/webpack-encore');
 
 
 const { paths, js: { entries, vendor } } = JSON.parse(fs.readFileSync('./package.json')).config;
+
+const folder = paths.folders.js;
+
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'dev';
 
 
@@ -11,7 +14,7 @@ Encore.configureRuntimeEnvironment(env);
 
 Encore
   // directory where all compiled assets will be stored
-  .setOutputPath(paths.dist.js)
+  .setOutputPath(paths.dist + folder)
 
   // what's the public path to this directory (relative to your project's document root dir)
   .setPublicPath('/')
@@ -27,7 +30,7 @@ Encore
 
 // Dynamically load entry points
 entries.forEach((entry) => {
-  Encore.addEntry(entry.replace('.js', ''), `${paths.source.js}/${entry}`);
+  Encore.addEntry(entry.replace('.js', ''), `${paths.source + folder}/${entry}`);
 });
 
 
