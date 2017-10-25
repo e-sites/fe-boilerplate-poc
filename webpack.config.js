@@ -17,15 +17,12 @@ Encore
   .setPublicPath('/')
 
   // empty the outputPath dir before each build
-  .cleanupOutputBeforeBuild()
+  // .cleanupOutputBeforeBuild()
 
   .enableSourceMaps(!Encore.isProduction())
 
   // Split vendor assets from the entries
-  .createSharedEntry('vendor', vendor)
-
-  // create hashed filenames (e.g. app.abc123.css)
-  .enableVersioning();
+  .createSharedEntry('vendor', vendor);
 
 
 // Dynamically load entry points
@@ -46,5 +43,17 @@ if (env === 'production') {
 }
 
 
+// Expose webpack config
+const config = Encore.getWebpackConfig();
+
+
+// Pop out the ManifestPlugin because we're revving the files ourselves
+config.plugins.forEach((plugin, index) => {
+  if (plugin.constructor.name === 'ManifestPlugin') {
+    config.plugins.splice(index, 1);
+  }
+});
+
+
 // export the final configuration
-module.exports = Encore.getWebpackConfig();
+module.exports = config;
