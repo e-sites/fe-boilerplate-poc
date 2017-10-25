@@ -14,6 +14,7 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
+const rev = require('../rev/rev');
 const { handleError, handleSuccess } = require('../base/handlers');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
@@ -43,7 +44,7 @@ const compilecss = () => gulp
 
 const cssTask = gulp.series(cleancss, compilecss);
 
-gulp.task('css', cssTask);
+gulp.task('css', gulp.series(compilecss, rev));
 
 tasker.addTask('default', cssTask);
 tasker.addTask('deploy', cssTask);

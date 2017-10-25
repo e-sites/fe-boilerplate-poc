@@ -13,6 +13,7 @@ const del = require('del');
 const svgstore = require('gulp-svgstore');
 const imagemin = require('gulp-imagemin');
 const rename = require('gulp-rename');
+const rev = require('../rev/rev');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
@@ -53,7 +54,7 @@ const svgconcat = () => gulp
 
 const svgTask = gulp.series(cleansvg, svgconcat);
 
-gulp.task('svg', svgTask);
+gulp.task('svg', gulp.series(svgconcat, rev));
 
 tasker.addTask('default', svgTask);
 tasker.addTask('deploy', svgTask);

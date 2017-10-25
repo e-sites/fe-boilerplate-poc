@@ -16,3 +16,4 @@ const revFiles = () => gulp.src(`${paths.temp}/**/*`)
 
 gulp.task('rev', revFiles);
 
+module.exports = revFiles;
