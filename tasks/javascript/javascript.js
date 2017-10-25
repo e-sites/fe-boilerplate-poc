@@ -7,6 +7,7 @@
 
 const fs = require('fs');
 const gulp = require('gulp');
+const del = require('del');
 const tasker = require('gulp-tasker');
 const webpack = require('webpack-stream');
 const notify = require('gulp-notify');
@@ -15,25 +16,28 @@ const webpackConfig = require('../../webpack.config.js');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
+const clean = (done) => {
+  del([`${paths.dist.js}/*`]);
+  del([`${paths.temp.js}/*`]);
+  done();
+};
+
 const js = (allDone) => {
   const stream = webpack(webpackConfig);
 
-  stream.on('error', notify.onError(error => error));
-
-  stream.on('close', () => {
-    notifier.notify({
-      title: 'js',
-      message: 'Files written to disk',
+  return stream
+    .on('error', notify.onError(error => error))
+    .pipe(gulp.dest(paths.temp.js))
+    .on('close', () => {
+      notifier.notify({
+        title: 'js',
+        message: 'Files written to disk',
+      });
+      allDone();
     });
-    allDone();
-  });
-
-  stream.pipe(gulp.dest(paths.dist.js));
-
-  return stream;
 };
 
-const jsTask = gulp.series(js);
+const jsTask = gulp.series(clean, js);
 
 gulp.task('js', jsTask);
 

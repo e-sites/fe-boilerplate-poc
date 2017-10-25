@@ -13,49 +13,31 @@ const tasker = require('gulp-tasker');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
-const rev = require('gulp-rev');
 const sourcemaps = require('gulp-sourcemaps');
 const { handleError, handleSuccess } = require('../base/handlers');
 
-const { paths, revisionFiles } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
 const debug = process.env.NODE_ENV !== 'production';
 
 const cleancss = (done) => {
   del([`${paths.dist.css}/*`]);
+  del([`${paths.temp.css}/*`]);
   done();
 };
 
-const compilecss = () => {
-  const compilesass = gulp
-    .src([`${paths.source.css}/styles.scss`])
-    .pipe(handleError('sass', 'SASS compiling failed'))
-    .pipe(gulpif(debug, sourcemaps.init()))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCSS({
-      level: debug ? 0 : 2,
-    }))
-    .pipe(autoprefixer())
-    .pipe(gulpif(debug, sourcemaps.write('./')));
-
-  if (revisionFiles) {
-    // Revisioned output
-    compilesass
-      .pipe(rev())
-      .pipe(gulp.dest(paths.dist.css))
-      // Manifest for revisions
-      .pipe(rev.manifest())
-      .pipe(gulp.dest(paths.dist.css));
-  } else {
-    // normal output
-    compilesass.pipe(gulp.dest(paths.dist.css));
-  }
-
-  // Add success message :)
-  compilesass.pipe(handleSuccess('sass', 'SASS compiling succeeded'));
-
-  return compilesass;
-};
+const compilecss = () => gulp
+  .src([`${paths.source.css}/styles.scss`])
+  .pipe(handleError('sass', 'SASS compiling failed'))
+  .pipe(gulpif(debug, sourcemaps.init()))
+  .pipe(sass().on('error', sass.logError))
+  .pipe(cleanCSS({
+    level: debug ? 0 : 2,
+  }))
+  .pipe(autoprefixer())
+  .pipe(gulpif(debug, sourcemaps.write('./')))
+  .pipe(gulp.dest(paths.temp.css))
+  .pipe(handleSuccess('sass', 'SASS compiling succeeded'));
 
 const cssTask = gulp.series(cleancss, compilecss);
 

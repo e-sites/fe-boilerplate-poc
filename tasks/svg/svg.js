@@ -18,13 +18,14 @@ const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
 const cleansvg = (done) => {
   del([`${paths.dist.svg}/*`]);
+  del([`${paths.temp.svg}/*`]);
   done();
 };
 
 const svgconcat = () => gulp
   .src(`${paths.source.svg}/*.svg`)
-  .pipe(handleError('svgconcat', 'SVG concatenation failed'))
   .pipe(svgstore())
+  .pipe(handleError('svgconcat', 'SVG concatenation failed'))
   .pipe(imagemin([
     imagemin.svgo({
       plugins: [
@@ -43,8 +44,9 @@ const svgconcat = () => gulp
       ],
     }),
   ]))
+  .pipe(handleError('svgconcat', 'SVG concatenation failed'))
   .pipe(rename('dist.svg'))
-  .pipe(gulp.dest(paths.dist.svg))
+  .pipe(gulp.dest(paths.temp.svg))
   .pipe(handleSuccess('svgconcat', 'SVG concatenation succeeded'));
 
 const svgTask = gulp.series(cleansvg, svgconcat);
