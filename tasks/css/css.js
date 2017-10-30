@@ -37,9 +37,8 @@ const compilecss = () => gulp
     level: debug ? 0 : 2,
   }))
   .pipe(autoprefixer())
-  .pipe(gulpif(debug, sourcemaps.write('./')))
-
   .pipe(gulpif(revisionFiles, rev()))
+  .pipe(gulpif(debug, sourcemaps.write('./')))
   .pipe(gulp.dest(paths.dist + folder))
   .pipe(gulpif(revisionFiles, rev.manifest({
     merge: true,
