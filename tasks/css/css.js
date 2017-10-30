@@ -7,6 +7,7 @@
 
 const fs = require('fs');
 const gulp = require('gulp');
+const rev = require('gulp-rev');
 const gulpif = require('gulp-if');
 const del = require('del');
 const tasker = require('gulp-tasker');
@@ -14,10 +15,9 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
-const rev = require('../rev/rev');
 const { handleError, handleSuccess } = require('../base/handlers');
 
-const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { revisionFiles, paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
 const folder = paths.folders.css;
 
@@ -25,7 +25,6 @@ const debug = process.env.NODE_ENV !== 'production';
 
 const cleancss = (done) => {
   del([`${paths.dist + folder}/*`]);
-  del([`${paths.temp + folder}/*`]);
   done();
 };
 
@@ -39,12 +38,19 @@ const compilecss = () => gulp
   }))
   .pipe(autoprefixer())
   .pipe(gulpif(debug, sourcemaps.write('./')))
-  .pipe(gulp.dest(paths.temp + folder))
+
+  .pipe(gulpif(revisionFiles, rev()))
+  .pipe(gulp.dest(paths.dist + folder))
+  .pipe(gulpif(revisionFiles, rev.manifest({
+    merge: true,
+    path: 'manifest.json',
+  })))
+  .pipe(gulpif(revisionFiles, gulp.dest(paths.dist + folder)))
   .pipe(handleSuccess('sass', 'SASS compiling succeeded'));
 
 const cssTask = gulp.series(cleancss, compilecss);
 
-gulp.task('css', gulp.series(compilecss, rev));
+gulp.task('css', cssTask);
 
 tasker.addTask('default', cssTask);
 tasker.addTask('deploy', cssTask);

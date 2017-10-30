@@ -2,15 +2,13 @@ const fs = require('fs');
 const Encore = require('@symfony/webpack-encore');
 
 
-const { paths, js: { entries, vendor } } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { revisionFiles, paths, js: { entries, vendor } } = JSON.parse(fs.readFileSync('./package.json')).config;
 
 const folder = paths.folders.js;
 
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'dev';
 
-
 Encore.configureRuntimeEnvironment(env);
-
 
 Encore
   // directory where all compiled assets will be stored
@@ -45,18 +43,12 @@ if (env === 'production') {
   });
 }
 
+if (revisionFiles) {
+  Encore.enableVersioning();
+}
 
 // Expose webpack config
 const config = Encore.getWebpackConfig();
-
-
-// Pop out the ManifestPlugin because we're revving the files ourselves
-config.plugins.forEach((plugin, index) => {
-  if (plugin.constructor.name === 'ManifestPlugin') {
-    config.plugins.splice(index, 1);
-  }
-});
-
 
 // export the final configuration
 module.exports = config;

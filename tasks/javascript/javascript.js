@@ -13,7 +13,6 @@ const webpack = require('webpack-stream');
 const notify = require('gulp-notify');
 const notifier = require('node-notifier'); // eslint-disable-line
 const webpackConfig = require('../../webpack.config.js');
-const rev = require('../rev/rev');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
@@ -21,7 +20,6 @@ const folder = paths.folders.js;
 
 const clean = (done) => {
   del([`${paths.dist + folder}/*`]);
-  del([`${paths.temp + folder}/*`]);
   done();
 };
 
@@ -30,7 +28,7 @@ const js = (allDone) => {
 
   return stream
     .on('error', notify.onError(error => error))
-    .pipe(gulp.dest(paths.temp + folder))
+    .pipe(gulp.dest(paths.dist + folder))
     .on('close', () => {
       notifier.notify({
         title: 'js',
@@ -38,11 +36,11 @@ const js = (allDone) => {
       });
       allDone();
     });
-  };
+};
 
 const jsTask = gulp.series(clean, js);
 
-gulp.task('js', gulp.series(jsTask, rev));
+gulp.task('js', jsTask);
 
 tasker.addTask('default', jsTask);
 tasker.addTask('watch', jsTask, [`${paths.source + folder}/**/*.js`]);

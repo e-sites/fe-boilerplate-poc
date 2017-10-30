@@ -22,7 +22,6 @@
     "paths": {
       "tasks": "/tasks",
       "source": "./assets",
-      "temp": "./_tmp",
       "dist": "./build",
       "folders": {
         "css": "/css",

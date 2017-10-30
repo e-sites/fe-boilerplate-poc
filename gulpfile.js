@@ -12,10 +12,10 @@ tasker.loadTasks({
 });
 
 // Default task when run with 'gulp deploy'
-gulp.task('deploy', gulp.series(gulp.parallel(tasker.getTasks('deploy').tasks), 'rev'));
+gulp.task('deploy', gulp.series(tasker.getTasks('deploy').tasks));
 
 // Default task when run with 'gulp'
-gulp.task('default', gulp.series(gulp.parallel(tasker.getTasks('default').tasks), 'rev'));
+gulp.task('default', gulp.series(tasker.getTasks('default').tasks));
 
 // Watch task when run with 'gulp watch'
 gulp.task('watch', gulp.series('default', () => {
@@ -24,6 +24,6 @@ gulp.task('watch', gulp.series('default', () => {
     .tasks
     .forEach((task) => {
       // gulp.watch(task.folders, gulp.parallel(task.tasks));
-      gulp.watch(task.folders, gulp.series(gulp.parallel(task.tasks), 'rev'));
+      gulp.watch(task.folders, gulp.parallel(task.tasks));
     });
 }));
