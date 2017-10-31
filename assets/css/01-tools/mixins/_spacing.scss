@@ -3,26 +3,26 @@
  */
 
 @mixin v-spacing($spacing: $spacing-base) {
-	padding-top: $spacing;
-	padding-bottom: $spacing;
+  padding-top: $spacing;
+  padding-bottom: $spacing;
 
-	@include media($md-up) {
-		padding-top: $spacing * 1.5;
-		padding-bottom: $spacing * 1.5;
-	}
+  @include media($md-up) {
+    padding-top: $spacing * 1.5;
+    padding-bottom: $spacing * 1.5;
+  }
 }
 
 @mixin h-spacing($spacing: $spacing-base) {
-	padding-left: $spacing;
-	padding-right: $spacing;
+  padding-left: $spacing;
+  padding-right: $spacing;
 
-	@include media($md-up) {
-		padding-left: $spacing * 1.5;
-		padding-right: $spacing * 1.5;
-	}
+  @include media($md-up) {
+    padding-left: $spacing * 1.5;
+    padding-right: $spacing * 1.5;
+  }
 }
 
 @mixin spacing($spacing: $spacing-base) {
-	@include v-spacing($spacing: $spacing);
-	@include h-spacing($spacing: $spacing);
+  @include v-spacing($spacing: $spacing);
+  @include h-spacing($spacing: $spacing);
 }
