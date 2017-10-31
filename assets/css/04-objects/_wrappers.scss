@@ -3,20 +3,20 @@
  */
 
 .wrapper-inner {
-	@include row;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-    padding-left: $gutter / 2;
-    padding-right: $gutter / 2;
-	width: 100%;
-	max-width: $max-width;
+  @include row;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+  width: 100%;
+  max-width: $max-width;
 }
 
 .wrapper-inner--vspacing {
-    @include v-spacing($spacing-base);
+  @include v-spacing($spacing-base);
 
-    @include media($md-up) {
-        @include v-spacing($spacing-base * 2);
-    }
+  @include media($md-up) {
+    @include v-spacing($spacing-base * 2);
+  }
 }

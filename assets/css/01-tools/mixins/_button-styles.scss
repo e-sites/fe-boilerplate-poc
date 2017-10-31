@@ -2,117 +2,116 @@
 * Button mixins
 */
 @mixin btn {
-	@include btn-color();
-	transition: all .2s ease;
-	display: inline-block;
-	appearance: none;
-	border: 0;
-	border-radius: $border-radius-button;
-	color: #fff;
-	cursor: pointer;
-	font-family: $font-heading;
-	font-size: $font-size-button;
-	font-weight: normal;
-	-webkit-font-smoothing: antialiased;
-	line-height: 1.625;
-	padding: $spacing-small $spacing-base;
-	text-decoration: none;
-	text-align: center;
-	transition: background-color $animation-base-duration $animation-base-timing;
-	user-select: none;
-	vertical-align: middle;
-	white-space: nowrap;
-	text-transform: uppercase;
-	box-shadow: inset 0 -2px rgba(#000, 0.2), 0 1px 2px rgba(#000, 0.3);
+  @include btn-color();
 
-	&:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
+  display: inline-block;
+  appearance: none;
+  border: 0;
+  border-radius: $border-radius-button;
+  color: #fff;
+  cursor: pointer;
+  font-family: $font-heading;
+  font-size: $font-size-button;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.625;
+  padding: $spacing-small $spacing-base;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color $animation-base-duration $animation-base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-transform: uppercase;
+  box-shadow: inset 0 -2px rgba(#000, 0.2), 0 1px 2px rgba(#000, 0.3);
 
-	svg {
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 
-		&:first-child {
-			margin-right: $spacing-small;
-		}
+  svg {
 
-		&:last-child {
-			margin-left: $spacing-small;
-		}
+    &:first-child {
+      margin-right: $spacing-small;
+    }
 
-		&:first-child:last-child {
-			margin: 0;
-		}
-	}
+    &:last-child {
+      margin-left: $spacing-small;
+    }
+
+    &:first-child:last-child {
+      margin: 0;
+    }
+  }
 }
 
 // Button sizing
 @mixin btn-sm {
-	padding: $spacing-small / 2 $spacing-base;
-	font-size: $font-size-smaller;
+  padding: $spacing-small / 2 $spacing-base;
+  font-size: $font-size-smaller;
 }
 
 @mixin btn-md {
-	font-size: $font-size-small;
+  font-size: $font-size-small;
 }
 
 // Button skins
 @mixin btn-primary {
-	@include btn-color(background-color, $color-primary);
+  @include btn-color(background-color, $color-primary);
 }
 
 @mixin btn-secondary {
-	@include btn-color(background-color, $color-secondary);
+  @include btn-color(background-color, $color-secondary);
 }
 
 @mixin btn-tertiary {
-	@include btn-color(background-color, $color-tertiary);
-	@include btn-color(color, $color-base-font);
+  @include btn-color(background-color, $color-tertiary);
+  @include btn-color(color, $color-base-font);
 }
 
 // Ghost buttons
 @mixin btn-ghost {
-	border: 1px solid currentColor;
-	box-shadow: none;
-	background: #fff;
+  border: 1px solid currentColor;
+  box-shadow: none;
+  background: #fff;
 
-	&:focus,
-	&:hover {
-		background: #fff;
-	}
+  &:focus,
+  &:hover {
+    background: #fff;
+  }
 }
 
 @mixin btn-ghost-primary {
-	@include btn-color(color, $color-primary);
-	@include btn-hover-color(background-color, $color-primary);
-	@include btn-hover-color(color, #fff);
+  @include btn-color(color, $color-primary);
+  @include btn-hover-color(background-color, $color-primary);
+  @include btn-hover-color(color, #fff);
 }
 
 @mixin btn-ghost-secondary {
-	@include btn-color(color, $color-secondary);
-	@include btn-hover-color(background-color, $color-secondary);
-	@include btn-hover-color(color, #fff);
+  @include btn-color(color, $color-secondary);
+  @include btn-hover-color(background-color, $color-secondary);
+  @include btn-hover-color(color, #fff);
 }
 
 @mixin btn-ghost-tertiary {
-	@include btn-color(border-color, $color-tertiary);
-	@include btn-color(color,  $color-secondary);
-	@include btn-hover-color(border-color, $color-secondary);
-	@include btn-hover-color(color, $color-secondary);
+  @include btn-color(border-color, $color-tertiary);
+  @include btn-color(color,  $color-secondary);
+  @include btn-hover-color(border-color, $color-secondary);
+  @include btn-hover-color(color, $color-secondary);
 }
 
-
 @mixin btn-clean {
-	margin: 0;
-	border-radius: 0;
-	padding: 0;
-	font-family: $font-regular;
-	color: $color-base-font;
-	box-shadow: none;
-	background-color: transparent;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  font-family: $font-regular;
+  color: $color-base-font;
+  box-shadow: none;
+  background-color: transparent;
 
-	&:focus,
-	&:hover {
-		background-color: transparent;
-	}
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
 }
