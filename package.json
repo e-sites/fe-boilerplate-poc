@@ -42,9 +42,10 @@
     "ie >= 10"
   ],
   "devDependencies": {
+    "@e-sites/eslint-config": "0.0.2",
     "@symfony/webpack-encore": "^0.16.0",
     "del": "^3.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "gulp": "gulpjs/gulp#4.0",
