@@ -37,7 +37,7 @@
     "ie >= 10"
   ],
   "devDependencies": {
-    "@e-sites/stylelint-config-esites": "0.0.3",
+    "@e-sites/stylelint-config-esites": "^1.0.0",
     "async": "^2.1.4",
     "babel-eslint": "^7.1.1",
     "babel-plugin-external-helpers": "^6.18.0",
