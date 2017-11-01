@@ -20,7 +20,7 @@
       ]
     },
     "paths": {
-      "tasks": "/tasks",
+      "tasks": "./tasks",
       "source": "./assets",
       "dist": "./build",
       "folders": {
@@ -43,6 +43,7 @@
   ],
   "devDependencies": {
     "@e-sites/eslint-config": "^1.0.0",
+    "@e-sites/stylelint-config-esites": "^1.0.0",
     "@symfony/webpack-encore": "^0.16.0",
     "del": "^3.0.0",
     "eslint": "^4.10.0",
@@ -65,6 +66,8 @@
     "gulp-svgstore": "^6.1.0",
     "gulp-tasker": "^0.3.0",
     "node-notifier": "^5.1.2",
+    "stylelint": "^8.2.0",
+    "stylelint-scss": "^2.1.0",
     "webpack-stream": "^4.0.0"
   },
   "dependencies": {
