@@ -13,7 +13,7 @@ const setExtLinks = {
 
   initAll: (links) => {
     if (links) {
-      links.forEach((link) => {
+      [...links].forEach((link) => {
         link.setAttribute('rel', 'noopener');
       });
     }
