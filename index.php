@@ -1,5 +1,6 @@
 <?php
-  $manifest = json_decode(file_get_contents('build/js/manifest.json'), true);
+  $manifestJS = json_decode(file_get_contents('build/js/manifest.json'), true);
+  $manifestCSS = json_decode(file_get_contents('build/css/manifest.json'), true);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
   <script>document.documentElement.className += ' js'; var app = {}, fs = {};</script>
   <link rel="dns-prefetch" href="//ajax.googleapis.com">
   <link rel="dns-prefetch" href="//google-analytics.com">
-  <link rel="stylesheet" href="/build/css/styles.css">
+  <link rel="stylesheet" href="/build/css/<?php echo $manifestCSS['styles.css']; ?>">
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script>window.html5||document.write('<script src="/assets/js/polyfills/html5.min.js"><\/script>')</script>
@@ -30,10 +31,11 @@
 
 <body>
   <h1>content</h1>
+  <a href="http://google.nl" target="_blank">External link</a>
 
-  <script src="build/js<?php echo $manifest['manifest.js']; ?>"></script>
-  <script src="build/js<?php echo $manifest['vendor.js']; ?>"></script>
-  <script src="build/js<?php echo $manifest['app.js']; ?>"></script>
+  <script src="build/js<?php echo $manifestJS['manifest.js']; ?>"></script>
+  <script src="build/js<?php echo $manifestJS['vendor.js']; ?>"></script>
+  <script src="build/js<?php echo $manifestJS['app.js']; ?>"></script>
 </body>
 
 </html>
