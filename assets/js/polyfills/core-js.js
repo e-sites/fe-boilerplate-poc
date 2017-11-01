@@ -6,4 +6,7 @@
  */
 
 import 'core-js/web/dom-collections';
-import 'core-js/fn/dom-collections/iterator';
+import 'core-js/es6/object';
+import 'core-js/es6/array';
+import 'core-js/es6/promise';
+import 'core-js/stage/4';
