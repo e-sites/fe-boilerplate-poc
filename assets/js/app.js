@@ -8,10 +8,16 @@
 import 'svgxuse';
 
 // Google Analytics event tracking based on HTML data attributes
-import '@e-sites/vestigo';
+import vestigo from '@e-sites/vestigo';
 
 // Add ES5/6/7 polyfills
 import './polyfills/core-js';
 
 // Set external links
 import './utilities/setExtLinks';
+
+
+/**
+ * Initialise imported modules
+ */
+vestigo.init();
