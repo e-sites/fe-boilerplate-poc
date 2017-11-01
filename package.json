@@ -1,12 +1,12 @@
 {
-  "name": "fe-boilerplate",
+  "name": "fe-boilerplate-poc",
   "version": "1.0.2",
   "description": "A collection of useful Gulp tasks to automate your front-end workflow",
   "author": "Iain van der Wiel <iain@e-sites.nl>",
   "readme": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/e-sites/gulp-frontend-tasks.git"
+    "url": "https://github.com/e-sites/fe-boilerplate-poc.git"
   },
   "license": "MIT",
   "config": {
