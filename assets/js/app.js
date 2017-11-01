@@ -12,3 +12,6 @@ import '@e-sites/vestigo';
 
 // Add ES5/6/7 polyfills
 import './polyfills/core-js';
+
+// Set external links
+import './utilities/setExtLinks';
