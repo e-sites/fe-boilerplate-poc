@@ -1,19 +1,17 @@
 /**
  * Main entry file for app logic
  */
+import 'svgxuse';
+import './global/_global';
 
-// Apply SVG polyfill to load external SVG's in unsupported browsers
-require('svgxuse');
-
-// Global functions
-require('./global/_global');
+window.app = {};
 
 // Config
-app.config = {
-	breakpoints: {
-		sm: 30,
-		md: 40,
-		lg: 60,
-		xl: 74
-	}
+window.app.config = {
+  breakpoints: {
+    sm: 30,
+    md: 40,
+    lg: 60,
+    xl: 74,
+  },
 };

@@ -1,32 +1,37 @@
 {
-  "name": "fe-boilerplate",
+  "name": "fe-boilerplate-poc",
   "version": "1.0.2",
   "description": "A collection of useful Gulp tasks to automate your front-end workflow",
   "author": "Iain van der Wiel <iain@e-sites.nl>",
   "readme": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/e-sites/gulp-frontend-tasks.git"
+    "url": "https://github.com/e-sites/fe-boilerplate-poc.git"
   },
   "license": "MIT",
   "config": {
+    "js": {
+      "entries": [
+        "app.js"
+      ],
+      "vendor": [
+        "svgxuse",
+        "jquery"
+      ]
+    },
     "paths": {
-      "tasks": "/tasks",
-      "source": {
-        "css": "./assets/css",
-        "js": "./assets/js",
-        "images": "./assets/images",
-        "svg": "./assets/svg",
-        "mjml": "./assets/path-to-mail"
-      },
-      "dist": {
-        "css": "./build/css",
-        "js": "./build/js",
-        "images": "./build/images",
-        "svg": "./build/svg"
+      "tasks": "./tasks",
+      "source": "./assets",
+      "dist": "./build",
+      "folders": {
+        "css": "/css",
+        "js": "/js",
+        "images": "/images",
+        "svg": "/svg",
+        "mjml": "/path-to-mail"
       }
     },
-    "revisionFiles": false,
+    "revisionFiles": true,
     "mjml": {
       "enabled": false,
       "extension": ".twig"
@@ -37,44 +42,39 @@
     "ie >= 10"
   ],
   "devDependencies": {
+    "@e-sites/eslint-config": "^1.0.0",
     "@e-sites/stylelint-config-esites": "^1.0.0",
-    "async": "^2.1.4",
-    "babel-eslint": "^7.1.1",
-    "babel-plugin-external-helpers": "^6.18.0",
-    "babel-preset-env": "^1.1.8",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-3": "^6.17.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.3.0",
-    "del": "^0.1.3",
-    "eslint": "^3.13.1",
-    "eslint-plugin-compat": "^1.0.0",
+    "@symfony/webpack-encore": "^0.16.0",
+    "del": "^3.0.0",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "gulp": "gulpjs/gulp#4.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-clean-css": "^2.3.2",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.0.3",
-    "gulp-mjml": "^2.2.0",
-    "gulp-notify": "^2.2.0",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-mjml": "^2.3.0",
+    "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rev": "^7.1.2",
-    "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-svgstore": "^6.0.0",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-delete-original": "^0.2.3",
+    "gulp-rev-replace": "^0.4.3",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-svgstore": "^6.1.0",
     "gulp-tasker": "^0.3.0",
-    "gulp-uglify": "^2.0.0",
+    "node-notifier": "^5.1.2",
     "stylelint": "^8.2.0",
     "stylelint-scss": "^2.1.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "webpack-stream": "^4.0.0"
   },
   "dependencies": {
-    "bourbon": "4.3.3",
-    "bourbon-neat": "1.8.0",
-    "normalize.css": "^6.0.0",
-    "svgxuse": "^1.2.3",
-    "jquery": "^3.2.0"
+    "bourbon": "4.3.4",
+    "bourbon-neat": "1.9.0",
+    "normalize.css": "^7.0.0",
+    "svgxuse": "^1.2.4",
+    "jquery": "^3.2.1"
   }
 }

@@ -38,9 +38,9 @@ These tasks are included in this setup:
 - Sass base with Normalize, Bourbon and Neat
 - ESLint config (`eslint-plugin-compat` + `babel-eslint` for now, will add specific rules later)
 - Babel config (`babel-preset-env` + `stage-3`)
-- Path configuration for input and output folders (`tasks/base/conf.js`)
+- Path configuration in package.json
 - Success and error notifications for tasks (`tasks/base/handlers.js`)
-- Browserify JS bundler task (`tasks/javascript/javascript.js`)
+- Webpack JS bundler task (`tasks/javascript/javascript.js`) & (`webpack.config.js`)
 - Sass compilation and minification task (`tasks/sass/sass.js`)
 - SVG sprite generation task (`tasks/svg/svg.js`)
 - Asset versioning via `gulp-rev`. Stores hashed filenames and generates a manifest with mapping from original filenames to hashed filenames.

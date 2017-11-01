@@ -1,7 +1,10 @@
 /**
  * Adds global functions or values and make this available in app.global
  */
-app.global = {
-	screenWidth: require('./screenwidthEm'),
-	isTouchDevice: require('./isTouchDevice')
+import screenwidthEm from './screenwidthEm';
+import touchDevice from './isTouchdevice';
+
+window.app.global = {
+  screenWidth: screenwidthEm,
+  isTouchDevice: touchDevice,
 };
