@@ -15,12 +15,14 @@
         "app.js"
       ],
       "vendor": [
+        "./assets/js/polyfills/core-js",
         "svgxuse",
-        "jquery"
+        "@e-sites/vestigo",
+        "scriptjs"
       ]
     },
     "paths": {
-      "tasks": "./tasks",
+      "tasks": "/tasks",
       "source": "./assets",
       "dist": "./build",
       "folders": {
@@ -71,10 +73,14 @@
     "webpack-stream": "^4.0.0"
   },
   "dependencies": {
+    "@e-sites/vestigo": "^0.1.0",
+    "babel-polyfill": "^6.26.0",
     "bourbon": "4.3.4",
     "bourbon-neat": "1.9.0",
+    "core-js": "^2.5.1",
+    "jquery": "^3.2.1",
     "normalize.css": "^7.0.0",
-    "svgxuse": "^1.2.4",
-    "jquery": "^3.2.1"
+    "scriptjs": "^2.5.8",
+    "svgxuse": "^1.2.6"
   }
 }
