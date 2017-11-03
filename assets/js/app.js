@@ -14,7 +14,7 @@ import 'svgxuse';
 // Google Analytics event tracking based on HTML data attributes
 import vestigo from '@e-sites/vestigo';
 
-import * as conditioner from 'conditioner-core';
+import * as conditioner from 'conditioner-core/umd/conditioner-core';
 
 // Set external links
 import './utilities/setExtLinks';
@@ -27,19 +27,22 @@ import './utilities/setExtLinks';
 vestigo.init();
 
 
+/**
+ * Configure conditioner
+ */
 conditioner.addPlugin({
   // converts module aliases to paths
-  moduleSetName: (name) => `./${ name }.js`,
+  moduleSetName: name => `${name}.js`,
   // get the module constructor
-  moduleGetConstructor: (module) => module.default,
+  moduleGetConstructor: module => module.default,
   // override the import
-  moduleImport: (name) => import(
+  moduleImport: name => import( // eslint-disable-line
     /* https://webpack.js.org/api/module-methods/#import- */
     /* set to "eager" to create a single chunk for all modules */
     /* set to "lazy" to create a separate chunk for each module */
+    /* webpackChunkName: "[request]" */
     /* webpackMode: "lazy" */
-    `${ name }`
-  )
+    `./modules/${name}`),
 });
 
 conditioner.hydrate(document.documentElement);
