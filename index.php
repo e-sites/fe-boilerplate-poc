@@ -33,9 +33,11 @@
   <h1>content</h1>
   <a href="http://google.nl" target="_blank">External link</a>
 
-  <script src="build/js<?php echo $manifestJS['manifest.js']; ?>"></script>
-  <script src="build/js<?php echo $manifestJS['vendor.js']; ?>"></script>
-  <script src="build/js<?php echo $manifestJS['app.js']; ?>"></script>
+  <div data-module="ui/test" data-context="@media (min-width:30em)"></div>
+
+  <script src="<?php echo $manifestJS['build/js/manifest.js']; ?>"></script>
+  <script src="<?php echo $manifestJS['build/js/vendor.js']; ?>"></script>
+  <script src="<?php echo $manifestJS['build/js/app.js']; ?>"></script>
 </body>
 
 </html>

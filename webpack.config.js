@@ -14,7 +14,7 @@ Encore
   .setOutputPath(paths.dist + folder)
 
   // what's the public path to this directory (relative to your project's document root dir)
-  .setPublicPath('/')
+  .setPublicPath('/build/js/')
 
   // empty the outputPath dir before each build
   // .cleanupOutputBeforeBuild()
