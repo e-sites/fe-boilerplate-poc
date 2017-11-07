@@ -14,7 +14,7 @@ import 'svgxuse';
 // Google Analytics event tracking based on HTML data attributes
 import vestigo from '@e-sites/vestigo';
 
-import * as conditioner from 'conditioner-core/umd/conditioner-core';
+import * as conditioner from 'conditioner-core';
 
 // Set external links
 import './utilities/setExtLinks';
