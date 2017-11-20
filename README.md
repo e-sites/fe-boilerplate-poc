@@ -38,6 +38,7 @@ These tasks are included in this setup:
 - Sass base with Normalize, Bourbon and Neat
 - ESLint config (`eslint-plugin-compat` + `babel-eslint` for now, will add specific rules later)
 - Babel config (`babel-preset-env` + `stage-3`)
+- [Conditioner.js](https://github.com/rikschennink/conditioner) - Frizz free, context-aware, JavaScript modules
 - Path configuration in package.json
 - Success and error notifications for tasks (`tasks/base/handlers.js`)
 - Webpack JS bundler task (`tasks/javascript/javascript.js`) & (`webpack.config.js`)
