@@ -1,4 +1,7 @@
 {
   "parser": "babel-eslint",
-  "extends": "@e-sites/eslint-config"
+  "extends": "@e-sites/eslint-config",
+  "rules": {
+    "linebreak-style": ["error", "windows"]
+  }
 }
