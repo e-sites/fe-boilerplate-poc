@@ -14,12 +14,10 @@
 
 @mixin list-decimal {
   @include list-padding;
-
   list-style-type: decimal;
 }
 
 @mixin list-bullets {
   @include list-padding;
-
   list-style-type: disc;
 }
