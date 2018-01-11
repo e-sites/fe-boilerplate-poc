@@ -12,20 +12,20 @@ const { handleError, handleSuccess } = require('../base/handlers');
 const rename = require('gulp-rename');
 const parsemjml = require('gulp-mjml');
 
-const { paths, mjml } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { paths, mjml } = require('../base/conf');
 
 const folder = paths.folders.mjml;
 
-const mjmlconvert = () => gulp
-  .src(`${paths.source + folder}/**/*.mjml`)
-  .pipe(handleError('mjmlconvert', 'MJML generation failed'))
-  .pipe(parsemjml())
-  .pipe(rename((file) => {
-    file.extname += mjml.extension.length > 0 ? mjml.extension : '';
-  }))
-  .pipe(gulp.dest(file => file.base))
-  .pipe(handleSuccess('mjmlconvert', 'MJML generation succeeded'));
-
+const mjmlconvert = () =>
+  gulp
+    .src(`${paths.source + folder}/**/*.mjml`)
+    .pipe(handleError('mjmlconvert', 'MJML generation failed'))
+    .pipe(parsemjml())
+    .pipe(rename((file) => {
+      file.extname += mjml.extension.length > 0 ? mjml.extension : '';
+    }))
+    .pipe(gulp.dest(file => file.base))
+    .pipe(handleSuccess('mjmlconvert', 'MJML generation succeeded'));
 
 const mjmlTask = gulp.series(mjmlconvert);
 

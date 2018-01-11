@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const tasker = require('gulp-tasker');
 
 // Expose config
-const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { paths } = require('../base/conf');
 
 // Load all tasks
 tasker.loadTasks({
@@ -18,12 +18,12 @@ gulp.task('deploy', gulp.series(tasker.getTasks('deploy').tasks));
 gulp.task('default', gulp.series(tasker.getTasks('default').tasks));
 
 // Watch task when run with 'gulp watch'
-gulp.task('watch', gulp.series('default', () => {
-  tasker
-    .getTasks('watch')
-    .tasks
-    .forEach((task) => {
+gulp.task(
+  'watch',
+  gulp.series('default', () => {
+    tasker.getTasks('watch').tasks.forEach((task) => {
       // gulp.watch(task.folders, gulp.parallel(task.tasks));
       gulp.watch(task.folders, gulp.parallel(task.tasks));
     });
-}));
+  })
+);

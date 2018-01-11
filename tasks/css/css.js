@@ -17,7 +17,7 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const { handleError, handleSuccess } = require('../base/handlers');
 
-const { revisionFiles, paths } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { revisionFiles, paths } = require('../base/conf');
 
 const folder = paths.folders.css;
 

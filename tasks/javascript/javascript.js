@@ -1,5 +1,5 @@
 /**
-* Concats/minifies all JS files as defined in config.json under the 'build' key
+ * Concats/minifies all JS files as defined in config.json under the 'build' key
  *
  * @author   Iain van der Wiel <iain@e-sites.nl>
  * @version  0.1.0
@@ -14,7 +14,7 @@ const notify = require('gulp-notify');
 const notifier = require('node-notifier'); // eslint-disable-line
 const webpackConfig = require('../../webpack.config.js');
 
-const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { paths } = require('../base/conf');
 
 const folder = paths.folders.js;
 
