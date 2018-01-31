@@ -28,7 +28,6 @@ These tasks are included in this setup:
 - `gulp css`
 - `gulp js`
 - `gulp svg`
-- `gulp sprite` (Requires Glue)
 - `gulp watch`
 
 ## Features
