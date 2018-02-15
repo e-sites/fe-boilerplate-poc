@@ -1,9 +1,8 @@
+const path = require('path');
 const fs = require('fs');
 const Encore = require('@symfony/webpack-encore');
 
 const { revisionFiles, paths, js: { entries, vendor } } = JSON.parse(fs.readFileSync('./package.json')).config;
-
-const folder = paths.folders.js;
 
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'dev';
 
@@ -11,23 +10,31 @@ Encore.configureRuntimeEnvironment(env);
 
 Encore
   // directory where all compiled assets will be stored
-  .setOutputPath(paths.dist + folder)
+  .setOutputPath(paths.dist)
 
   // what's the public path to this directory (relative to your project's document root dir)
-  .setPublicPath('/build/js/')
+  .setPublicPath('/build')
+
+  .enableSassLoader((options) => {
+    options.includePaths = [
+      path.resolve(process.cwd(), 'node_modules'),
+    ]
+  })
+
+  .enablePostCssLoader()
 
   // empty the outputPath dir before each build
-  // .cleanupOutputBeforeBuild()
+  .cleanupOutputBeforeBuild()
 
   .enableSourceMaps(!Encore.isProduction())
 
   // Split vendor assets from the entries
-  .createSharedEntry('vendor', vendor);
+  .createSharedEntry('js/vendor', vendor);
 
 
 // Dynamically load entry points
 entries.forEach((entry) => {
-  Encore.addEntry(entry.replace('.js', ''), `${paths.source + folder}/${entry}`);
+  Encore.addEntry(entry.replace(/(.*)\.(.*?)$/, '$1'), `${paths.source}/${entry}`);
 });
 
 
