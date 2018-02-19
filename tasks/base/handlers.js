@@ -24,6 +24,7 @@ module.exports = {
    */
   handleSuccess: (taskName, msg) =>
     notify({
+      onLast: true,
       title: taskName,
       message: `Success: ${msg}`,
     }),

@@ -12,6 +12,8 @@ const gulpif = require('gulp-if');
 const del = require('del');
 const tasker = require('gulp-tasker');
 const sass = require('gulp-sass');
+const stylelint = require('gulp-stylelint');
+const notify = require('gulp-notify');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
@@ -28,27 +30,40 @@ const cleancss = (done) => {
   done();
 };
 
-const compilecss = () => gulp
-  .src([`${paths.source + folder}/styles.scss`])
-  .pipe(handleError('sass', 'SASS compiling failed'))
-  .pipe(gulpif(debug, sourcemaps.init()))
-  .pipe(sass().on('error', sass.logError))
-  .pipe(cleanCSS({
-    level: debug ? 0 : 2,
-  }))
-  .pipe(autoprefixer())
-  .pipe(gulpif(revisionFiles, rev()))
-  .pipe(gulpif(debug, sourcemaps.write('./')))
-  .pipe(gulp.dest(paths.dist + folder))
-  .pipe(gulpif(revisionFiles, rev.manifest({
-    merge: true,
-    path: 'manifest.json',
-  })))
-  .pipe(gulpif(revisionFiles, gulp.dest(paths.dist + folder)))
-  .pipe(handleSuccess('sass', 'SASS compiling succeeded'));
+const lintcss = cb =>
+  gulp
+    .src([`${paths.source + folder}/**/*.scss`])
+    .pipe(handleError('sass', 'SASS linting failed. See terminal for errors.'))
+    .pipe(stylelint({
+      reporters: [{ formatter: 'string', console: true }],
+    }));
 
-const cssTask = gulp.series(cleancss, compilecss);
+const compilecss = () =>
+  gulp
+    .src([`${paths.source + folder}/styles.scss`])
+    .pipe(handleError('sass', 'SASS compiling failed'))
+    .pipe(gulpif(debug, sourcemaps.init()))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cleanCSS({
+      level: debug ? 0 : 2,
+    }))
+    .pipe(autoprefixer())
+    .pipe(gulpif(revisionFiles, rev()))
+    .pipe(gulpif(debug, sourcemaps.write('./')))
+    .pipe(gulp.dest(paths.dist + folder))
+    .pipe(gulpif(
+      revisionFiles,
+      rev.manifest({
+        merge: true,
+        path: 'manifest.json',
+      })
+    ))
+    .pipe(gulpif(revisionFiles, gulp.dest(paths.dist + folder)))
+    .pipe(handleSuccess('sass', 'SASS compiling succeeded'));
 
+const cssTask = gulp.series(cleancss, gulp.parallel(lintcss, compilecss));
+
+gulp.task('lintcss', lintcss);
 gulp.task('css', cssTask);
 
 tasker.addTask('default', cssTask);
