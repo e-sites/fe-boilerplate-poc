@@ -10,7 +10,7 @@ const gulp = require('gulp');
 const tasker = require('gulp-tasker');
 const { exec } = require('child_process');
 
-const { paths, patternlib } = JSON.parse(fs.readFileSync('./package.json')).config;
+const { paths, patternlibrary } = JSON.parse(fs.readFileSync('./package.json')).config;
 
 const patternlib = (done) => {
   exec('php core/console --generate', (err, stdout, stderr) => {
@@ -18,10 +18,10 @@ const patternlib = (done) => {
     console.log(stderr);
     done();
   });
-});
+};
 
 // tasker.addTask('default', patternlib');
 // tasker.addTask('deploy', patternlib');
-if ( patternlib ) {
-  tasker.addTask('watch', patternlib', `${paths.patterns}/**/*`);
+if (patternlibrary) {
+  tasker.addTask('watch', patternlib, `${paths.patterns}/**/*`);
 }
