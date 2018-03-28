@@ -14,7 +14,7 @@ Encore
   .setOutputPath(paths.dist + folder)
 
   // what's the public path to this directory (relative to your project's document root dir)
-  .setPublicPath('/build/js/')
+  .setPublicPath(`/${paths.public + folder}`)
 
   // empty the outputPath dir before each build
   // .cleanupOutputBeforeBuild()
@@ -24,16 +24,15 @@ Encore
   // Split vendor assets from the entries
   .createSharedEntry('vendor', vendor);
 
-
 // Dynamically load entry points
 entries.forEach((entry) => {
   Encore.addEntry(entry.replace('.js', ''), `${paths.source + folder}/${entry}`);
 });
 
-
 // Check for errors and exit the process
 if (env === 'production') {
-  Encore.addPlugin(function () { // eslint-disable-line func-names, needed to expose `this`
+  Encore.addPlugin(function () {
+    // eslint-disable-line func-names, needed to expose `this`
     this.plugin('done', (stats) => {
       if (stats.compilation.errors && stats.compilation.errors.length) {
         throw new Error('webpack build failed');
@@ -42,7 +41,7 @@ if (env === 'production') {
   });
 }
 
-if (revisionFiles) {
+if (revisionFiles && env === 'production') {
   Encore.enableVersioning();
 }
 

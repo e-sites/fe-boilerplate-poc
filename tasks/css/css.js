@@ -28,24 +28,41 @@ const cleancss = (done) => {
   done();
 };
 
-const compilecss = () => gulp
-  .src([`${paths.source + folder}/styles.scss`])
-  .pipe(handleError('sass', 'SASS compiling failed'))
-  .pipe(gulpif(debug, sourcemaps.init()))
-  .pipe(sass().on('error', sass.logError))
-  .pipe(cleanCSS({
-    level: debug ? 0 : 2,
-  }))
-  .pipe(autoprefixer())
-  .pipe(gulpif(revisionFiles, rev()))
-  .pipe(gulpif(debug, sourcemaps.write('./')))
-  .pipe(gulp.dest(paths.dist + folder))
-  .pipe(gulpif(revisionFiles, rev.manifest({
-    merge: true,
-    path: 'manifest.json',
-  })))
-  .pipe(gulpif(revisionFiles, gulp.dest(paths.dist + folder)))
-  .pipe(handleSuccess('sass', 'SASS compiling succeeded'));
+const compilecss = () =>
+  gulp
+    .src([`${paths.source + folder}/styles.scss`])
+    .pipe(handleError('sass', 'SASS compiling failed'))
+    .pipe(gulpif(debug, sourcemaps.init()))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cleanCSS({
+      level: debug ? 0 : 2,
+    }))
+    .pipe(autoprefixer())
+    .pipe(gulpif(revisionFiles && !debug, rev()))
+    .pipe(gulpif(debug, sourcemaps.write('./')))
+    .pipe(gulp.dest(paths.dist + folder))
+    .pipe(gulpif(
+      revisionFiles && !debug,
+      rev.manifest({
+        merge: true,
+        path: 'manifest.json',
+        transformer: {
+          stringify: (map) => {
+            const keys = Object.keys(map);
+
+            keys.map((key) => {
+              map[`${paths.public + folder}/${key}`] = `/${paths.public + folder}/${map[key]}`;
+              delete map[key];
+              return key;
+            });
+
+            return JSON.stringify(map);
+          },
+        },
+      })
+    ))
+    .pipe(gulpif(revisionFiles, gulp.dest(paths.dist + folder)))
+    .pipe(handleSuccess('sass', 'SASS compiling succeeded'));
 
 const cssTask = gulp.series(cleancss, compilecss);
 

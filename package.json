@@ -11,9 +11,7 @@
   "license": "MIT",
   "config": {
     "js": {
-      "entries": [
-        "app.js"
-      ],
+      "entries": ["app.js"],
       "vendor": [
         "./assets/js/polyfills/core-js",
         "svgxuse",
@@ -26,10 +24,13 @@
       "tasks": "/tasks",
       "source": "./assets",
       "dist": "./build",
+      "webroot": "./web",
+      "public": "build",
       "folders": {
+        "fonts": "/fonts",
         "css": "/css",
         "js": "/js",
-        "images": "/images",
+        "images": "/img",
         "svg": "/svg",
         "mjml": "/path-to-mail"
       }
@@ -40,10 +41,7 @@
       "extension": ".twig"
     }
   },
-  "browserslist": [
-    "last 2 versions",
-    "ie >= 10"
-  ],
+  "browserslist": ["last 2 versions", "ie >= 10"],
   "devDependencies": {
     "@e-sites/eslint-config": "^1.0.1",
     "@e-sites/stylelint-config-esites": "^1.0.0",
