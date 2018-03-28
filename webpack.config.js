@@ -1,5 +1,7 @@
 const fs = require('fs');
 const Encore = require('@symfony/webpack-encore');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const eslintPretty = require('eslint-formatter-pretty');
 
 const { revisionFiles, paths, js: { entries, vendor } } = JSON.parse(fs.readFileSync('./package.json')).config;
 
@@ -21,19 +23,31 @@ Encore
 
   .enableSourceMaps(!Encore.isProduction())
 
+  // Add linting
+  .addLoader({
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'eslint-loader',
+    options: {
+      formatter: eslintPretty,
+    },
+  })
+
+  // Add notifications
+  .addPlugin(new WebpackNotifierPlugin())
+
   // Split vendor assets from the entries
   .createSharedEntry('vendor', vendor);
-
 
 // Dynamically load entry points
 entries.forEach((entry) => {
   Encore.addEntry(entry.replace('.js', ''), `${paths.source + folder}/${entry}`);
 });
 
-
 // Check for errors and exit the process
 if (env === 'production') {
-  Encore.addPlugin(function () { // eslint-disable-line func-names, needed to expose `this`
+  // eslint-disable-line func-names
+  Encore.addPlugin(function () {
     this.plugin('done', (stats) => {
       if (stats.compilation.errors && stats.compilation.errors.length) {
         throw new Error('webpack build failed');

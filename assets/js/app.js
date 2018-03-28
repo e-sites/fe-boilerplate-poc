@@ -26,7 +26,6 @@ import './utilities/setExtLinks';
  */
 vestigo.init();
 
-
 /**
  * Configure conditioner
  */
@@ -36,7 +35,8 @@ conditioner.addPlugin({
   // get the module constructor
   moduleGetConstructor: module => module.default,
   // override the import
-  moduleImport: name => import( // eslint-disable-line
+  // prettier-ignore
+  moduleImport: name => import(
     /* https://webpack.js.org/api/module-methods/#import- */
     /* set to "eager" to create a single chunk for all modules */
     /* set to "lazy" to create a separate chunk for each module */

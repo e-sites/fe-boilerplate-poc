@@ -1,5 +1,5 @@
 /**
-* Concats/minifies all JS files as defined in config.json under the 'build' key
+ * Concats/minifies all JS files as defined in config.json under the 'build' key
  *
  * @author   Iain van der Wiel <iain@e-sites.nl>
  * @version  0.1.0
@@ -13,6 +13,7 @@ const webpack = require('webpack-stream');
 const notify = require('gulp-notify');
 const notifier = require('node-notifier'); // eslint-disable-line
 const webpackConfig = require('../../webpack.config.js');
+const { handleError, handleSuccess } = require('../base/handlers');
 
 const { paths } = JSON.parse(fs.readFileSync('./package.json')).config;
 
@@ -27,13 +28,10 @@ const js = (allDone) => {
   const stream = webpack(webpackConfig);
 
   return stream
-    .on('error', notify.onError(error => error))
+    .pipe(handleError('js', 'JS build failed'))
     .pipe(gulp.dest(paths.dist + folder))
+    .pipe(handleSuccess('js', 'JS build succeeded'))
     .on('close', () => {
-      notifier.notify({
-        title: 'js',
-        message: 'Files written to disk',
-      });
       allDone();
     });
 };
