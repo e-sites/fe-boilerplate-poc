@@ -24,7 +24,7 @@
       "tasks": "/tasks",
       "source": "./assets",
       "dist": "./build",
-      "webroot": "./web",
+      "webroot": "./",
       "public": "build",
       "folders": {
         "fonts": "/fonts",
@@ -34,6 +34,10 @@
         "svg": "/svg",
         "mjml": "/path-to-mail"
       }
+    },
+    "sync": {
+      "open": "local",
+      "openPath": ""
     },
     "revisionFiles": true,
     "mjml": {
@@ -50,6 +54,7 @@
     "babel-plugin-dynamic-import-webpack": "^1.0.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-stage-3": "^6.24.1",
+    "browser-sync": "^2.23.6",
     "del": "^3.0.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
