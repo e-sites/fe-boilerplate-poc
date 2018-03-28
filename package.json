@@ -35,6 +35,8 @@
         "mjml": "/path-to-mail"
       }
     },
+    "copyAssets": false,
+    "patternlib": false,
     "sync": {
       "open": "local",
       "openPath": ""
