@@ -11,9 +11,7 @@
   "license": "MIT",
   "config": {
     "js": {
-      "entries": [
-        "app.js"
-      ],
+      "entries": ["app.js"],
       "vendor": [
         "./assets/js/polyfills/core-js",
         "svgxuse",
@@ -26,13 +24,22 @@
       "tasks": "/tasks",
       "source": "./assets",
       "dist": "./build",
+      "webroot": "./",
+      "public": "build",
       "folders": {
+        "fonts": "/fonts",
         "css": "/css",
         "js": "/js",
-        "images": "/images",
+        "images": "/img",
         "svg": "/svg",
         "mjml": "/path-to-mail"
       }
+    },
+    "copyAssets": false,
+    "patternlib": false,
+    "sync": {
+      "open": "local",
+      "openPath": ""
     },
     "revisionFiles": true,
     "mjml": {
@@ -40,10 +47,7 @@
       "extension": ".twig"
     }
   },
-  "browserslist": [
-    "last 2 versions",
-    "ie >= 10"
-  ],
+  "browserslist": ["last 2 versions", "ie >= 10"],
   "devDependencies": {
     "@e-sites/eslint-config": "^1.0.1",
     "@e-sites/stylelint-config-esites": "^1.0.0",
@@ -52,6 +56,7 @@
     "babel-plugin-dynamic-import-webpack": "^1.0.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-stage-3": "^6.24.1",
+    "browser-sync": "^2.23.6",
     "del": "^3.0.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
