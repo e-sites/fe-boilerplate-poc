@@ -47,25 +47,25 @@ const serve = (done) => {
 
   browserSync.init(config);
 
+  // Reload the browser hard!
+  const reload = () => {
+    browserSync.reload();
+  };
+
+  // Reload the browser with injected CSS
+  const reloadCSS = () => {
+    browserSync.reload('*.css');
+  };
+
+  const fileWatcher = gulp.watch(`${paths.dist}/**/*.{html,js,svg}`);
+  fileWatcher.on('add', reload);
+  fileWatcher.on('change', reload);
+
+  const cssWatcher = gulp.watch(`${paths.dist}/**/style.css`);
+  cssWatcher.on('add', reloadCSS);
+  cssWatcher.on('change', reloadCSS);
+
   done();
 };
 
-// Reload the browser hard!
-const reload = () => {
-  browserSync.reload();
-};
-
-// Reload the browser with injected CSS
-const reloadCSS = () => {
-  browserSync.reload('*.css');
-};
-
-tasker.addTask('default', serve);
-
-const fileWatcher = gulp.watch(`${paths.dist}/**/*.{html,js,svg}`);
-fileWatcher.on('add', reload);
-fileWatcher.on('change', reload);
-
-const cssWatcher = gulp.watch(`${paths.dist}/**/style.css`);
-cssWatcher.on('add', reloadCSS);
-cssWatcher.on('change', reloadCSS);
+tasker.addTask('sync', serve);

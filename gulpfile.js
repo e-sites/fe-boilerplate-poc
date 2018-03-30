@@ -17,13 +17,15 @@ gulp.task('deploy', gulp.series(tasker.getTasks('deploy').tasks));
 // Default task when run with 'gulp'
 gulp.task('default', gulp.series(tasker.getTasks('default').tasks));
 
+// Sync task when run with 'gulp sync'
+gulp.task('sync', gulp.series(tasker.getTasks('sync').tasks));
+
 // Watch task when run with 'gulp watch'
-gulp.task('watch', gulp.series('default', () => {
-  tasker
-    .getTasks('watch')
-    .tasks
-    .forEach((task) => {
-      // gulp.watch(task.folders, gulp.parallel(task.tasks));
+gulp.task(
+  'watch',
+  gulp.series('default', 'sync', () => {
+    tasker.getTasks('watch').tasks.forEach((task) => {
       gulp.watch(task.folders, gulp.parallel(task.tasks));
     });
-}));
+  })
+);
