@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/e-sites/fe-boilerplate-poc.git"
   },
+  "scripts": {
+    "start": "gulp watch",
+    "build": "gulp"
+  },
   "license": "MIT",
   "config": {
     "js": {
