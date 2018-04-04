@@ -1,21 +1,22 @@
-// Typography
-$font-regular: Arial, sans-serif;
-$font-heading: Verdana, $font-regular;
+/*  =========================================================================
+    settings.typography
+    Base typographic settings
+    ========================================================================= */
 
-$font-family-base: $font-regular;
-$font-family-heading: $font-heading;
+// Fonts
+$font-family-base: Arial, sans-serif;
+$font-family-heading: Verdana, $font-family-base;
 
 // Font Sizes
 $font-size-base: 1rem;
 $font-size-larger: 1.5rem;
 $font-size-large: 1.25rem;
 $font-size-small: 0.875rem;
-$font-size-smaller: 0.8125rem;
-$font-size-button: 1.0625rem;
+$font-size-smaller: 0.75rem;
 
 // Line height
 $line-height-base: 1.5;
-$line-height-heading: 1.2;
+// $line-height-heading: 1.2; // ^refactor: Do we need this?
 
 // Heading scale
-$heading-scale: 1.21;
+// $heading-scale: 1.21; // ^refactor: Do we need this?
