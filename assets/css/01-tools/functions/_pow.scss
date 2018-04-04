@@ -1,9 +1,14 @@
-@function pow($number, $exponent) {
+/*  =========================================================================
+    tools.functions.pow
+    The pow function returns the base to the exponent power.
+    ========================================================================= */
+
+@function pow($base, $exponent) {
   $value: 1;
 
   @if $exponent > 0 {
     @for $i from 1 through $exponent {
-      $value: $value * $number;
+      $value: $value * $base;
     }
   }
 
