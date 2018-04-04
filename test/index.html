@@ -22,10 +22,139 @@
     (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-XXXXX-X'); ga('send', 'pageview');
   </script>
+
+  <style>
+    /* just for testing purposes, do not copy this into your project */
+    body {
+      margin: 24px;
+    }
+
+    .module__title,
+    .test__describe,
+    .test__it {
+      padding: 12px 24px;
+      margin-bottom: 24px;
+      background-color: #eeeeee;
+    }
+
+    .test__describe,
+    .test__it {
+      border-left: 3px solid #666666;
+      padding-left: calc(24px - 3px);
+    }
+
+    .module__title::before,
+    .test__describe::before,
+    .test__it::before {
+      margin-right: 24px;
+      color: #999999;
+    }
+
+    .module {
+      counter-increment: module;
+    }
+
+    .module__title {
+      margin-top: 96px;
+      font-size: 2.369em;
+      counter-reset: test-describe;
+    }
+
+    .module__title::before {
+      content: counter(module);
+    }
+
+    .test {}
+
+    .test__describe {
+      margin-top: 48px;
+      font-size: 1.777em;
+      counter-reset: test-it;
+      counter-increment: test-describe;
+    }
+
+    .test__describe::before {
+      content: counter(module) '.' counter(test-describe);
+    }
+
+    .test__it {
+      margin-top: 12px;
+      font-size: 1.333em;
+      counter-increment: test-it;
+    }
+
+    .test__it::before {
+      content: counter(module) '.' counter(test-describe) '.' counter(test-it);
+    }
+
+    .test__run {}
+  </style>
 </head>
 
 <body>
-  <h1>content</h1>
+  <h1>Test file</h1>
+
+  <div class="module" id="generic">
+    <h2 class="module__title">Base tests</h2>
+    <div class="test">
+      <h3 class="test__describe">h1-h6</h3>
+      <div class="test__run">
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">hgroup, ul, ol, dl, blockquote, p, address, table, fieldset, figure, pre, hr</h3>
+      <div class="test__run">
+        <hgroup>hgroup</hgroup>
+        <ul>
+          <li>Unordered list: item 1</li>
+          <li>Unordered list: item 2</li>
+        </ul>
+        <ol>
+          <li>Ordered list: item 1</li>
+          <li>Ordered list: item 2</li>
+        </ol>
+        <dl>
+          <dt>Definition list: Term</dt>
+          <dd>Definition list: Description</dd>
+        </dl>
+        <blockquote>Blockquote content</blockquote>
+        <p>Paragraph</p>
+        <address>Address</address>
+        <table>
+          <tbody>
+            <tr>
+              <td>Table</td>
+            </tr>
+          </tbody>
+        </table>
+        <fieldset>Fieldset</fieldset>
+        <figure>Figure</figure>
+        <pre>Preformatted text</pre>
+        <hr>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">button</h3>
+      <div class="test__run">
+        <p>
+          <button type="button">Button content</button>
+        </p>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">[tabindex="-1"]:focus</h3>
+      <h4 class="test__it">has no focus outline (try clicking to trigger focus)</h4>
+      <div class="test__run">
+        <a href="#_" tabindex="-1">Link content</a>
+        <button type="button" tabindex="-1">Button content</button>
+      </div><!-- .test__run -->
+
+    </div><!-- .test -->
+  </div><!-- .module -->
+
   <a href="http://google.nl" target="_blank">External link</a>
 
   <div data-module="ui/test" data-context="@media (min-width:30em)"></div>
