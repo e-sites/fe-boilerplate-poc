@@ -45,7 +45,7 @@
     "patternlib": false,
     "sync": {
       "open": "local",
-      "openPath": ""
+      "openPath": "/test"
     },
     "revisionFiles": true,
     "mjml": {
