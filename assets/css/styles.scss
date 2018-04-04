@@ -1,5 +1,14 @@
-// Suppress Bourbon deprecation warnings
+/*! E-sites | https://e-sites.nl */
+
+/*  =========================================================================
+    Styles
+    Base manifest file for your project.
+    In conjunction with http://bourbon.io.
+    ========================================================================= */
+
 $output-bourbon-deprecation-warnings: false;
+
+@import 'node_modules/bourbon/core/bourbon';
 
 @import '00-settings/_settings';
 @import '01-tools/_tools';
