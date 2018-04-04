@@ -1,8 +1,8 @@
-body {
-  color: $color-base-font;
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
+html {
+  color: $base-font-color;
+  font-family: $base-font-family;
+  font-size: 100%;
+  line-height: $base-line-height;
 }
 
 h1,
@@ -11,70 +11,35 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-family-heading;
-  font-weight: normal;
-  font-size: $font-size-base;
-  line-height: $line-height-heading;
-  margin: 0 0 $spacing-small;
-}
-
-h1 {
-  font-size: heading-scale(6);
-}
-
-h2 {
-  font-size: heading-scale(5);
-}
-
-h3 {
-  font-size: heading-scale(4);
-}
-
-h4 {
-  font-size: heading-scale(3);
-}
-
-h5 {
-  font-size: heading-scale(2);
-}
-
-h6 {
-  font-size: heading-scale(1);
+  font-family: $heading-font-family;
+  font-size: modular-scale(1);
+  line-height: $heading-line-height;
+  margin: 0 0 $small-spacing;
 }
 
 p {
-  margin: 0 0 $spacing-small;
-}
-
-b,
-strong {
-  font-weight: bold;
+  margin: 0 0 $small-spacing;
 }
 
 a {
-  color: $color-primary;
-  fill: currentColor;
-  transition: color $animation-base-duration $animation-base-timing;
+  color: $action-color;
+  text-decoration-skip: ink;
+  transition: color $base-duration $base-timing;
 
-  &:active,
-  &:focus,
   &:hover {
-    text-decoration: none;
+    color: shade($action-color, 25%);
   }
-}
 
-:link,
-#{$all-buttons} {
   &:focus {
-    outline: 0;
-    box-shadow: 0 0 1px $color-primary;
+    outline: $focus-outline;
+    outline-offset: $focus-outline-offset;
   }
 }
 
 hr {
-  border-bottom: $border-base;
+  border-bottom: $base-border;
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  margin: $spacing-base 0;
+  margin: $base-spacing 0;
 }

@@ -15,7 +15,9 @@
   "license": "MIT",
   "config": {
     "js": {
-      "entries": ["app.js"],
+      "entries": [
+        "app.js"
+      ],
       "vendor": [
         "./assets/js/polyfills/core-js",
         "svgxuse",
@@ -51,7 +53,10 @@
       "extension": ".twig"
     }
   },
-  "browserslist": ["last 2 versions", "ie >= 10"],
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 10"
+  ],
   "devDependencies": {
     "@e-sites/eslint-config": "^1.0.1",
     "@e-sites/stylelint-config-esites": "^1.0.0",
@@ -89,8 +94,8 @@
   "dependencies": {
     "@e-sites/vestigo": "^0.1.0",
     "babel-polyfill": "^6.26.0",
-    "bourbon": "4.3.4",
-    "bourbon-neat": "1.9.0",
+    "bourbon": "^5.0.0",
+    "bourbon-neat": "^2.1.0",
     "conditioner-core": "^2.1.0",
     "core-js": "^2.5.1",
     "element-dataset": "^2.2.6",

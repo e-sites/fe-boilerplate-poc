@@ -1,3 +1,7 @@
+$_form-background-color: #fff;
+$_form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$_form-box-shadow-focus: $_form-box-shadow, 0 0 5px rgba($action-color, 0.7);
+
 fieldset {
   background-color: transparent;
   border: 0;
@@ -7,108 +11,86 @@ fieldset {
 
 legend {
   font-weight: 600;
-  margin-bottom: $spacing-small / 2;
+  margin-bottom: $small-spacing / 2;
   padding: 0;
 }
 
 label {
-  display: inline-block;
-  vertical-align: top;
-  font-family: $font-regular;
-  margin: 0 $spacing-base $spacing-small / 2 0;
-  padding: $spacing-small 0;
-  width: 180px;
-  line-height: 1.5;
+  display: block;
+  font-weight: 600;
+  margin-bottom: $small-spacing / 2;
 }
 
 input,
 select,
 textarea {
   display: block;
-  font-family: $font-family-base;
-  font-size: $font-size-base;
+  font-family: $base-font-family;
+  font-size: 16px;
 }
 
-#{$all-text-inputs},
-select {
-  display: inline-block;
-  vertical-align: top;
-  border: $border-base;
-  border-radius: $border-base-radius;
+#{$all-text-inputs} {
+  appearance: none;
+  background-color: $_form-background-color;
+  border: $base-border;
+  border-radius: $base-border-radius;
+  box-shadow: $_form-box-shadow;
   box-sizing: border-box;
-  color: $color-base-font;
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  line-height: 1.5;
-  margin-bottom: $spacing-small;
-  padding: $spacing-small ($spacing-small * 1.5);
-  transition: border-color $animation-base-duration $animation-base-timing;
+  margin-bottom: $small-spacing;
+  padding: $base-spacing / 3;
+  transition: border-color $base-duration $base-timing;
   width: 100%;
-  max-width: 380px;
-  background-color: $color-gray-light;
 
-  &:focus,
   &:hover {
-    border-color: $color-action;
+    border-color: shade($base-border-color, 20%);
+  }
+
+  &:focus {
+    border-color: $action-color;
+    box-shadow: $_form-box-shadow-focus;
     outline: none;
   }
 
   &:disabled {
-    background-color: shade($color-base-background, 5%);
+    background-color: shade($_form-background-color, 5%);
     cursor: not-allowed;
 
     &:hover {
-      border: $border-base;
+      border: $base-border;
     }
   }
 
-  &.form-error,
-  &:invalid,
-  &:user-invalid {
-    border-color: $color-red;
+  &::placeholder {
+    color: tint($base-font-color, 40%);
   }
 }
 
 textarea {
   resize: vertical;
-  min-height: 150px;
 }
 
-[type='search'] {
-  appearance: none;
-}
-
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   display: inline;
-  margin-right: $spacing-small / 2;
-
-  + label {
-    display: inline-block;
-    vertical-align: top;
-    padding: 0;
-    max-width: 90%;
-    width: auto;
-    line-height: $line-height-base;
-  }
+  margin-right: $small-spacing / 2;
 }
 
-select {
-  appearance: none;
-  background-image: url('../../assets/svg/dropdown.svg');
-  background-repeat: no-repeat;
-  background-position: 95% 50%;
-  background-position: right ($spacing-small * 1.5) top 50%;
-
-  &::-ms-expand {
-    display: none;
-  }
-}
-
-[type='file'] {
+[type="file"] {
+  margin-bottom: $small-spacing;
   width: 100%;
 }
 
-@include placeholder {
-  color: rgba($color-base-font, 0.7);
+select {
+  margin-bottom: $small-spacing;
+  width: 100%;
+}
+
+[type="checkbox"],
+[type="radio"],
+[type="file"],
+select {
+  &:focus {
+    outline: $focus-outline;
+    outline-offset: $focus-outline-offset;
+  }
 }

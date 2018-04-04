@@ -1,24 +1,29 @@
 table {
   border-collapse: collapse;
-  margin: $spacing-small 0;
+  margin: $base-spacing 0;
   table-layout: fixed;
+  text-align: left;
   width: 100%;
 }
 
+thead {
+  line-height: $heading-line-height;
+  vertical-align: bottom;
+}
+
+tbody {
+  vertical-align: top;
+}
+
+tr {
+  border-bottom: $base-border;
+}
+
 th {
-  border-bottom: 1px solid shade($color-base-border, 25%);
   font-weight: 600;
-  padding: $spacing-small 0;
-  text-align: left;
 }
 
+th,
 td {
-  border-bottom: $border-base;
-  padding: $spacing-small 0;
-}
-
-tr,
-td,
-th {
-  vertical-align: middle;
+  padding: $small-spacing $small-spacing $small-spacing 0;
 }

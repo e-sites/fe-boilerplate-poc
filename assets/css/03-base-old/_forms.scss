@@ -1,0 +1,114 @@
+fieldset {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-weight: 600;
+  margin-bottom: $spacing-small / 2;
+  padding: 0;
+}
+
+label {
+  display: inline-block;
+  vertical-align: top;
+  font-family: $font-regular;
+  margin: 0 $spacing-base $spacing-small / 2 0;
+  padding: $spacing-small 0;
+  width: 180px;
+  line-height: 1.5;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+}
+
+#{$all-text-inputs},
+select {
+  display: inline-block;
+  vertical-align: top;
+  border: $border-base;
+  border-radius: $border-base-radius;
+  box-sizing: border-box;
+  color: $color-base-font;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  margin-bottom: $spacing-small;
+  padding: $spacing-small ($spacing-small * 1.5);
+  transition: border-color $animation-base-duration $animation-base-timing;
+  width: 100%;
+  max-width: 380px;
+  background-color: $color-gray-light;
+
+  &:focus,
+  &:hover {
+    border-color: $color-action;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: shade($color-base-background, 5%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: $border-base;
+    }
+  }
+
+  &.form-error,
+  &:invalid,
+  &:user-invalid {
+    border-color: $color-red;
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+[type='search'] {
+  appearance: none;
+}
+
+[type='checkbox'],
+[type='radio'] {
+  display: inline;
+  margin-right: $spacing-small / 2;
+
+  + label {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    max-width: 90%;
+    width: auto;
+    line-height: $line-height-base;
+  }
+}
+
+select {
+  appearance: none;
+  background-image: url('../../assets/svg/dropdown.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  background-position: right ($spacing-small * 1.5) top 50%;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+[type='file'] {
+  width: 100%;
+}
+
+@include placeholder {
+  color: rgba($color-base-font, 0.7);
+}
