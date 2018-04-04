@@ -8,11 +8,11 @@
 @import 'spacing';
 @import 'colors';
 @import 'animations';
-
-// @import 'grid-settings';
-// @import 'forms';
+@import 'responsive';
 
 // ^refactor, needs category
 // $border-base: 1px solid $color-base-border;
 // $border-base-radius: $spacing-small;
 // $border-radius-button: 25px;
+// $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+// $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($color-action, $lightness: -5%, $alpha: -0.3);
