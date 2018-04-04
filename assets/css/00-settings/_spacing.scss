@@ -1,0 +1,10 @@
+/*  =========================================================================
+    settings.spacing
+    ========================================================================= */
+
+// Other Sizes
+$spacing-base: $font-size-base * $line-height-base !default;
+$spacing-huge: $spacing-base * 4 !default;
+$spacing-large: $spacing-base * 2 !default;
+$spacing-small: $spacing-base / 2 !default;
+$spacing-tiny: $spacing-base / 4 !default;

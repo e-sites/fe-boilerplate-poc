@@ -5,9 +5,14 @@
 
 @import 'bourbon';
 @import 'typography';
+@import 'spacing';
+@import 'colors';
 
-// @import 'grid-settings';
 // @import 'animations';
-// @import 'colors';
+// @import 'grid-settings';
 // @import 'forms';
-// @import 'sizing';
+
+// ^refactor, needs category
+// $border-base: 1px solid $color-base-border;
+// $border-base-radius: $spacing-small;
+// $border-radius-button: 25px;
