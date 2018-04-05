@@ -1,0 +1,48 @@
+/**
+ * RTE Content styling
+ */
+
+.editor-content {
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    + * {
+      margin-top: $spacing-small;
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 20px;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  img,
+  iframe {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .align-left {
+    margin-right: $spacing-base;
+  }
+
+  .align-right {
+    margin-left: $spacing-base;
+  }
+}
