@@ -162,36 +162,43 @@
       <h3 class="test__describe">Forms</h3>
       <!-- <h4 class="test__it">has no focus outline (try clicking to trigger focus)</h4> -->
       <div class="test__run">
-        <fieldset>
-          <legend>Legend</legend>
+        <form action="" data-validate>
+          <fieldset>
+            <legend>Legend</legend>
 
-          <label for="text-input">Label for input</label>
-          <input type="text" id="text-input" name="text-input" placeholder="Placeholder text">
+            <label for="text-input">Label for input</label>
+            <input type="text" id="text-input" name="text-input" placeholder="Placeholder text">
 
-          <label for="text-input-disabled">Label for disabled</label>
-          <input type="text" id="text-input-disabled" name="text-input-disabled" disabled placeholder="Placeholder text">
-        </fieldset>
+            <label for="text-input-required">Label for required input *</label>
+            <input type="text" id="text-input-required" name="text-input-required" required placeholder="Placeholder text">
 
-        <fieldset>
-          <legend>Legend</legend>
 
-          <label for="textarea">Label for textarea</label>
-          <textarea name="textarea" id="textarea" placeholder="Placeholder text"></textarea>
+            <label for="text-input-disabled">Label for disabled</label>
+            <input type="text" id="text-input-disabled" name="text-input-disabled" disabled placeholder="Placeholder text">
+          </fieldset>
 
-          <label for="select-input">Label for select</label>
-          <select name="select-input" id="select-input">
-            <option value="">Option 1</option>
-            <option value="">Option 2</option>
-            <option value="">Option 3</option>
-            <option value="">Option 4</option>
-          </select>
+          <fieldset>
+            <legend>Legend</legend>
 
-          <label>Label for radio buttons</label>
-          <div><input type="radio" name="radio-1" id="radio-1"> <label for="radio-1">Option 1</label></div>
-          <div><input type="radio" name="radio-1" id="radio-2"> <label for="radio-2">Option 2</label></div>
-          <div><input type="radio" name="radio-1" id="radio-3"> <label for="radio-3">Option 3</label></div>
-          <div><input type="radio" name="radio-1" id="radio-4"> <label for="radio-4">Option 4</label></div>
-        </fieldset>
+            <label for="textarea">Label for textarea</label>
+            <textarea name="textarea" id="textarea" placeholder="Placeholder text"></textarea>
+
+            <label for="select-input">Label for select</label>
+            <select name="select-input" id="select-input">
+              <option value="">Option 1</option>
+              <option value="">Option 2</option>
+              <option value="">Option 3</option>
+              <option value="">Option 4</option>
+            </select>
+
+            <label>Label for radio buttons</label>
+            <div><input type="radio" name="radio-1" id="radio-1"> <label for="radio-1">Option 1</label></div>
+            <div><input type="radio" name="radio-1" id="radio-2"> <label for="radio-2">Option 2</label></div>
+            <div><input type="radio" name="radio-1" id="radio-3"> <label for="radio-3">Option 3</label></div>
+            <div><input type="radio" name="radio-1" id="radio-4"> <label for="radio-4">Option 4</label></div>
+          </fieldset>
+          <button type="submit">Submit</button>
+        </form>
       </div><!-- .test__run -->
 
     </div><!-- .test -->
