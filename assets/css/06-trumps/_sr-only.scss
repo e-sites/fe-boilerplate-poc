@@ -1,8 +1,7 @@
 /*  =========================================================================
-    trumps
-    Utilities, helpers & overrides.
+    trumps.sr-only
     ========================================================================= */
 
-// @import 'breakpoint-helpers';
-@import 'reduced-motion';
-@import 'sr-only';
+.sr-only {
+  @include hide-visually;
+}
