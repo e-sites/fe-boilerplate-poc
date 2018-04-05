@@ -18,6 +18,7 @@ import * as conditioner from 'conditioner-core';
 
 // Set external links
 import './utilities/setExtLinks';
+import './utilities/form-validation';
 
 /* eslint-enable import/first */
 

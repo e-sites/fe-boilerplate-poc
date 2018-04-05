@@ -1,0 +1,14 @@
+/*  =========================================================================
+    components.form-validation
+    Based on form validation plugin: https://github.com/cferdinandi/validate
+    ========================================================================= */
+
+/**
+ * Message below the fields
+ */
+.error-message {
+  display: block;
+  margin-bottom: $spacing-base;
+  color: $color-error;
+}
+

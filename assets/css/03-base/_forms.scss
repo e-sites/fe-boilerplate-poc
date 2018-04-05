@@ -52,6 +52,18 @@ select {
   }
 
   /**
+   * Validation classes
+   * 1. Shit needs to be immutable, disabled is disabled
+   */
+  &.is-valid {
+    border-color: $color-success !important;
+  }
+
+  &.is-invalid {
+    border-color: $color-error !important;
+  }
+
+  /**
    * 1. Shit needs to be immutable, disabled is disabled
    */
   &:disabled {
