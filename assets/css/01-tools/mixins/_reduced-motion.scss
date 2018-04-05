@@ -1,0 +1,11 @@
+/*  =========================================================================
+    tools.mixins.reduced-motion
+    A mixin for a generic way to alter properties when reduced motion is
+    prefered
+    ========================================================================= */
+
+@mixin reduced-motion {
+  @media screen and (prefers-reduced-motion) {
+    @content;
+  }
+}
