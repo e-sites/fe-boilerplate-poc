@@ -20,13 +20,17 @@
     background-color: darken($color-primary, 10%);
   }
 
+  /**
+   * 1. Shit needs to be immutable, disabled is disabled
+   */
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    color: $color-gray-medium !important; /* [1] */
+    background-color: $color-gray-light !important; /* [1] */
+    border-color: transparent !important;
   }
 
   svg {
-
     &:first-child {
       margin-right: $spacing-small;
     }
@@ -83,7 +87,10 @@
 /*  Ghost types
     ========================================================================= */
 
-@mixin btn-ghost-reset {
+/**
+ * Shared, internal ghost mixin
+ */
+@mixin _btn-ghost-reset {
   border-color: currentColor;
 
   &,
@@ -93,7 +100,7 @@
 }
 
 @mixin btn-ghost {
-  @include btn-ghost-reset;
+  @include _btn-ghost-reset;
   color: $color-dark;
 
   #{$all-hovers} {
@@ -102,7 +109,7 @@
 }
 
 @mixin btn-ghost-primary {
-  @include btn-ghost-reset;
+  @include _btn-ghost-reset;
   color: $color-primary;
 
   #{$all-hovers} {
@@ -111,7 +118,7 @@
 }
 
 @mixin btn-ghost-secondary {
-  @include btn-ghost-reset;
+  @include _btn-ghost-reset;
   color: $color-secondary;
 
   #{$all-hovers} {
@@ -120,7 +127,7 @@
 }
 
 @mixin btn-ghost-tertiary {
-  @include btn-ghost-reset;
+  @include _btn-ghost-reset;
   color: $color-tertiary;
 
   #{$all-hovers} {
