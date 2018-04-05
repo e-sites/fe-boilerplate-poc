@@ -1,0 +1,41 @@
+/*  =========================================================================
+    trumps.colors
+    Classes to help with colors
+    ========================================================================= */
+
+/*  Color
+    ========================================================================= */
+
+.color-primary {
+  color: $color-primary;
+}
+
+.color-secondary {
+  color: $color-secondary;
+}
+
+
+
+/*  Fill
+    ========================================================================= */
+
+.fill-primary {
+  fill: $color-primary;
+}
+
+.fill-secondary {
+  fill: $color-secondary;
+}
+
+
+
+/*  Background-color
+    ========================================================================= */
+
+.background-primary {
+  background-color: $color-primary;
+}
+
+.background-secondary {
+  background-color: $color-secondary;
+}
