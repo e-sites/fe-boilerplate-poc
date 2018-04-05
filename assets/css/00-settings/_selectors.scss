@@ -1,8 +1,6 @@
 /*  =========================================================================
-    tools.mixins
+    settings.selectors
+    Variables for common selector types like: :hover, :active, etc.
     ========================================================================= */
 
-// @import 'spacing'; // ^refactor: do we need this?
-@import 'lists';
-@import 'shared-input';
-@import 'button-styles';
+$all-hovers: '&:hover, &:focus' !default;
