@@ -4,6 +4,50 @@
     ========================================================================= */
 
 /**
+ * The usual resetting of margins, paddings, borders etc.
+ */
+body,
+blockquote,
+dl,
+dd,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+pre,
+fieldset,
+hr {
+  margin: 0;
+}
+
+fieldset,
+ol,
+ul {
+  padding: 0;
+}
+
+iframe,
+fieldset {
+  border: 0;
+}
+
+
+/**
+ * Remove extra vertical spacing when nesting lists.
+ */
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
+
+/**
  * Suppress the focus outline on links that cannot be accessed via keyboard.
  * This prevents an unwanted focus outline from appearing around elements that
  * might still respond to pointer events.

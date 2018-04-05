@@ -1,29 +1,28 @@
+/*  =========================================================================
+    base.tables
+    ========================================================================= */
+
 table {
-  border-collapse: collapse;
-  margin: $base-spacing 0;
-  table-layout: fixed;
-  text-align: left;
   width: 100%;
-}
-
-thead {
-  line-height: $heading-line-height;
-  vertical-align: bottom;
-}
-
-tbody {
-  vertical-align: top;
-}
-
-tr {
-  border-bottom: $base-border;
-}
-
-th {
-  font-weight: 600;
+  margin-bottom: $spacing-base;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
 }
 
 th,
 td {
-  padding: $small-spacing $small-spacing $small-spacing 0;
+  padding: $spacing-small 0;
+}
+
+th {
+  border-bottom: 1px solid $color-gray-medium;
+  font-weight: 600;
+  text-align: left;
+}
+
+tr,
+td,
+th {
+  vertical-align: middle;
 }

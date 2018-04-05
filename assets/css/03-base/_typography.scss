@@ -1,45 +1,85 @@
-html {
-  color: $base-font-color;
-  font-family: $base-font-family;
-  font-size: 100%;
-  line-height: $base-line-height;
+/*  =========================================================================
+    base.typography
+    ========================================================================= */
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-base-font;
 }
 
+
+/**
+ * Headings
+ */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: $heading-font-family;
-  font-size: modular-scale(1);
-  line-height: $heading-line-height;
-  margin: 0 0 $small-spacing;
+  font-family: $font-family-heading;
+  font-weight: normal;
+  line-height: $line-height-heading;
+  margin-bottom: $spacing-small;
 }
 
-p {
-  margin: 0 0 $small-spacing;
+h1 {
+  font-size: heading-scale(6);
 }
 
+h2 {
+  font-size: heading-scale(5);
+}
+
+h3 {
+  font-size: heading-scale(4);
+}
+
+h4 {
+  font-size: heading-scale(3);
+}
+
+h5 {
+  font-size: heading-scale(2);
+}
+
+h6 {
+  font-size: heading-scale(1);
+}
+
+
+/**
+ * Unified margins on typographical elements
+ */
+blockquote,
+p,
+address,
+table,
+pre,
+hr {
+  margin-bottom: $spacing-base;
+}
+
+
+/**
+ * Links
+ */
 a {
-  color: $action-color;
+  color: $color-primary;
   text-decoration-skip: ink;
-  transition: color $base-duration $base-timing;
+  transition: color $animation-duration-base $animation-timing-base;
 
-  &:hover {
-    color: shade($action-color, 25%);
-  }
-
-  &:focus {
-    outline: $focus-outline;
-    outline-offset: $focus-outline-offset;
+  #{$all-hovers} {
+    text-decoration: none;
   }
 }
 
 hr {
-  border-bottom: $base-border;
+  border-bottom: 1px solid $color-gray-medium;
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  margin: $base-spacing 0;
+  margin-bottom: $spacing-base;
 }

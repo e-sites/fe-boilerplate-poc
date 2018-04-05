@@ -1,19 +1,21 @@
+/*  =========================================================================
+    base.lists
+    ========================================================================= */
+
+/**
+ * unified vertical rhythm
+ */
 ul,
-ol {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+ol,
+dl, {
+  margin-bottom: $spacing-base;
 }
 
-dl {
-  margin: 0;
-}
-
-dt {
-  font-weight: 600;
-  margin: 0;
-}
-
+/**
+ * Default indentation value for lists
+ */
+ul,
+ol,
 dd {
-  margin: 0;
+  margin-left: $spacing-base;
 }

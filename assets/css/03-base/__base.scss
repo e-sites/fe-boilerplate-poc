@@ -4,12 +4,9 @@
     Based on Bitters 1.8.0, http://bitters.bourbon.io.
     ========================================================================= */
 
-// @import "variables";
-
+@import 'typography';
 @import 'buttons';
 @import 'forms';
-// @import "layout";
-// @import "lists";
-// @import "media";
-// @import "tables";
-// @import "typography";
+@import 'lists';
+@import 'media';
+@import 'tables';
