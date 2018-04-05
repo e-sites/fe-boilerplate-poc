@@ -94,7 +94,7 @@
 <body>
   <h1>Test file</h1>
 
-  <div class="module" id="generic">
+  <div class="module">
     <h2 class="module__title">Base tests</h2>
     <div class="test">
       <h3 class="test__describe">h1-h6</h3>
@@ -150,6 +150,41 @@
       <div class="test__run">
         <a href="#_" tabindex="-1">Link content</a>
         <button type="button" tabindex="-1">Button content</button>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">Forms</h3>
+      <!-- <h4 class="test__it">has no focus outline (try clicking to trigger focus)</h4> -->
+      <div class="test__run">
+        <fieldset>
+          <legend>Legend</legend>
+
+          <label for="text-input">Label for input</label>
+          <input type="text" id="text-input" name="text-input" placeholder="Placeholder text">
+
+          <label for="text-input-disabled">Label for disabled</label>
+          <input type="text" id="text-input-disabled" name="text-input-disabled" disabled placeholder="Placeholder text">
+        </fieldset>
+
+        <fieldset>
+          <legend>Legend</legend>
+
+          <label for="textarea">Label for textarea</label>
+          <textarea name="textarea" id="textarea" placeholder="Placeholder text"></textarea>
+
+          <label for="select-input">Label for select</label>
+          <select name="select-input" id="select-input">
+            <option value="">Option 1</option>
+            <option value="">Option 2</option>
+            <option value="">Option 3</option>
+            <option value="">Option 4</option>
+          </select>
+
+          <label>Label for radio buttons</label>
+          <div><input type="radio" name="radio-1" id="radio-1"> <label for="radio-1">Option 1</label></div>
+            <div><input type="radio" name="radio-1" id="radio-2"> <label for="radio-2">Option 2</label></div>
+            <div><input type="radio" name="radio-1" id="radio-3"> <label for="radio-3">Option 3</label></div>
+            <div><input type="radio" name="radio-1" id="radio-4"> <label for="radio-4">Option 4</label></div>
+        </fieldset>
       </div><!-- .test__run -->
 
     </div><!-- .test -->

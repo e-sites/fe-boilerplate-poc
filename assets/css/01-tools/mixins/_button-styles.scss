@@ -24,10 +24,10 @@
    * 1. Shit needs to be immutable, disabled is disabled
    */
   &:disabled {
-    cursor: not-allowed;
     color: $color-gray-medium !important; /* [1] */
     background-color: $color-gray-light !important; /* [1] */
     border-color: transparent !important;
+    cursor: not-allowed;
   }
 
   svg {

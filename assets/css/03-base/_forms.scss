@@ -1,67 +1,71 @@
-$_form-background-color: #fff;
-$_form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
-$_form-box-shadow-focus: $_form-box-shadow, 0 0 5px rgba($action-color, 0.7);
+/*  =========================================================================
+    base.forms
+    Basic styling for form fields, labels, etc.
+    ========================================================================= */
 
+/**
+ * reset
+ */
 fieldset {
-  background-color: transparent;
+  padding: 0;
   border: 0;
   margin: 0;
-  padding: 0;
+  background-color: transparent;
 }
 
 legend {
-  font-weight: 600;
-  margin-bottom: $small-spacing / 2;
   padding: 0;
+  margin-bottom: $spacing-tiny;
+  font-weight: 600;
 }
 
+textarea,
 label {
   display: block;
-  font-weight: 600;
-  margin-bottom: $small-spacing / 2;
 }
 
-input,
-select,
-textarea {
-  display: block;
-  font-family: $base-font-family;
-  font-size: 16px;
+
+/**
+ * Label
+ * 1. If the label is connected to an input, have user feedback for interaction
+ */
+label {
+  margin-bottom: $spacing-tiny;
+  font-weight: bold;
+
+  &[for] {
+    cursor: pointer; /* [1] */
+  }
 }
 
-#{$all-text-inputs} {
-  appearance: none;
-  background-color: $_form-background-color;
-  border: $base-border;
-  border-radius: $base-border-radius;
-  box-shadow: $_form-box-shadow;
-  box-sizing: border-box;
-  margin-bottom: $small-spacing;
-  padding: $base-spacing / 3;
-  transition: border-color $base-duration $base-timing;
+
+/**
+ * Text input & selects
+ */
+#{$all-text-inputs},
+select {
+  @include shared-input;
   width: 100%;
+  max-width: 24rem;
+  margin-bottom: $spacing-small;
+  border-color: $color-gray-medium;
 
-  &:hover {
-    border-color: shade($base-border-color, 20%);
+  #{$all-hovers} {
+    border-color: $color-gray-dark;
   }
 
-  &:focus {
-    border-color: $action-color;
-    box-shadow: $_form-box-shadow-focus;
-    outline: none;
-  }
-
+  /**
+   * 1. Shit needs to be immutable, disabled is disabled
+   */
   &:disabled {
-    background-color: shade($_form-background-color, 5%);
+    color: $color-gray-medium !important; /* [1] */
+    background-color: $color-gray-light !important; /* [1] */
+    border-color: $color-gray-medium !important;
     cursor: not-allowed;
-
-    &:hover {
-      border: $base-border;
-    }
   }
 
   &::placeholder {
-    color: tint($base-font-color, 40%);
+    color: $color-gray-medium;
   }
 }
 
@@ -69,28 +73,28 @@ textarea {
   resize: vertical;
 }
 
-[type="checkbox"],
-[type="radio"] {
-  display: inline;
-  margin-right: $small-spacing / 2;
-}
-
-[type="file"] {
-  margin-bottom: $small-spacing;
-  width: 100%;
-}
-
 select {
-  margin-bottom: $small-spacing;
-  width: 100%;
-}
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIG92ZXJmbG93PSJ2aXNpYmxlIiB2aWV3Qm94PSIwIDAgNTMxLjc0IDQ2MC41Ij4NCiAgPHBhdGggc3Ryb2tlPSIjMDAwIiBkPSJNNTMwLjg3NC41bC0yNjUuMDA0IDQ1OUwuODY2LjV6Ii8+DQo8L3N2Zz4NCg==');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  background-position: right $spacing-small top 50%;
+  background-size: ($spacing-tiny * 1.5) ($spacing-tiny * 1.5);
 
-[type="checkbox"],
-[type="radio"],
-[type="file"],
-select {
-  &:focus {
-    outline: $focus-outline;
-    outline-offset: $focus-outline-offset;
+  &::-ms-expand {
+    display: none;
   }
+}
+
+[type='checkbox'],
+[type='radio'] {
+  display: inline-block;
+  margin-right: $spacing-small;
+
+  + label {
+    display: inline-block;
+  }
+}
+
+[type='file'] {
+  width: 100%;
 }
