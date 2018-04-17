@@ -1,19 +1,23 @@
-/*  =========================================================================
-    tools.mixins.shared-input
-    Shared base styles for input, eg. buttons, text inputs, etc.
-    ========================================================================= */
+/**
+ * tools.mixins.shared-input
+ * Shared base styles for input, eg. buttons, text inputs, etc.
+ */
 
-/*  Variables
-    ========================================================================= */
+/**
+ * ======================================
+ * Variables
+ * ======================================
+ */
 
 $shared-input-border-width: 2px !default;
 $shared-input-padding-vertical: $spacing-small !default;
 $shared-input-padding-horizontal: $spacing-base !default;
 
-
-
-/*  Module
-    ========================================================================= */
+/**
+ * ======================================
+ * Mixins
+ * ======================================
+ */
 
 /**
  * 1. By default inherit all default font styles.

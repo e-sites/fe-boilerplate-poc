@@ -1,11 +1,18 @@
-/*  =========================================================================
-    components.editor-content
-    Styles for html which is coming out of a rich text editor.
-    ========================================================================= */
+/**
+ * components.editor-content
+ * Styles for html which is coming out of a rich text editor.
+ */
+
+/**
+ * ======================================
+ * Block
+ * ======================================
+ */
 
 /**
  * 1. Clearfix to protect the layout against floats and stuff.
- * 2. Default margin bottom, to space editor content evenly against others
+ * 2. Default margin bottom, to space editor content evenly against other
+ *    components
  */
 .editor-content {
   @include clearfix; /* [1] */

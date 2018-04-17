@@ -1,7 +1,7 @@
-/*  =========================================================================
-    settings.typography
-    Base typographic settings
-    ========================================================================= */
+/**
+ * settings.typography
+ * Base typographic settings
+ */
 
 // Fonts
 $font-family-base: Arial, sans-serif !default;
@@ -19,4 +19,4 @@ $line-height-base: 1.5 !default;
 $line-height-heading: 1.2 !default;
 
 // Heading scale
-$heading-scale: 1.21;
+$heading-scale: 1.21 !default;

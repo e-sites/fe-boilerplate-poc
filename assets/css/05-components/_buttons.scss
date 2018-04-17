@@ -1,19 +1,25 @@
-/*  =========================================================================
-    components.buttons
-    Button selectors, only mapping selectors to mixins located in:
-    01-tools/mixins/_button-styles.scss
-    ========================================================================= */
+/**
+ * components.button
+ * Button selectors, only mapping selectors to mixins located in:
+ * 01-tools/mixins/_button-styles.scss
+ */
 
+/**
+ * ======================================
+ * Block
+ * ======================================
+ */
 .btn,
 #{$all-buttons} {
   @include btn;
 }
 
-
-
-/*  Button type classes
-    Uncomment the ones you need in the project
-    ========================================================================= */
+/**
+ * ======================================
+ * Type classes
+ * Uncomment the ones you need in the project
+ * ======================================
+ */
 
 // .btn-secondary {
 //   @include btn;

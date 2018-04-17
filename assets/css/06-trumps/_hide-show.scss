@@ -1,7 +1,7 @@
-/*  =========================================================================
-    trumps.hide-show
-    Hides and shows content classes
-    ========================================================================= */
+/**
+ * trumps.hide-show
+ * Hides and shows content classes
+ */
 
 @include mq($until: sm) {
   .hide-sm-down {

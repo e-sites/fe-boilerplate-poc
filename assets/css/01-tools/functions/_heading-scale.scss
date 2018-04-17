@@ -1,7 +1,7 @@
-/*  =========================================================================
-    tools.functions.heading-scale
-    Increments up or down a defined scale and returns an adjusted rem value
-    ========================================================================= */
+/**
+ * tools.functions.heading-scale
+ * Increments up or down a defined scale and returns an adjusted rem value
+ */
 
 @function heading-scale($scale: 1) {
   @return #{pow($heading-scale, $scale)}rem;

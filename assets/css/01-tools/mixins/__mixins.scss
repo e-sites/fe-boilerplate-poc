@@ -1,8 +1,8 @@
-/*  =========================================================================
-    tools.mixins
-    ========================================================================= */
+/**
+ * tools.mixins
+ */
 
-// @import 'spacing'; // ^refactor: do we need this?
+@import 'spacing';
 @import 'lists';
 @import 'shared-input';
 @import 'button-styles';

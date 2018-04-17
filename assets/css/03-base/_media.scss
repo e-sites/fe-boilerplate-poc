@@ -1,6 +1,6 @@
-/*  =========================================================================
-    base.media
-    ========================================================================= */
+/**
+ * base.media
+ */
 
 figure {
   margin-bottom: $spacing-base;
@@ -8,7 +8,6 @@ figure {
 
 /**
  * Image
- *
  * 1. By default all images are fluid
  * 2. Render `alt` visually offset when images don't load
  */

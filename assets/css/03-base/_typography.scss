@@ -1,6 +1,6 @@
-/*  =========================================================================
-    base.typography
-    ========================================================================= */
+/**
+ * base.typography
+ */
 
 body {
   font-family: $font-family-base;
@@ -19,9 +19,9 @@ h3,
 h4,
 h5,
 h6 {
+  margin-bottom: $spacing-small;
   font-family: $font-family-heading;
   line-height: $line-height-heading;
-  margin-bottom: $spacing-small;
 }
 
 h1 {

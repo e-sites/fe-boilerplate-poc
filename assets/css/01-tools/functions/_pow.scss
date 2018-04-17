@@ -1,7 +1,7 @@
-/*  =========================================================================
-    tools.functions.pow
-    The pow function returns the base to the exponent power.
-    ========================================================================= */
+/**
+ * tools.functions.pow
+ * The pow function returns the base to the exponent power.
+ */
 
 @function pow($base, $exponent) {
   $value: 1;

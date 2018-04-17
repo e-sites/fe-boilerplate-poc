@@ -1,8 +1,9 @@
-/*  =========================================================================
-    mixins.buttons
-    ========================================================================= */
+/**
+ * mixins.buttons
+ */
 
 /**
+ * Base button mixin
  * 1. Use the shared input styles to match the button with inputs.
  * 2. Remove possible text decoration from the aplied element, eg. links.
  */
@@ -26,7 +27,7 @@
   &:disabled {
     color: $color-gray-medium !important; /* [1] */
     background-color: $color-gray-light !important; /* [1] */
-    border-color: transparent !important;
+    border-color: transparent !important; /* [1] */
     cursor: not-allowed;
   }
 
@@ -46,9 +47,9 @@
 }
 
 
-
-/*  Sizes
-    ========================================================================= */
+/**
+ * Sizes
+ */
 
 @mixin btn-sm {
   padding: $spacing-tiny $spacing-base;
@@ -60,9 +61,9 @@
 }
 
 
-
-/*  Cosmetic types
-    ========================================================================= */
+/**
+ * Cosmetic types
+ */
 
 @mixin btn-secondary {
   color: $color-dark;
@@ -83,9 +84,9 @@
 }
 
 
-
-/*  Ghost types
-    ========================================================================= */
+/**
+ * Ghost types
+ */
 
 /**
  * Shared, internal ghost mixin
@@ -136,9 +137,9 @@
 }
 
 
-
-/*  Clean
-    ========================================================================= */
+/**
+ * Clean
+ */
 
 @mixin btn-clean {
   padding: 0;
