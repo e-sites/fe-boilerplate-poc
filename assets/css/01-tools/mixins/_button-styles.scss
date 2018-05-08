@@ -1,36 +1,37 @@
 /**
-* Button mixins
-*/
-@mixin btn {
-  @include btn-color();
-  display: inline-block;
-  appearance: none;
-  border: 0;
-  border-radius: $border-radius-button;
-  color: #fff;
-  cursor: pointer;
-  font-family: $font-heading;
-  font-size: $font-size-button;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.625;
-  padding: $spacing-small $spacing-base;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color $animation-base-duration $animation-base-timing;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  text-transform: uppercase;
-  box-shadow: inset 0 -2px rgba(#000, 0.2), 0 1px 2px rgba(#000, 0.3);
+ * mixins.buttons
+ */
 
+/**
+ * Base button mixin
+ * 1. Use the shared input styles to match the button with inputs.
+ * 2. Remove possible text decoration from the aplied element, eg. links.
+ */
+@mixin btn {
+  @include shared-input; /* [1] */
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none; /* [2] */
+  text-align: center;
+  user-select: none;
+  color: $color-light;
+  background-color: $color-primary;
+  cursor: pointer;
+
+  #{$all-hovers} {
+    background-color: darken($color-primary, 10%);
+  }
+
+  /**
+   * 1. Shit needs to be immutable, disabled is disabled
+   */
   &:disabled {
+    color: $color-gray-medium !important; /* [1] */
+    background-color: $color-gray-light !important; /* [1] */
+    border-color: transparent !important; /* [1] */
     cursor: not-allowed;
-    opacity: 0.5;
   }
 
   svg {
-
     &:first-child {
       margin-right: $spacing-small;
     }
@@ -45,9 +46,13 @@
   }
 }
 
-// Button sizing
+
+/**
+ * Sizes
+ */
+
 @mixin btn-sm {
-  padding: $spacing-small / 2 $spacing-base;
+  padding: $spacing-tiny $spacing-base;
   font-size: $font-size-smaller;
 }
 
@@ -55,62 +60,99 @@
   font-size: $font-size-small;
 }
 
-// Button skins
-@mixin btn-primary {
-  @include btn-color(background-color, $color-primary);
-}
+
+/**
+ * Cosmetic types
+ */
 
 @mixin btn-secondary {
-  @include btn-color(background-color, $color-secondary);
+  color: $color-dark;
+  background-color: $color-secondary;
+
+  #{$all-hovers} {
+    background-color: darken($color-secondary, 10%);
+  }
 }
 
 @mixin btn-tertiary {
-  @include btn-color(background-color, $color-tertiary);
-  @include btn-color(color, $color-base-font);
+  color: $color-dark;
+  background-color: $color-tertiary;
+
+  #{$all-hovers} {
+    background-color: darken($color-tertiary, 10%);
+  }
 }
 
-// Ghost buttons
-@mixin btn-ghost {
-  border: 1px solid currentColor;
-  box-shadow: none;
-  background: #fff;
 
-  &:focus,
-  &:hover {
-    background: #fff;
+/**
+ * Ghost types
+ */
+
+/**
+ * Shared, internal ghost mixin
+ */
+@mixin _btn-ghost-reset {
+  border-color: currentColor;
+
+  &,
+  #{$all-hovers} {
+    background: transparent;
+  }
+}
+
+@mixin btn-ghost {
+  @include _btn-ghost-reset;
+  color: $color-dark;
+
+  #{$all-hovers} {
+    color: lighten($color-dark, 30%);
   }
 }
 
 @mixin btn-ghost-primary {
-  @include btn-color(color, $color-primary);
-  @include btn-hover-color(background-color, $color-primary);
-  @include btn-hover-color(color, #fff);
+  @include _btn-ghost-reset;
+  color: $color-primary;
+
+  #{$all-hovers} {
+    color: darken($color-primary, 10%);
+  }
 }
 
 @mixin btn-ghost-secondary {
-  @include btn-color(color, $color-secondary);
-  @include btn-hover-color(background-color, $color-secondary);
-  @include btn-hover-color(color, #fff);
+  @include _btn-ghost-reset;
+  color: $color-secondary;
+
+  #{$all-hovers} {
+    color: darken($color-secondary, 10%);
+  }
 }
 
 @mixin btn-ghost-tertiary {
-  @include btn-color(border-color, $color-tertiary);
-  @include btn-color(color,  $color-secondary);
-  @include btn-hover-color(border-color, $color-secondary);
-  @include btn-hover-color(color, $color-secondary);
+  @include _btn-ghost-reset;
+  color: $color-tertiary;
+
+  #{$all-hovers} {
+    color: darken($color-tertiary, 10%);
+  }
 }
 
+
+/**
+ * Clean
+ */
+
 @mixin btn-clean {
+  padding: 0;
   margin: 0;
   border-radius: 0;
-  padding: 0;
-  font-family: $font-regular;
-  color: $color-base-font;
+  border: none;
+  font: inherit;
+  color: inherit;
   box-shadow: none;
   background-color: transparent;
 
-  &:focus,
-  &:hover {
+  #{$all-hovers} {
     background-color: transparent;
+    color: inherit;
   }
 }

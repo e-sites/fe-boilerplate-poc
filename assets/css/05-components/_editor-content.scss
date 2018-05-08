@@ -1,0 +1,42 @@
+/**
+ * components.editor-content
+ * Styles for html which is coming out of a rich text editor.
+ */
+
+/**
+ * ======================================
+ * Block
+ * ======================================
+ */
+
+/**
+ * 1. Clearfix to protect the layout against floats and stuff.
+ * 2. Default margin bottom, to space editor content evenly against other
+ *    components
+ */
+.editor-content {
+  @include clearfix; /* [1] */
+  margin-bottom: $spacing-base; /* [2] */
+
+  /**
+   * Remove margin-bottom from last child of this container
+   */
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  /**
+   * Float classes
+   */
+  .align-left {
+    float: left;
+    margin-right: $spacing-base;
+    margin-bottom: $spacing-base;
+  }
+
+  .align-right {
+    float: right;
+    margin-left: $spacing-base;
+    margin-bottom: $spacing-base;
+  }
+}

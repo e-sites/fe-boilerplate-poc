@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#ffffff">
+  <title>Default site</title>
+  <script>window.onerror = new Function("m", "f", "l", "(new Image()).src=\"https://cdn.e-sites.nl/js-error/e.gif?m=\"+encodeURIComponent(m)+\"&f=\"+encodeURIComponent(f)+\"&l=\"+encodeURIComponent(l)+\"&p=\"+encodeURIComponent(document.location.href)+\"&t=1&s=\"+((new Date()).getTime()-" + (new Date()).getTime() + ");window.onerror=null;");</script>
+  <script>document.documentElement.className += ' js'; var app = {}, fs = {};</script>
+  <link rel="dns-prefetch" href="//ajax.googleapis.com">
+  <link rel="dns-prefetch" href="//google-analytics.com">
+  <link rel="stylesheet" href="../build/css/styles.css">
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5||document.write('<script src="/assets/js/polyfills/html5.min.js"><\/script>')</script>
+  <![endif]-->
+  <script>
+    (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-XXXXX-X'); ga('send', 'pageview');
+  </script>
+
+  <style>
+    /* stylelint-disable */
+    /* just for testing purposes, do not copy this into your project */
+    body {
+      margin: 24px;
+    }
+
+    .module__title,
+    .test__describe,
+    .test__it {
+      padding: 12px 24px;
+      margin-bottom: 24px;
+      background-color: #eeeeee;
+    }
+
+    .test__describe,
+    .test__it {
+      border-left: 3px solid #666666;
+      padding-left: calc(24px - 3px);
+    }
+
+    .module__title::before,
+    .test__describe::before,
+    .test__it::before {
+      margin-right: 24px;
+      color: #999999;
+    }
+
+    .module {
+      counter-increment: module;
+    }
+
+    .module__title {
+      margin-top: 96px;
+      font-size: 2.369em;
+      counter-reset: test-describe;
+    }
+
+    .module__title::before {
+      content: counter(module);
+    }
+
+    .test {}
+
+    .test__describe {
+      margin-top: 48px;
+      font-size: 1.777em;
+      counter-reset: test-it;
+      counter-increment: test-describe;
+    }
+
+    .test__describe::before {
+      content: counter(module) '.' counter(test-describe);
+    }
+
+    .test__it {
+      margin-top: 12px;
+      font-size: 1.333em;
+      counter-increment: test-it;
+    }
+
+    .test__it::before {
+      content: counter(module) '.' counter(test-describe) '.' counter(test-it);
+    }
+
+    .test__run {}
+
+    .fixture-box {
+      padding: 12px;
+      background-color: rgba(255, 0, 0, 0.5);
+    }
+    /* stylelint-enable */
+  </style>
+</head>
+
+<body>
+  <h1>Test file</h1>
+
+  <div class="module">
+    <h2 class="module__title">Base tests</h2>
+    <div class="test">
+      <h3 class="test__describe">h1-h6</h3>
+      <div class="test__run">
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">hgroup, ul, ol, dl, blockquote, p, address, table, fieldset, figure, pre, hr</h3>
+      <div class="test__run">
+        <hgroup>hgroup</hgroup>
+        <ul>
+          <li>Unordered list: item 1</li>
+          <li>Unordered list: item 2</li>
+        </ul>
+        <ol>
+          <li>Ordered list: item 1</li>
+          <li>Ordered list: item 2</li>
+        </ol>
+        <dl>
+          <dt>Definition list: Term</dt>
+          <dd>Definition list: Description</dd>
+        </dl>
+        <blockquote>Blockquote content</blockquote>
+        <p>Paragraph</p>
+        <address>Address</address>
+        <table>
+          <thead>
+            <tr>
+              <th>Table head</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </table>
+        <fieldset>Fieldset</fieldset>
+        <figure>Figure</figure>
+        <pre>Preformatted text</pre>
+        <hr>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">button</h3>
+      <div class="test__run">
+        <p>
+          <button type="button">Button content</button>
+        </p>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">[tabindex="-1"]:focus</h3>
+      <h4 class="test__it">has no focus outline (try clicking to trigger focus)</h4>
+      <div class="test__run">
+        <a href="#_" tabindex="-1">Link content</a>
+        <button type="button" tabindex="-1">Button content</button>
+      </div><!-- .test__run -->
+
+      <h3 class="test__describe">Forms</h3>
+      <!-- <h4 class="test__it">has no focus outline (try clicking to trigger focus)</h4> -->
+      <div class="test__run">
+        <form action="" data-validate>
+          <fieldset>
+            <legend>Legend</legend>
+
+            <label for="text-input">Label for input</label>
+            <input type="text" id="text-input" name="text-input" placeholder="Placeholder text">
+
+            <label for="text-input-required">Label for required input *</label>
+            <input type="text" id="text-input-required" name="text-input-required" required placeholder="Placeholder text">
+
+
+            <label for="text-input-disabled">Label for disabled</label>
+            <input type="text" id="text-input-disabled" name="text-input-disabled" disabled placeholder="Placeholder text">
+          </fieldset>
+
+          <fieldset>
+            <legend>Legend</legend>
+
+            <label for="textarea">Label for textarea</label>
+            <textarea name="textarea" id="textarea" placeholder="Placeholder text"></textarea>
+
+            <label for="select-input">Label for select</label>
+            <select name="select-input" id="select-input">
+              <option value="">Option 1</option>
+              <option value="">Option 2</option>
+              <option value="">Option 3</option>
+              <option value="">Option 4</option>
+            </select>
+
+            <label>Label for radio buttons</label>
+            <div><input type="radio" name="radio-1" id="radio-1"> <label for="radio-1">Option 1</label></div>
+            <div><input type="radio" name="radio-1" id="radio-2"> <label for="radio-2">Option 2</label></div>
+            <div><input type="radio" name="radio-1" id="radio-3"> <label for="radio-3">Option 3</label></div>
+            <div><input type="radio" name="radio-1" id="radio-4"> <label for="radio-4">Option 4</label></div>
+          </fieldset>
+          <button type="submit">Submit</button>
+        </form>
+      </div><!-- .test__run -->
+
+    </div><!-- .test -->
+  </div><!-- .module -->
+
+  <div class="module">
+    <h2 class="module__title">Objects tests</h2>
+    <div class="test">
+      <h3 class="test__describe">wrappers</h3>
+      <div class="test__run">
+        <div class="wrapper-inner">
+          <div class="fixture-box">Wrapper inner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="module">
+    <h2 class="module__title">Components tests</h2>
+    <div class="test">
+      <h3 class="test__describe">editor content</h3>
+      <div class="test__run">
+        <div class="editor-content">
+          <h1>Heading 1</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi repellat quas cum dolorum. Qui odio veniam impedit blanditiis. Ullam molestiae explicabo aliquid adipisci atque quae dolor quia eaque enim ut.</p>
+          <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>
+              Item 3
+              <ul>
+                <li>Sub item 1</li>
+                <li>Sub item 2</li>
+                <li>Sub item 3</li>
+              </ul>
+            </li>
+            <li>Item 4</li>
+          </ul>
+
+          <img class="align-left" src="//placehold.it/200x120" alt="">
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi expedita consequuntur earum labore facere at sunt sed reiciendis voluptatibus necessitatibus id obcaecati ipsum beatae delectus, eum accusantium? Vel, obcaecati? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi expedita consequuntur earum labore facere at sunt sed reiciendis voluptatibus necessitatibus id obcaecati ipsum beatae delectus, eum accusantium? Vel, obcaecati?</p>
+
+          <img class="align-right" src="//placehold.it/200x120" alt="">
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi expedita consequuntur earum labore facere at sunt sed reiciendis voluptatibus necessitatibus id obcaecati ipsum beatae delectus, eum accusantium? Vel, obcaecati?</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Table head</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Table cell</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis commodi nobis ducimus, in molestias sit temporibus deleniti distinctio sint odit architecto quo illum natus culpa iure repellendus voluptate ipsum fugit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="http://google.nl" target="_blank">External link</a>
+
+  <div data-module="ui/test" data-context="@media (min-width:30em)"></div>
+
+  <script src="../build/js/manifest.js"></script>
+  <script src="../build/js/vendor.js"></script>
+  <script src="../build/js/app.js"></script>
+</body>
+
+</html>

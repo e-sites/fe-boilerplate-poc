@@ -1,0 +1,11 @@
+/**
+ * settings.responsive
+ * Used in conjunction with Sass MQ: https://sass-mq.github.io/sass-mq/
+ */
+
+$mq-breakpoints: (
+  sm: 30em,
+  md: 40em,
+  lg: 60em,
+  xl: $max-width-media-query
+);

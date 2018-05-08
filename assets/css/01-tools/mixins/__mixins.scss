@@ -1,8 +1,9 @@
 /**
- * Mixins for project
+ * tools.mixins
  */
 
 @import 'spacing';
-@import 'button-color';
-@import 'button-styles';
 @import 'lists';
+@import 'shared-input';
+@import 'button-styles';
+@import 'reduced-motion';

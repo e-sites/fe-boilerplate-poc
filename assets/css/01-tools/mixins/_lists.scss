@@ -1,5 +1,6 @@
 /**
- * List mixins to add base styling
+ * tools.mixins.lists
+ * A set of handy dandy mixins for lists
  */
 
 @mixin list-clean {
@@ -9,7 +10,7 @@
 }
 
 @mixin list-padding {
-  padding-left: 20px;
+  padding-left: $spacing-base;
 }
 
 @mixin list-decimal {

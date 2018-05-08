@@ -1,0 +1,56 @@
+/**
+ * components.button
+ * Button selectors, only mapping selectors to mixins located in:
+ * 01-tools/mixins/_button-styles.scss
+ */
+
+/**
+ * ======================================
+ * Block
+ * ======================================
+ */
+.btn,
+#{$all-buttons} {
+  @include btn;
+}
+
+/**
+ * ======================================
+ * Type classes
+ * Uncomment the ones you need in the project
+ * ======================================
+ */
+
+// .btn-secondary {
+//   @include btn;
+//   @include btn-secondary;
+// }
+
+// .btn-tertiary {
+//   @include btn;
+//   @include btn-tertiary;
+// }
+
+// .btn-ghost {
+//   @include btn;
+//   @include btn-ghost;
+// }
+
+// .btn-ghost-primary {
+//   @include btn;
+//   @include btn-ghost-primary;
+// }
+
+// .btn-ghost-secondary {
+//   @include btn;
+//   @include btn-ghost-secondary;
+// }
+
+// .btn-ghost-tertiary {
+//   @include btn;
+//   @include btn-ghost-tertiary;
+// }
+
+// .btn-clean {
+//   @include btn-clean;
+// }

@@ -1,20 +1,24 @@
-table {
-  border-collapse: collapse;
-  margin: $spacing-small 0;
-  table-layout: fixed;
-  width: 100%;
-}
+/**
+ * base.tables
+ */
 
-th {
-  border-bottom: 1px solid shade($color-base-border, 25%);
-  font-weight: 600;
-  padding: $spacing-small 0;
+table {
+  width: 100%;
+  margin-bottom: $spacing-base;
+  table-layout: fixed;
+  border-collapse: collapse;
   text-align: left;
 }
 
+th,
 td {
-  border-bottom: $border-base;
   padding: $spacing-small 0;
+}
+
+th {
+  border-bottom: 1px solid $color-gray-medium;
+  font-weight: 600;
+  text-align: left;
 }
 
 tr,

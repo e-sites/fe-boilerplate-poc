@@ -1,0 +1,67 @@
+/**
+ * trumps.hide-show
+ * Hides and shows content classes
+ */
+
+@include mq($until: sm) {
+  .hide-sm-down {
+    display: none !important;
+  }
+  .show-sm-down {
+    display: block !important;
+  }
+}
+
+@include mq($until: md) {
+  .hide-md-down {
+    display: none !important;
+  }
+  .show-md-down {
+    display: block !important;
+  }
+}
+
+@include mq($until: lg) {
+  .hide-lg-down {
+    display: none !important;
+  }
+  .show-lg-down {
+    display: block !important;
+  }
+}
+
+@include mq($from: sm) {
+  .hide-sm-up {
+    display: none !important;
+  }
+  .show-sm-up {
+    display: block !important;
+  }
+}
+
+@include mq($from: md) {
+  .hide-md-up {
+    display: none !important;
+  }
+  .show-md-up {
+    display: block !important;
+  }
+}
+
+@include mq($from: lg) {
+  .hide-lg-up {
+    display: none !important;
+  }
+  .show-lg-up {
+    display: block !important;
+  }
+}
+
+@include mq($from: xl) {
+  .hide-xl-up {
+    display: none !important;
+  }
+  .show-xl-up {
+    display: block !important;
+  }
+}

@@ -1,80 +1,81 @@
+/**
+ * base.typography
+ */
+
 body {
-  color: $color-base-font;
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-base;
+  color: $color-base-font;
 }
 
+/**
+ * Headings
+ */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  margin-bottom: $spacing-small;
   font-family: $font-family-heading;
-  font-weight: normal;
-  font-size: $font-size-base;
   line-height: $line-height-heading;
-  margin: 0 0 $spacing-small;
 }
 
 h1 {
-  font-size: heading-scale(6);
+  font-size: modular-scale(6);
 }
 
 h2 {
-  font-size: heading-scale(5);
+  font-size: modular-scale(5);
 }
 
 h3 {
-  font-size: heading-scale(4);
+  font-size: modular-scale(4);
 }
 
 h4 {
-  font-size: heading-scale(3);
+  font-size: modular-scale(3);
 }
 
 h5 {
-  font-size: heading-scale(2);
+  font-size: modular-scale(2);
 }
 
 h6 {
-  font-size: heading-scale(1);
+  font-size: modular-scale(1);
 }
 
-p {
-  margin: 0 0 $spacing-small;
+/**
+ * Unified margins on typographical elements
+ */
+blockquote,
+p,
+address,
+table,
+pre,
+hr {
+  margin-bottom: $spacing-base;
 }
 
-b,
-strong {
-  font-weight: bold;
-}
-
+/**
+ * Links
+ */
 a {
   color: $color-primary;
-  fill: currentColor;
-  transition: color $animation-base-duration $animation-base-timing;
+  text-decoration-skip: ink;
+  transition: color $animation-duration-base $animation-timing-base;
 
-  &:active,
-  &:focus,
-  &:hover {
+  #{$all-hovers} {
     text-decoration: none;
   }
 }
 
-:link,
-#{$all-buttons} {
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 1px $color-primary;
-  }
-}
-
 hr {
-  border-bottom: $border-base;
+  border-bottom: 1px solid $color-gray-medium;
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  margin: $spacing-base 0;
+  margin-bottom: $spacing-base;
 }

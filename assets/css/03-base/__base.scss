@@ -1,14 +1,11 @@
-// Bitters 1.2.0
-// http://bitters.bourbon.io
-// Copyright 2013-2015 thoughtbot, inc.
-// MIT License
+/**
+ * base
+ * Unclassed HTML element selectors
+ * Based on Bitters 1.8.0, http://bitters.bourbon.io.
+ */
 
-@import 'a11y';
-@import 'page';
-@import 'buttons';
+@import 'typography';
 @import 'forms';
 @import 'lists';
-@import 'tables';
-@import 'font-face';
-@import 'typography';
 @import 'media';
+@import 'tables';
