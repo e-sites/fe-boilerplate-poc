@@ -1,4 +1,6 @@
-# E-sites front-end workflow
+# [Deprecated] E-sites front-end workflow
+
+**Deprecated** - All the code is merged to [generator-esites-fe](https://github.com/e-sites/generator-esites-fe)
 
 This is the E-sites front-end dev workflow repository. This is where we centralise our Gulp tasks, JS and CSS structure and directory structure for images and SVGs.
 
