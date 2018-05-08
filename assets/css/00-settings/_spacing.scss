@@ -9,6 +9,7 @@ $spacing-large: $spacing-base * 2 !default;
 $spacing-small: $spacing-base / 2 !default;
 $spacing-tiny: $spacing-base / 4 !default;
 
-
 // Max widths
-$max-width-base: 74em !default;
+// [1] Convert to rem units to use as width of elements instead of media queries
+$max-width-media-query: 74em !default;
+$max-width-base: $max-width-media-query / 1em * 1rem; // [1]
