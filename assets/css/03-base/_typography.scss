@@ -9,7 +9,6 @@ body {
   color: $color-base-font;
 }
 
-
 /**
  * Headings
  */
@@ -25,29 +24,28 @@ h6 {
 }
 
 h1 {
-  font-size: heading-scale(6);
+  font-size: modular-scale(6);
 }
 
 h2 {
-  font-size: heading-scale(5);
+  font-size: modular-scale(5);
 }
 
 h3 {
-  font-size: heading-scale(4);
+  font-size: modular-scale(4);
 }
 
 h4 {
-  font-size: heading-scale(3);
+  font-size: modular-scale(3);
 }
 
 h5 {
-  font-size: heading-scale(2);
+  font-size: modular-scale(2);
 }
 
 h6 {
-  font-size: heading-scale(1);
+  font-size: modular-scale(1);
 }
-
 
 /**
  * Unified margins on typographical elements
@@ -60,7 +58,6 @@ pre,
 hr {
   margin-bottom: $spacing-base;
 }
-
 
 /**
  * Links
