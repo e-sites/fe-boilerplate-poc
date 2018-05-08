@@ -4,4 +4,7 @@
  * https://www.bourbon.io/docs/latest/#settings
  */
 
-$bourbon: ();
+$bourbon: (
+  modular-scale-base: 1rem,
+  modular-scale-ratio: 1.2
+);
